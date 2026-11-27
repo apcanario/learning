@@ -1,0 +1,62 @@
+[
+ {
+  "id": "f1",
+  "decision": "apply",
+  "reason": "Real: the §7 table shows T6, T15, T22, T23 with 'no analyst list names it', T11 on a course term only, T19 'Working; no source opened'. Six is right; T12 is cited only to X12 but Gartner's FAP definition (section 2) names invoice collection, so leaving it out is correct. Fix adds no claim."
+ },
+ {
+  "id": "f2",
+  "decision": "hold",
+  "reason": "Problem real (the FMCSA notice does not set out the record's contents), but the fix would leave the unit saying the contents were not read. I read the current 49 CFR §371.3 live (Cornell LII): the record must show the broker's compensation and payer and any freight charges collected with the date paid to the carrier; (c) gives each party the right to review it. Repaired as X1, with a Sources entry X2."
+ },
+ {
+  "id": "f3",
+  "decision": "apply",
+  "reason": "Verified live in the FMCSA 2024 Pocket Guide table: 'No Power Units/Unreported' 15,026; total 787,189; the five bands sum to 772,163."
+ },
+ {
+  "id": "f4",
+  "decision": "apply",
+  "reason": "Verified live on O*NET 43-5032.00: ERP software lists TMW PowerSuite, a trucking TMS product; no category is a TMS. The fix names no product."
+ },
+ {
+  "id": "f5",
+  "decision": "apply",
+  "reason": "Verified in filed SCE7 §3: the routing guide is credited to Acocella, Caplice & Sheffi 2020 [practice]; lanes per routing guide in the same paragraph. Gartner's mandatory sourcing is 'bid management and optimization' (unit §1)."
+ },
+ {
+  "id": "f6",
+  "decision": "apply",
+  "reason": "Verified in filed SCE6: row 22 of deliverable B is W22 (line 326); a row 22 also exists in deliverable C's template, so the pointer needs the table."
+ },
+ {
+  "id": "f7",
+  "decision": "apply",
+  "reason": "Vendor rule: every listed vendor alike; the fix drops the single-profile mention and asserts no count. British spelling, no em dash."
+ },
+ {
+  "id": "f8",
+  "decision": "apply",
+  "reason": "Verified live on the cited Cengage page: 'New edition available!', 10th edition ISBN 9780357908549; ch. 3 'Transportation Technology and Systems'."
+ },
+ {
+  "id": "f9",
+  "decision": "apply",
+  "reason": "Verified live at govinfo: Federal Register Vol. 89, No. 224, 20 November 2024, proposed rule, docket FMCSA-2023-0257, comments due 21 January 2025."
+ },
+ {
+  "id": "f10",
+  "decision": "apply",
+  "reason": "Same verification; FR Doc number 2024-27115 matches the govinfo file name. The govinfo address needs a source-log line (see notes)."
+ },
+ {
+  "id": "f11",
+  "decision": "apply",
+  "reason": "Staudt et al. do not call the control tower a selling term; the fix ties the judgement to section 10's reading."
+ },
+ {
+  "id": "f12",
+  "decision": "apply",
+  "reason": "No source in the unit or the log carries the ANSI accreditation; filed SCE7 §6 calls X12 'the standards body' that publishes 204 and 990. Fix adds no claim."
+ }
+]

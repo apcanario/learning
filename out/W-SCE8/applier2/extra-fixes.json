@@ -1,0 +1,26 @@
+[
+ {
+  "id": "X1",
+  "severity": "should-fix",
+  "kind": "attribution",
+  "where": "Deliverable B, row 10",
+  "current": "its record of each load, margin included, can be reviewed by the parties",
+  "fix": "its record of each load, which must show its compensation for the brokerage and any freight charges it collected (49 CFR §371.3) [independent], can be reviewed by the parties"
+ },
+ {
+  "id": "X2",
+  "severity": "should-fix",
+  "kind": "attribution",
+  "where": "Sources",
+  "current": "- X12. \"204: Motor Carrier Load Tender\". Undated.",
+  "fix": "- United States. Code of Federal Regulations, Title 49, §371.3 \"Records to be kept by brokers\", in the Legal Information Institute's copy (Cornell Law School); no currency date shown. Read 27 November 2026. https://www.law.cornell.edu/cfr/text/49/371.3\n- X12. \"204: Motor Carrier Load Tender\". Undated."
+ },
+ {
+  "id": "X3",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§2, Routing for own fleets",
+  "current": "creates vehicle routes and schedules under multiple constraints and service requirements while minimising fleet costs and mileage;",
+  "fix": "creates vehicle routes and schedules under multiple constraints and service requirements while minimising fleet costs and mileage (this part of the definition is unverified: the page failed to load at the fresh check and at a later check);"
+ }
+]

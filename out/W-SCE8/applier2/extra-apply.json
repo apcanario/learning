@@ -1,0 +1,17 @@
+[
+ {
+  "id": "X1",
+  "decision": "apply",
+  "reason": "Repairs f2: 49 CFR §371.3(a) read live lists broker compensation and freight charges collected; (c) gives each party the right of review. Graded independent as legal text, as SCE7 grades the US Code."
+ },
+ {
+  "id": "X2",
+  "decision": "apply",
+  "reason": "Sources entry for X1's citation; address returned verbatim by WebSearch and opened 27 November 2026."
+ },
+ {
+  "id": "X3",
+  "decision": "apply",
+  "reason": "Could-not-verify item (VRS definition wording): fetch failed (client error), not retried; marked unverified."
+ }
+]

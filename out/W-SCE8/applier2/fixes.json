@@ -1,0 +1,98 @@
+[
+ {
+  "id": "f1",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§7",
+  "current": "Three lines (T6, T22, T23) are needs the analyst definitions read here do not name; two of them are the provider's.",
+  "fix": "Six lines (T6, T11, T15, T19, T22, T23) are named by none of the analyst definitions read here; two of them (T22, T23) are the provider's."
+ },
+ {
+  "id": "f2",
+  "severity": "should-fix",
+  "kind": "attribution",
+  "where": "Deliverable B, row 10",
+  "current": "its record of each load, margin included, can be reviewed by the parties",
+  "fix": "its record of each load can be reviewed by the parties (what the current record must contain, and so whether it shows the margin, was not read here)"
+ },
+ {
+  "id": "f3",
+  "severity": "minor",
+  "kind": "figure",
+  "where": "§5",
+  "current": "56,715 had 11 to 100 and 5,062 more than 100;",
+  "fix": "56,715 had 11 to 100, 5,062 more than 100 and 15,026 none or unreported;"
+ },
+ {
+  "id": "f4",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§3.2",
+  "current": "and names no transport management system (same page) [practice]",
+  "fix": "and has no software category for transport management systems (same page) [practice]"
+ },
+ {
+  "id": "f5",
+  "severity": "minor",
+  "kind": "attribution",
+  "where": "§7, T1",
+  "current": "| T1 | Buying capacity (SCE7 §3) | Freight sourcing: bids, lanes, the routing guide | Gartner 2026, mandatory [analyst] |",
+  "fix": "| T1 | Buying capacity (SCE7 §3) | Freight sourcing: bids, lanes, the routing guide | Gartner 2026, mandatory, bid management [analyst]; lanes and the routing guide, Acocella et al. 2020 as SCE7 §3 reads it [practice] |"
+ },
+ {
+  "id": "f6",
+  "severity": "minor",
+  "kind": "label",
+  "where": "Deliverable C, row 8",
+  "current": "Warehouse line or transport line (SCE6 row 22)?",
+  "fix": "Warehouse line or transport line (SCE6 deliverable B, row 22)?"
+ },
+ {
+  "id": "f7",
+  "severity": "minor",
+  "kind": "style",
+  "where": "§10",
+  "current": "One vendor profile in the report describes automated agents inside a control tower; AI features are outside this course.",
+  "fix": "Where the report's vendor profiles describe automated agents in control towers, those are AI features, which this course does not treat."
+ },
+ {
+  "id": "f8",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§1",
+  "current": "the chapter was not read, so it carries nothing here (flag F73).",
+  "fix": "the chapter was not read, so it carries nothing here; the publisher's page also lists a 10th edition (flag F73)."
+ },
+ {
+  "id": "f9",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§4",
+  "current": "[practice: the agency's account of the current rule and of a proposal]",
+  "fix": "[practice: the agency's account of the current rule and of a proposal published in the Federal Register on 20 November 2024]"
+ },
+ {
+  "id": "f10",
+  "severity": "minor",
+  "kind": "attribution",
+  "where": "Sources, FMCSA docket",
+  "current": "Notice of proposed rulemaking, undated page.",
+  "fix": "Notice of proposed rulemaking, undated page; published in the Federal Register, Vol. 89, No. 224, 20 November 2024, FR Doc. 2024-27115, https://govinfo.gov/content/pkg/FR-2024-11-20/pdf/2024-27115.pdf"
+ },
+ {
+  "id": "f11",
+  "severity": "minor",
+  "kind": "style",
+  "where": "Deliverable E, Control tower",
+  "current": "; a selling term with no agreed reach |",
+  "fix": "; in this unit's reading (section 10), a term with no agreed reach |"
+ },
+ {
+  "id": "f12",
+  "severity": "minor",
+  "kind": "attribution",
+  "where": "§3.3",
+  "current": "In X12, a standards body accredited by the American National Standards Institute for electronic data interchange,",
+  "fix": "In X12, the standards body that publishes these electronic data interchange messages,"
+ }
+]
