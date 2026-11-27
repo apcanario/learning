@@ -133,9 +133,10 @@ def list_breaks(src):
     return '\n'.join(out)
 
 
-def render_md(src):
+def render_md(src, history_forms=False):
     """A unit file (method.md §7: front matter, then Markdown ending with the deliverable and a Sources list) to
-    theme-classed HTML. Returns (body html, toc html, links {url: title})."""
+    theme-classed HTML. Returns (body html, toc html, links {url: title}). history_forms (P-EG2): a pack course of the
+    history family (its family_label a history course's) also gets that family's three forms (pack_history_forms)."""
     src = re.sub(r'\A---\n.*?\n---\n', '', src, flags=re.S)
     src = re.sub(r'^# .*\n', '', src, count=1, flags=re.M)   # the unit's own title line; the page has its h1
     src, figs = viz.extract_md(src)     # A8: ```viz fences become drawings
@@ -148,9 +149,39 @@ def render_md(src):
     # line of B7's as a quotation and DD-B1's "---" as a heading, a section of its own named "```")
     body = markdown.markdown(list_breaks(src), extensions=['tables', 'fenced_code'])
     body = viz.restore_md(body, figs)
+    if history_forms:
+        body = pack_history_forms(body)
     body = body.replace('<table>', '<div class="tbl"><table>').replace('</table>', '</table></div>')
     body = body.replace('<a href=', '<a target="_blank" rel="noopener" href=')
     return body, links
+
+
+def pack_history_forms(body):
+    """P-EG2 (27 Nov 2026): history_html's three forms on a pack reading page (a history-family pack course, Egypt):
+    a paragraph opening **Where sources disagree.** becomes <aside class="dispute">; a list whose every item is a
+    question followed by a block opening "Answer:" or "Model answer:" becomes <ol class="quiz">, each answer (that block
+    and every block after it in the item, kept whole) in a closed <details> whose summary is the label; the list under
+    ## Carry forward gets class="carry". Any other list is left exactly as render_md wrote it (loose items keep their
+    <p>), so a page without these forms is byte for byte as before."""
+    body = re.sub(r'<p>(<strong>Where sources disagree\.</strong>.*?)</p>', r'<aside class="dispute">\1</aside>', body, flags=re.S)
+
+    def lst(m):
+        tag, inner = m.group(1), m.group(2)
+        lis = re.findall(r'<li>(.*?)</li>', inner, re.S)
+        if not lis or re.sub(r'<li>.*?</li>', '', inner, flags=re.S).strip():
+            return m.group(0)
+        items = []
+        for li in lis:
+            q = re.match(r'\s*<p>(.*?)</p>\s*', li, re.S)
+            rest = li[q.end():] if q else ''
+            a = HIST_ANSWER.match(rest)
+            if not (q and a):
+                return m.group(0)   # not every item a Self-test item: the list as render_md wrote it
+            items.append(f'<li>{q.group(1)}<details><summary>{a.group(1)}</summary>{HIST_ANSWER.sub("<p>", rest, count=1).strip()}</details></li>')
+        return f'<{tag} class="quiz">\n' + '\n'.join(items) + f'\n</{tag}>'
+    body = re.sub(r'<(ol)>(.*?)</\1>', lst, body, flags=re.S)
+    body = re.sub(r'(<h2>Carry forward</h2>\s*)<ol>', r'\1<ol class="carry">', body)
+    return body
 
 
 # ---- P71-3 · a history report in Markdown (1 Nov 2026) --------------------------------------------------------------
@@ -437,11 +468,15 @@ def build(m, crumbs, theme, pill_next, chev, kit):
 
     # ---- reading pages (this course's units), bibliography from their links -------------------------
     readings, links = [], {}
+    # P-EG2: a pack course of the history family (its course.toml family_label one a history course has) gets that
+    # family's three forms on its reading pages; every other pack course's pages are rendered as before
+    from courses import HISTORY
+    hist_forms = bool(c.get('family_label')) and c.get('family_label') in {h.get('family_label') for h in HISTORY}
     for r in d.READINGS:
         if r['course'] != key:
             continue
         src = r['path'].read_text(encoding='utf-8')   # set by build.py:load_markdown (vault or data folder)
-        body, lk = render_md(src)
+        body, lk = render_md(src, history_forms=hist_forms)
         for u, t in lk.items():
             links.setdefault(u, t)
         heads = []

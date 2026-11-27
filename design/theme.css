@@ -555,9 +555,6 @@ details.course.live>summary>.topo-patch{margin-right:-28px}   /* the patch the t
 details.rules.planned>.hnote,details.rules.planned>.cgrid{padding:0 16px}
 details.rules.planned>.hnote{margin:0 0 10px}
 details.rules.planned>.cgrid{padding-bottom:16px;margin:0}
-/* S-AC0 (23 Nov 2026): a track's planned drawer left with one course (Sports): its grid is padded by 16 px a side, and verify's lone-tile check takes half of the padded box, so the lone tile takes the 16 px the padding costs it (from 768 px; from a 960 px container on the track's 150% + 6 px rule, +16 px) */
-@media (min-width:768px){.panel.area details.rules.planned>.cgrid>:only-child{width:calc(100% + 16px)}}
-@container (min-width:960px){.panel.area details.rules.planned>.cgrid>:only-child{width:calc(150% + 22px)}}
 .dplan>summary{list-style:none;cursor:pointer;min-height:44px;border-radius:8px}
 .dplan>summary::-webkit-details-marker{display:none}
 .dplan>summary .chev{flex:0 0 16px;width:16px;height:16px;color:var(--dim);transform:rotate(-90deg);transition:transform .15s}

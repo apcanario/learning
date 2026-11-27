@@ -6,7 +6,8 @@ python3 kit/private_terms.py <file>...  only these files (a writer's or a checke
                                         `python3 kit/private_terms.py $(find kit/editions/<site> -type f)`)
 python3 kit/private_terms.py --edition <name>   every file of that edition's built site (kit/<site>/, built.html
                                         included), whatever courses it holds (S-DEC4); edition_files(name) for verify.py,
-                                        which leaves a mixed edition's private courses' folders out (P-DEC13); a
+                                        which leaves a mixed edition's private courses' folders out (P-DEC13), and
+                                        their panels and drawer sections in the shell (P-DEC24, private_text); a
                                         `dated_lists` course's pages are checked as in academy's run (P-DEC10)
 
 The no-argument run is academy's: PUBLIC (below) gives its public courses and the kit/academy glob its site. An
@@ -85,6 +86,9 @@ def rx(ts):
 
 
 DATED = set()   # S-SCE0: the files of the courses with dated_lists=True, filled by files() and (P-DEC10) edition_files()
+# P-DEC24 (27 Nov 2026): a mixed edition's shell files (the pages at the site's root: index.html and any other) and the
+# private courses' page contexts and page ids to strip from them before the scan (edition_files fills it; scan() reads it)
+STRIP = {}
 
 
 def files():
@@ -137,9 +141,61 @@ def edition_files(name, skip=()):
     top = lambda f: f.relative_to(site).parts[0] if len(f.relative_to(site).parts) > 1 else None   # a file at the root is in no course's folder
     gone = {d for c in held if c['id'] in skip for d in folders(c)}
     out = [f for f in out if top(f) not in gone]
+    if gone:   # P-DEC24: a private course's own text inside the shell is left out as its folders are (private_text)
+        import verify_scope
+        shell = site / 'index.html'
+        pids = frozenset(pid for pid, (attrs, _) in verify_scope.panels(shell.read_text(encoding='utf-8')).items()
+                         if (m := re.search(r'\bdata-ctx="([^"]*)"', attrs)) and m.group(1) in gone) if shell.is_file() else frozenset()
+        STRIP.update({f: (frozenset(gone), pids) for f in out if top(f) is None and f.suffix == '.html'})
     dated = {d for c in held if c.get('dated_lists') for d in folders(c)}
     DATED.update(f for f in out if top(f) in dated)
     return out
+
+
+_DIV = re.compile(r'<(/?)div\b')
+
+
+def private_text(text, ctxs, pids=frozenset()):
+    """P-DEC24: a shell page's text less what is a private course's own, as its folders are left out (P-DEC13):
+    every panel whose data-ctx is one of `ctxs` (verify_scope.panels(), the balanced-section walk: the unsplit pages of
+    that course and the stubs of its split ones), its drawer section (div.sub-sec with that data-navctx, a balanced div
+    walk), and every link to one of its pages (`pids`: an <a> whose data-target is one, as the root drawer's and the
+    area drawer's entries for it, its tiles on the home and its area page, and its What's new rows are; links do not
+    nest, so each is cut from its tag to its </a>). What each of these may name is the course's own: its name, tile
+    sentence, unit codes, titles and dates, as its course.toml and its units give them, private terms included, since
+    an edition that holds a private course publishes them on that course's pages anyway. What stays scanned, and so may
+    name no private term, is the shell's own text (the brand's copy, the site pages, the area and home text around the
+    tiles) and every public course's. Each part cut is replaced by its newlines, so a hit elsewhere keeps its line
+    number."""
+    import verify_scope
+    cut = []
+    for m in re.finditer(r'<a\b[^>]*\bdata-target="([^"]*)"[^>]*>', text):
+        if m.group(1) in pids:
+            j = text.find('</a>', m.end())
+            cut.append((m.start(), j + 4 if j >= 0 else m.end()))
+    for pid, (attrs, frag) in verify_scope.panels(text).items():
+        m = re.search(r'\bdata-ctx="([^"]*)"', attrs)
+        if m and m.group(1) in ctxs:
+            i = text.find(frag)
+            cut.append((i, i + len(frag)))
+    for m in re.finditer(r'<div\b[^>]*\bclass="sub-sec"[^>]*\bdata-navctx="([^"]*)"', text):
+        if m.group(1) not in ctxs:
+            continue
+        depth = 0
+        for t in _DIV.finditer(text, m.start()):
+            depth += -1 if t.group(1) else 1
+            if depth == 0:
+                cut.append((m.start(), text.find('>', t.end()) + 1))
+                break
+    spans = []
+    for a, b in sorted(cut):   # a part inside another is cut once, with it
+        if spans and a < spans[-1][1]:
+            spans[-1][1] = max(spans[-1][1], b)
+        else:
+            spans.append([a, b])
+    for a, b in reversed(spans):
+        text = text[:a] + '\n' * text.count('\n', a, b) + text[b:]
+    return text
 
 
 def text_only(fs):
@@ -163,7 +219,10 @@ def scan(fs):
     low = {x.lower() for x in emp}
     hits, warns = [], []
     for f in fs:
-        lines = pathlib.Path(f).read_text(encoding='utf-8').splitlines()
+        text = pathlib.Path(f).read_text(encoding='utf-8')
+        if pathlib.Path(f) in STRIP:   # P-DEC24: a mixed edition's shell, less its private courses' own text
+            text = private_text(text, *STRIP[pathlib.Path(f)])
+        lines = text.splitlines()
         dated = pathlib.Path(f) in DATED and E is not None          # S-SCE0: the employer only in a dated list
         ok = dated_lines(lines) if dated else set()
         for n, ln in enumerate(lines, 1):

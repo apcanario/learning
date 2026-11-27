@@ -1056,11 +1056,13 @@ NEWEST = DATED[0] if DATED else None
 # hero_interval: one drawing when the floor fits; else one at the coarsest interval, then a scan upward from the floor,
 # one drawing (about 0.43 s) per hundred words (academy: 7 drawings, about 3 s; the bisection it replaced drew 14),
 # because the layer shrinks overall as the interval grows but not at every step (academy: +5 to +87 B at six steps of
-# 22,000 to 30,000), so a bisection could step over the smallest. The budget only ever raises the
+# 22,000 to 30,000), so a bisection could step over the smallest. P-HK5: the scan covers HERO_SCAN_WINDOW words; past
+# it a bisection, then the same scan below its fit, so the cost no longer grows with the interval (hero_interval). The budget only ever raises the
 # interval above the floor. HERO_BUDGET is the one place to change the budget: 23,124 B since S-NAV1 step G (19 KB before),
 # so verify.py's HOME_TOPO_MAX (24,148 B; 20 KB before) stays the hard limit with 1 KB of headroom. As units are written the interval grows with the words by itself (academy, 21 Nov
 # 2026: 24,500, History 20 levels, 19,388 B as verify counts; greece: 24,000, in budget).
 HERO_INTERVAL_MIN = 24000   # the floor (words between two contour levels): W-SCE1's value, frozen at HK-1; P92 drew 22,000
+HERO_SCAN_WINDOW = 2000     # P-HK5: words scanned step by step above the floor, and below the bisection's fit past it (hero_interval)
 HERO_BUDGET = 23124         # bytes of the layer as verify.py measures it (outerHTML), 1 KB under verify.py's HOME_TOPO_MAX
 # S-NAV1 step G (checker finding 2; a proposal for Pedro to veto): 19 KB (19,456) until step D gave every line of the
 # swell its own path and --d (and a shared line its --o): at 19 KB academy's interval rose from 24,500 to 29,000 words a
@@ -1126,9 +1128,10 @@ HERO_TOPO['phase'] = round(next(HOME_PH), 3)
 def hero_interval(topo, step=100):
     """P-HERO1: HERO_INTERVAL_MIN if the layer viz.render(topo) draws there is at most HERO_BUDGET bytes as verify.py
     measures it (sep_bytes: the outerHTML the browser writes, every self-closed element with its end tag); else the
-    smallest whole `step` of words above it at which it is, found by a scan upward from the floor (the size is not
-    monotone in the interval, so no bisection), after one drawing at the largest area's words rounded up (where every
-    rise stands at most one level) proves some interval fits; returns (interval, the layer drawn at it)."""
+    smallest whole `step` of words above it at which it is, found by a scan upward from the floor over HERO_SCAN_WINDOW
+    words (the size is not monotone in the interval, so no bisection there), after one drawing at the largest area's
+    words rounded up (where every rise stands at most one level) proves some interval fits; past the window (P-HK5), a
+    bisection to a fitting `hi`, then the same scan over the window below it; returns (interval, the layer drawn at it)."""
     drawn = {}
     def fits(k):
         if k not in drawn:
@@ -1140,9 +1143,23 @@ def hero_interval(topo, step=100):
     top = max(lo + 1, -(-max((r.get('words', 0) for r in topo['rises']), default=0) // step))
     if not fits(top):
         raise SystemExit(f'the home hero\'s contour layer is {sep_bytes(drawn[top]):,} bytes (outerHTML) at {top * step:,} words a level, over HERO_BUDGET ({HERO_BUDGET:,}): no interval keeps it in budget')
-    # the scan draws each step from the floor up (about 0.43 s per 100 words): 7 drawings at 24,500, about 62 (27 s) at
-    # 30,000. Size is not strictly falling as the interval grows, so a bisection could skip the smallest fit (HK-1 M1).
-    k = next(k for k in range(lo + 1, top + 1) if fits(k))
+    # P-HK5 (27 Nov 2026): the scan is bounded. Size is not strictly falling as the interval grows, so a bisection alone
+    # could skip the smallest fit (HK-1 M1); a scan from the floor up costs one drawing (about 0.43 s) per step, so it grew
+    # with the interval (about 62 drawings, 27 s, at 30,000; 162 at 40,000). Now: the window of HERO_SCAN_WINDOW words
+    # above the floor is scanned upward as before (academy: 7 drawings at 24,500), so wherever the smallest fit lies in
+    # it the interval is exactly the full scan's; past it, a bisection between the window's top (no fit) and `top` (a
+    # fit) finds a fitting `hi` whose step below does not fit, and the window below `hi` is scanned upward for the
+    # smallest fit in it. At most about 2 x 20 + 13 drawings (about 23 s), whatever the interval. The trade-off: past the
+    # first window, a fit more than HERO_SCAN_WINDOW words below the bisection's `hi` (a dip the size bumps would have
+    # to span: the bumps measured span a few steps, HK-1) is not found, and the hero is drawn that much coarser.
+    w = HERO_SCAN_WINDOW // step
+    k = next((k for k in range(lo + 1, min(lo + w, top) + 1) if fits(k)), None)
+    if k is None:
+        a, b = lo + w, top   # fits(a) is False, fits(b) True
+        while b - a > 1:
+            m = (a + b) // 2
+            a, b = (a, m) if fits(m) else (m, b)
+        k = next(k for k in range(max(lo + w + 1, b - w), b + 1) if fits(k))
     return k * step, drawn[k]
 
 
@@ -1195,7 +1212,7 @@ def track_body(t, ph):
     if PLANNED[t['id']]:   # S-SPORTS: a track's own planned courses, folded; P-DEC12: History's too (the `next` rows before), its anchor `planned_anchor`
         extra += f"""
   <details class="howto rules planned" id="{t.get('planned_anchor', 'planned-' + t['id'])}">
-    <summary><h2>{html.escape(t.get('planned_heading', 'Planned'))}</h2><span>{len(PLANNED[t['id']])} courses, in the intended order</span></summary>
+    <summary><h2>{html.escape(t.get('planned_heading', 'Planned'))}</h2><span>{len(PLANNED[t['id']])} course{'s' if len(PLANNED[t['id']]) != 1 else ''}, in the intended order</span></summary>
     <p class="hnote">{html.escape(t.get('planned_note', ''))}</p>
     <div class="cgrid">{own_cards}</div>
   </details>"""   # own_planned

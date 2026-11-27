@@ -15,7 +15,8 @@ are headings, column labels and the sentences that say where each fact comes fro
   markdown courses          courses/<slug>/*.md front matter (code, title, model, written, search); the data file's
                             AUDIT_LOG, STATUS and DONE_ROWS; audits/<slug>/fresh-check-<code>.md front matter
   the Audit cadence row     a markdown course's [pack] `audit_cadence` (kit/pack.py DEFAULTS where it has none), not the
-                            method doc's common rule (P-DEC21); a history course's row is the method doc's
+                            method doc's common rule (P-DEC21); a history course's top-level `audit_cadence` in its
+                            course.toml, HISTORY_CADENCE below where it has none (P-HK4)
 
 Links to files point at the file in the repo on GitHub (the repo is private: they open for its owner). P24 (Pedro, 16 Nov
 2026): the audit files stay private, and every page says so in one line (PRIVATE), above its first file link.
@@ -114,11 +115,18 @@ def method_decisions():
 
 # P-DEC21 (21 Nov 2026): the method table's row whose common rule a markdown course states itself
 CADENCE_TOPIC = 'Audit cadence'
+# P-HK4 (27 Nov 2026): a history course's rule for that row, where its course.toml sets no `audit_cadence`; it replaced
+# the method doc's cell, whose sentence names the closed Fable stage (S-NOAUDIT). docs/method.md §5 (a fresh check of
+# every report before filing) and §1 (history modules are all written with live search off, so §6's staleness check,
+# for a search-on unit, never falls due); the course audit written into a history syllabus (§6) is course content.
+HISTORY_CADENCE = ('No periodic audit. Every new report gets a fresh check before filing; history reports are written '
+                   'without live search, so no staleness check falls due.')
 
 
-def method_section(family, md_inline, cadence=None):
-    """cadence (a markdown course's AUDIT_CADENCE, kit/pack.py) replaces the common rule of the CADENCE_TOPIC row; the
-    method doc's own cell there named the closed stage of this repo's history on every course's page (P-DEC21)."""
+def method_section(family, md_inline, cadence=None, cadence_src='this course\'s own, its <code>audit_cadence</code>'):
+    """cadence (a markdown course's AUDIT_CADENCE, kit/pack.py; a history course's `audit_cadence` or HISTORY_CADENCE,
+    P-HK4) replaces the common rule of the CADENCE_TOPIC row; the method doc's own cell there named the closed stage of
+    this repo's history on every course's page (P-DEC21). cadence_src: what the hnote says the cell comes from."""
     if not HB.get('method'):
         return ''
     col = HB['method_columns'][family]
@@ -129,7 +137,7 @@ def method_section(family, md_inline, cadence=None):
     rows = ''.join(f'<tr><td>{md_inline(t)}</td><td>{md_inline(a)}</td><td>{md_inline(cadence if cadence is not None and t == CADENCE_TOPIC else b)}</td></tr>'
                    for t, a, b in method_rows(family))
     picks = ''.join(f'<li><strong>{md_inline(n)}.</strong> Pick: {md_inline(p)} <em>Override if:</em> {md_inline(o)}</li>' for n, p, o in method_decisions())
-    own = (f' The common rule of the {e(CADENCE_TOPIC)} row is this course\'s own, its <code>audit_cadence</code>, not {e(doc)}\'s.'
+    own = (f' The common rule of the {e(CADENCE_TOPIC)} row is {cadence_src}, not {e(doc)}\'s.'
            if cadence is not None else '')   # P-HK3: that cell is the course's (P-DEC21), not the method doc's
     return (f'<details class="howto rules"><summary><h2>The method in force</h2><span>{e(doc)} §1</span></summary>'
             f'<p class="hnote">From {gh(HB["method"])} §1: where {e(col)}\'s own method differed from the other course family\'s, and the common rule that holds now. Units written before the merge stay valid as they were written.{own}</p>'
@@ -366,7 +374,7 @@ def history_page(c, crumbs, theme, md_inline, md_blocks, flagged, unchecked):
   </details>
   <details class="howto rules"><summary><h2>Review notes</h2><span>{len(notes)} naming {e(c['short'])}</span></summary><ul>{notes_html}</ul></details>
   {credits_section({c['slug'](i): i for i in c['index']}, cid)}
-  {method_section('history', md_inline)}
+  {method_section('history', md_inline, c.get('audit_cadence', HISTORY_CADENCE), 'this course\'s own, its <code>audit_cadence</code>' if 'audit_cadence' in c else 'the history courses\' own, <code>kit/howbuilt.py</code> HISTORY_CADENCE')}
   {sources_section('history', md_blocks)}
   {footer([gh(c['provenance']), gh('kit/provenance.json', 'kit/provenance.json'), '<code>kit/reviews/</code>', '<code>kit/audits/</code>', *doc_links()])}'''
     return panel(f'{c["home_id"]}-built', cid, color, c['label'], body)

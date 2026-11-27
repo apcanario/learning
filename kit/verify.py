@@ -970,7 +970,7 @@ TILES_JS = r"""(pid) => {
     out.tiles.push(r);
   });
   P.querySelectorAll('.cgrid').forEach(g => { if (!vis(g)) return;
-    const ts = [...g.children].filter(e => e.classList.contains('course')), gw = g.getBoundingClientRect().width, gap = parseFloat(getComputedStyle(g).columnGap) || 0;
+    const ts = [...g.children].filter(e => e.classList.contains('course')), gs = getComputedStyle(g), gw = g.getBoundingClientRect().width - parseFloat(gs.paddingLeft) - parseFloat(gs.paddingRight) - parseFloat(gs.borderLeftWidth) - parseFloat(gs.borderRightWidth), gap = parseFloat(getComputedStyle(g).columnGap) || 0;
     const gr = g.getBoundingClientRect();
     if (g.querySelector(':scope > details.course.live[open]')) ts.forEach(t => { if (t.tagName !== 'DETAILS' || t.open) return; const st = t.querySelector(':scope > summary > .cstats'); if (st && parseFloat(getComputedStyle(st).marginTop) > 1) out.bad.push(`${t.querySelector('.ctitle') ? t.querySelector('.ctitle').textContent.trim() : t.className}: closed beside an open tile, yet stretched (${Math.round(parseFloat(getComputedStyle(st).marginTop))} px of slack above its stats)`); });   // P93, after the publish
     ts.forEach(t => { const r = t.getBoundingClientRect(); if (r.left < gr.left - .5 || r.right > gr.right + .5) out.bad.push(`${t.querySelector('.ctitle') ? t.querySelector('.ctitle').textContent.trim() : t.className}: the tile runs ${Math.round(Math.max(gr.left - r.left, r.right - gr.right))} px past its grid`); });   // P93 check 3: a column widened past its grid by a part that would not wrap
@@ -1148,7 +1148,7 @@ def check_tiles(pg, pid, label, fails, expect):
     unit's (its sections by their words; sections, words, hours) links to its reading page, or its brief while it is not
     written; a planned course's ghost (the chip, the title, its scope, no stats, one dashed ring); one class set; a line
     of two lines at most while closed; one column below 768 px, two from it (three once the width beside the sidebar
-    reaches 960 px), a lone tile half the width; nothing past an edge, no sideways scroll."""
+    reaches 960 px), a lone tile half the width of the grid's content box (P-AC14: its padded box less padding and border); nothing past an edge, no sideways scroll."""
     r = pg.evaluate(TILES_JS, pid)
     w = pg.evaluate('innerWidth')
     fails += [f'{pid} {label}: {b}' for b in r['bad']]
@@ -4404,7 +4404,8 @@ def main():
     # edition (Academy) as before, its public courses (private_terms.py with no argument); another edition over its own
     # built files (private_terms.py --edition; a `dated_lists` course's pages as academy's, P-DEC10). An edition holding
     # only courses marked `private` in their course.toml (the owner's own courses, which name him) is left out and said
-    # so; a mixed edition (P-DEC13) is checked over every file but the private courses' folders, which it names
+    # so; a mixed edition (P-DEC13) is checked over every file but the private courses' folders, which it names, and
+    # (P-DEC24) less the private courses' own text in the shell files (private_terms.private_text)
     if EDITION == DEFAULT_EDITION:
         pt = private_terms.check()
         fails += ['private term in a public course: ' + x for x in pt]
@@ -4417,7 +4418,9 @@ def main():
         fails += ['private term in the edition: ' + x for x in pt]
         if PRIVATE:
             print(f'private terms: edition {EDITION} holds a private course ({", ".join(PRIVATE)}), which names its owner; its pages are not checked ('
-                  + ', '.join(d + '/' for c in COURSES if c['id'] in PRIVATE for d in private_terms.folders(c)) + '), every other file of the edition is')
+                  + ', '.join(d + '/' for c in COURSES if c['id'] in PRIVATE for d in private_terms.folders(c)) + '), nor its own text in the shell (P-DEC24: its panels, '
+                  'its drawer section and every link to one of its pages: its drawer entries, its home and area tiles, its What\'s new rows, which may name '
+                  'it as its course.toml and units do); every other file of the edition is, and the shell\'s own text and every public course\'s in it')
         print(f'private terms in edition {EDITION}: {len(fs)} files, ' + (f'{len(pt)} found' if pt else 'none'))
     rf, rw = rot_check.check()   # P30-F11, P30-F16 (17 Nov 2026)
     fails += ['rot: ' + x for x in rf]
