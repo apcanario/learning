@@ -360,7 +360,7 @@ Added to the working glossary of SCE1 to SCE3; each term as this unit uses it, w
 | Request for proposals (RFP); bid | The shipper's periodic invitation to carriers to price its lanes | US research | Sheffi 2004 [practice] |
 | Combinatorial auction; package bid | A bid on a group of lanes priced together | US research | Sheffi 2004 [practice] |
 | Backhaul | A load in the opposite direction that saves an empty return | Both | Course term; the idea from Sheffi 2004 [practice] |
-| Routing guide | Per lane, the primary carrier and backups in order, with their prices | US research | Acocella et al. 2020 [practice]; SCE1 (MIT FreightLab) |
+| Routing guide | Per lane, the primary carrier and backups in order, with their prices | US research | Acocella et al. 2020 [practice]; as in SCE1's glossary |
 | Primary carrier; backup carrier | The lane's first-choice carrier; the next ones in the guide | US research | Acocella et al. 2020 [practice] |
 | Tender | The offer of one load to one carrier, which accepts or rejects it | Both | Acocella et al. 2020 [practice]; as in SCE1's glossary |
 | Primary carrier acceptance ratio (PAR) | Loads the primary accepts over loads offered, weekly | US research | Acocella et al. 2020 [practice] |
@@ -434,3 +434,5 @@ claude-opus-5-5
 Object: the CMR consignment note (section 7, with section 6 steps 6, 8 and 12)
 
 Fresh check 2026-11-25 (claude-opus-5-5): keep · 0 errors, 4 should-fix, 14 minor; report `audits/supply-chain-execution/fresh-check-SCE7.md`
+
+Correction 27 Nov 2026, found by the corrections check of SCE8's contradictions (checked by a fresh Opus 5.5 agent, report audits/supply-chain-execution/corrections-2026-11-27-C-SCE8-SCE7.md)
