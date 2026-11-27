@@ -1,0 +1,14 @@
+academy: added academy/supply-chain-execution-sce/read-sce8.html
+academy: changed README.md
+academy: changed academy/changelog.html
+academy: changed academy/index.html
+academy: changed academy/new.html
+academy: changed academy/supply-chain-execution-sce/bibliography.html
+academy: changed academy/supply-chain-execution-sce/briefs.html
+academy: changed academy/supply-chain-execution-sce/built.html
+academy: changed academy/supply-chain-execution-sce/home.html
+academy: changed academy/supply-chain-execution-sce/read-sce1.html
+academy: changed academy/supply-chain-execution-sce/read-sce7.html
+drop: docs/BACKLOG.md :: | W-SCE10 | Write, fresh-check and file unit SCE10, The seams, of Supply Chain Execution for Product Teams (search off) | Sonnet 5.5 (thin main chat; writer, fresh checker, applier, filer and corrections checker each a fresh Opus 5.5 agent) | runs in the chat of W-SCE7 |
+drop: docs/CHANGELOG.md :: | 27 Nov 2026 | https://claude.ai/code/session_01KMmgR1VZACTLVqHg81yMhf | claude-fable-5-2 (main chat; not Sonnet 5.5 as the models rule asks; recorded and carried on); the writer, fresh checker, two appliers, quality reviewer, two corrections checkers and the filer each a fresh agent, claude-opus-5-5 | W-SCE8: SCE8 The transport system as a product written and filed: 13,044 words at hand-in, 3 figures, 24 references; fresh check fix (1 error, 4 should-fix, 11 minor), 14 applied, 2 held and repaired, 3 extra fixes; quality review keep (0 error, 2 should-fix, 10 minor), 11 applied, 1 held and repaired, 3 extra fixes; corrections to SCE1 (9 passed and applied) and to SCE7 (1 passed and applied); F87 to F102 raised (F87 resolved); F84 resolved; 8 of 20 written. Published: see the row's close. | this commit |
+drop: kit/CHANGELOG.md :: Row W-SCE8, filing SCE8 The transport system as a product, changed no kit code. The eight carried proposals (P-DEC24, P-DEC27, P-HK4, P-HK5, P-NAV7, P-AC13, P-AC14, P-EG2) are kit and site changes with their own disruption flags; they were not worked here and stay carried. Published: see the row's close.
