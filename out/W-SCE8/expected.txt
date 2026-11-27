@@ -1,0 +1,11 @@
+academy: added academy/supply-chain-execution-sce/read-sce8.html
+academy: changed README.md
+academy: changed academy/changelog.html
+academy: changed academy/index.html
+academy: changed academy/new.html
+academy: changed academy/supply-chain-execution-sce/bibliography.html
+academy: changed academy/supply-chain-execution-sce/briefs.html
+academy: changed academy/supply-chain-execution-sce/built.html
+academy: changed academy/supply-chain-execution-sce/home.html
+academy: changed academy/supply-chain-execution-sce/read-sce1.html
+academy: changed academy/supply-chain-execution-sce/read-sce7.html
