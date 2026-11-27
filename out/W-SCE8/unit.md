@@ -555,7 +555,7 @@ claude-opus-5-5
 3. Gartner's glossary TMS entry was read at gcom.pdo.aws.gartner.com, a gartner.com subdomain, and is undated; that it matches the www.gartner.com glossary was not confirmed.
 4. The freight audit and payment market page was read at external.pi.gpi.aws.gartner.com and showed no features date; its definition sentence was given in part by the extraction.
 5. The *2025 Third-Party Logistics Study*: the total number of respondents was not found in the text read; the percentages (68%, 54%, 53%, 55%, 87%) are from the extraction; an "82%" outsourcing figure seen in one pass could not be confirmed in the second and is not used.
-6. FMCSA's broker-transparency notice: whether the proposal became a final rule was not checked, and the current text of 49 CFR §371.3 was not read directly; the unit states only the agency's account.
+6. FMCSA's broker-transparency notice: whether the proposal became a final rule was not checked; 49 CFR §371.3 was read in the Legal Information Institute's copy, which shows no currency date.
 7. FMCSA pocket guide: the fleet-size figures cover all carrier types, not interstate freight carriers alone; the 53% and 90% shares are this unit's arithmetic; graded independent as official registration statistics, which could be graded practice if F18 is decided that way.
 8. Staudt et al. (2026): that two of the three companies lacked real-time tracking or visibility layers, and that end-to-end management was not identified in the cases, come from the extraction of the SciELO full text, whose reference list was truncated.
 9. O*NET: the dispatcher summary page showed 5 of 12 tasks; quotations from all five O*NET pages are from the extraction.

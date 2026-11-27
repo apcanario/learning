@@ -1,0 +1,221 @@
+{
+ "model": "claude-opus-5-5",
+ "row": "W-SCE8",
+ "code": "SCE8",
+ "course": "supply-chain-execution",
+ "date": "2026-11-27 20:15",
+ "reading": {
+  "id": "read-sce8",
+  "course": "SCE",
+  "title": "The transport system as a product",
+  "covers": [
+   "SCE8"
+  ],
+  "name": "SCE8 · The transport system as a product",
+  "intro": "What a transportation management system is and how it is bought and used: the 2026 analyst definition of the TMS (mandatory and common features, who counts as a customer, the shippers' lens of the evaluation) read against Gartner's glossary entry; the markets beside it (visibility, freight audit and payment, own-fleet routing, trade compliance); the five roles that work in a transport system (transport planner, dispatcher, carrier representative, freight auditor, analyst); the shipper, for whom freight is a cost, set against the logistics provider or broker, who earns a margin on each load; the carrier connection (EDI messages, portals, direct integration) and what it means for the people at each end; Halvern's (fictional) transport line placed on SCE7's lifecycle and on capability lines T1 to T24; the 2026 Magic Quadrant's vendors as a dated list; what public pages and peer reviews can and cannot show; and common claim C11 (\"a control tower gives end-to-end visibility\") set against the evidence, with no independent source found for it; with the deliverable (five transport role cards for Ostrel and Tandric, both fictional, a shipper-versus-provider table, Halvern's transport line mapped, the templates, glossary lines). Written 27 Nov 2026 by Opus 5.5 with live search; the fresh check and the quality review were run by separate Opus 5.5 agents and their findings applied. Known gaps: the 2026 Magic Quadrant was read only in a reprint posted by a listed vendor, through a fetch tool in passes, its graphic not rendered and Gartner's own abstract page failing to load, so its vendor names, thresholds and quotations were not re-read against a second copy, and the absence of \"tender\", \"rating\" and \"payment\" outside vendor profiles rests on a keyword search; Gartner's glossary entry is undated and was read at a gartner.com subdomain, not confirmed against the main glossary; the freight audit and payment market page shows no features date and its definition came in part from the extraction; the rest of the vehicle routing definition is unverified (the page failed to load at two later checks); no transport textbook chapter was read (Novack, Gibson and Coyle, 9th edition, publisher's contents page only; the 10th edition not opened); APQC's outbound transport measure was found by name only, its definition not on the page, and no WERC transport measure was found; the 2025 Third-Party Logistics Study, a sponsored survey, gives no total respondent count in the text read and its percentages come from the extraction; whether FMCSA's 2024 broker-transparency proposal became a final rule was not checked, and 49 CFR §371.3 was read in the Legal Information Institute's copy, which shows no currency date; FMCSA's registration counts are graded independent while flag F18 is open, and the 53% and 90% shares are this unit's arithmetic over all carrier types, with no European figure; Staudt et al. (2026) is a qualitative study of three companies in one country, its findings taken from an extraction of the full text whose reference list was truncated; the O*NET dispatcher page showed 5 of 12 tasks and all O*NET quotations come from the extraction; Evangelista, McKinnon and Sweeney (2013) was read in the author's manuscript, not compared with the published version (its DOI redirected); not opened: MIT FreightLab's procurement page (a redirect, not checked), Bartholdi and Hackman §1.2 (not cited here) and IDC's own TMS page (not found); which regions use X12 and which UN/EDIFACT is not sourced and IFTSTA's UN/EDIFACT status stays unverified (SCE7); no public figure was found for a provider's margin per load; and the research opened on the people in a transport office is thin, so the role descriptions rest mostly on O*NET and the case register."
+ },
+ "status": "written 27 Nov",
+ "next_unit": "SCE9",
+ "version": "v9 · 27 Nov 2026",
+ "object": "Object: none",
+ "hub_changelog": "v9. SCE8 The transport system as a product written (Opus 5.5) and filed (row W-SCE8): the 2026 analyst definition of the transportation management system (Gartner's Magic Quadrant of 30 March 2026, read in a reprint: mandatory and common features, the customer definition, the shippers' lens) against Gartner's glossary entry, which places freight bills and payments in the TMS; the markets beside it (real-time visibility, freight audit and payment, vehicle routing and scheduling, trade compliance); the five transport roles (transport planner, dispatcher, carrier representative, freight auditor, analyst), on O*NET and the case register; the shipper against the logistics provider or broker, with the 2025 Third-Party Logistics Study (sponsored), Evangelista, McKinnon and Sweeney (2013), Rodrigue's 3PL and 4PL, and the broker's record under 49 CFR §371.3 and FMCSA's 2024 proposal; the carrier connection (X12 204, 990, 214 and 210, portals, direct integration) and FMCSA's 2024 fleet-size counts; Halvern's (fictional) transport line on SCE7's lifecycle; capability lines T1 to T24 in SCE6's form; the 2026 Magic Quadrant's 16 vendors as a dated list; what public pages and peer reviews can and cannot show; common claim C11 set against the evidence (Staudt et al. 2026; no independent source found); with the deliverable (five transport role cards for Ostrel and Tandric, a shipper-versus-provider table, Halvern's transport line mapped, three templates, glossary lines). Search on; 3 figures; 24 Sources entries (23 at hand-in, plus 49 CFR §371.3 added by the quality-review applier); 10 unsure items; 13,044 words by script at hand-in (whole unit). Fresh check: fix (1 error, 4 should-fix, 11 minor; 16 findings); 14 applied, 2 held (f5, f11, repaired as X1 and X2), plus 3 extra fixes (X1 to X3), all applied; audits/supply-chain-execution/fresh-check-SCE8.md. Quality review (F84): keep (0 error, 2 should-fix, 10 minor; 12 findings); 11 applied, 1 held (f2, repaired as X1), plus 3 extra fixes (X1 to X3), all applied; audits/supply-chain-execution/quality-review-SCE8-2026-11-27.md; F84 resolved. Corrections check of SCE8's two contradictions to SCE1 (audits/supply-chain-execution/corrections-2026-11-27-C-SCE8.md): 9 passed (Changes 1 to 7, New 1 and 2; Change 6 as repaired) and applied, SCE1 no longer citing MIT FreightLab and its 3PL row noting that textbooks differ on assets; SCE1's Shipper source cell then set to \"Course term (also SCE7 §1)\" on the fresh check's note; follow-on correction to SCE7's Routing guide row (audits/supply-chain-execution/corrections-2026-11-27-C-SCE8-SCE7.md): 1 passed and applied. 8 case facts added; 16 syllabus flags raised (F87 to F102; F87 records the corrections, resolved); F62, F67 and F71 carried; F2 (C11 tested) carried; F6, F64, F73, F75, F77 and F54 stay open with their remainders in new rows; F83's status corrected to resolved. No kit code changed; the eight carried proposals stay carried. 8 of 20 written.",
+ "case_lines": [
+  "| SCE8 | Ostrel Foods | Nuno, the dispatcher, is measured on on-time delivery and refused goods per route; he works by phone and a desktop (whether in the routing tool is not in the register), answers drivers' and customers' calls, changes stops during the day, records refusals and substitutions, and tells Sofia and the warehouse (deliverable A, card 2; working; bears on SCE13). |",
+  "| SCE8 | Ostrel Foods | Sofia, as transport planner, is also measured on vehicle fill; her other card lines repeat SCE5's register rows (deliverable A, card 1; working; bears on SCE13). |",
+  "| SCE8 | Tandric Logistics | The carriers Tandric's freight desk tenders to answer by EDI (X12 204 and 990), by a portal, or by e-mail and phone; the register names no carrier staff, so the carrier representative's card carries no name (deliverable A, card 3; working; bears on SCE13). |",
+  "| SCE8 | Tandric Logistics | Priya is measured on invoice match rate and on client invoices disputed; she matches carrier invoices to the tender and rate, queries extra charges, carries agreed extras to the client's invoice and releases invoices for payment; who pays the approved invoices is not in the register (deliverable A, card 4; working; bears on SCE13 and DD-SCE1). |",
+  "| SCE8 | Tandric Logistics | Priya also plans each load before tendering it (section 3.1; repeats SCE7 deliverable B's reading; bears on SCE13). |",
+  "| SCE8 | Tandric Logistics | Olu does the analyst's report work: he builds each client's freight report by hand, is measured on reports sent on time and questions answered, and hands reports to the clients and to Karin (deliverable A, card 5; this unit's reading of \"sends their reports\"; bears on SCE13). |",
+  "| SCE8 | Halvern Systems | Halvern Transport, the core system, is assumed to hold the shipment plan (T2: order intake, consolidation, mode and carrier selection); the register names the core and none of its functions (section 6; deliverable C row 2; assumption; bears on SCE10). |",
+  "| SCE8 | Halvern Systems | The register gives no claim for Halvern Transport on T1, T3, T6 to T8, T10 to T12 and T17 to T24; whether Halvern Warehouse's Client Billing bills freight at a margin is open (deliverable C; bears on SCE10 and DD-SCE1). |"
+ ],
+ "flag_rows": [
+  {
+   "id": "F87",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE1, SCE7, DD-SCE1; flag F71",
+   "flag": "RESOLVED in W-SCE8: SCE8's two contradictions, both about SCE1, were corrected the same day. (1) SCE1's citation of MIT FreightLab's procurement page, which now redirects (302) to ctl.mit.edu and so cannot be opened under the course's web rule (flag F75), was replaced: SCE1 §2 step 7 and its flow figure's caption now rest the routing guide on Acocella, Caplice and Sheffi (2020) as read in SCE7 §3 [practice]; the glossary rows Shipper and Routing guide and Self-check 4 changed with them; the FreightLab entry left SCE1's Sources. (2) SCE1's glossary row Third-party logistics provider (3PL) now says that textbooks differ on whether a 3PL must own the assets (Rodrigue, 6th ed., ch. 7, asset-based 3PL, non-asset-based 4PL) [practice], and Rodrigue joined SCE1's Sources, with the Sources lead-in line adjusted. A fresh Opus 5.5 corrections checker passed 9 (Changes 1 to 7 and New 1 and 2; Change 6 as repaired, without the notes' line that Tandric's desk is a 4PL), all applied (audits/supply-chain-execution/corrections-2026-11-27-C-SCE8.md). On the fresh check's note the Shipper row's source cell then became \"Course term (also SCE7 §1)\" in place of the circular \"SCE7 §1 [course term]\". A follow-on correction to SCE7's glossary row Routing guide (its source cell no longer says SCE1 rests on MIT FreightLab) passed 1 of 1 and was applied (audits/supply-chain-execution/corrections-2026-11-27-C-SCE8-SCE7.md; that checker's search was refused, so Acocella et al. was not reopened; the change rests on the corrected SCE1). Since these corrections, F71's text that \"SCE1 rests it on MIT FreightLab and Acocella et al.\" is out of date.",
+   "proposed": "None to any unit or brief. Set this row resolved. F71's Flag cell gains, at the end: \"(Since W-SCE8, 27 Nov 2026, SCE1 rests the routing guide on Acocella et al. only.)\"",
+   "status": "open"
+  },
+  {
+   "id": "F88",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE1, SCE7, SCE10; flag F6",
+   "flag": "F6 remainder (payment). Gartner's glossary entry for the TMS (undated, read 27 Nov 2026 at a gartner.com subdomain) includes \"manage freight bills and payments\" [analyst], the first source in the course that places payment in the transport system; the 2026 Magic Quadrant names no payment in its definition, overview or criteria (keyword search of the reprint), and \"payment\" appears only in two vendors' profiles (fresh check; applier 1's notes). How a carrier is paid in or through the TMS is still not sourced, and SCE1's cells were left to the correction route (quality review, Flags given: F6 partly; writer's Needs 1).",
+   "proposed": "By the correction route: SCE1's matrix gains, in the TMS row's Settle cell, \"check; payment (glossary)\" with a legend line citing the glossary entry, the ERP's Settle cell staying \"working\"; SCE7 §5's sentence \"Paying the carrier is not in the definition\" gains \"; Gartner's glossary entry places freight bills and payments in the TMS (SCE8 §1)\". SCE10 decides the system of record for the payment with both sources. F6 stays open for how a carrier is paid.",
+   "status": "open"
+  },
+  {
+   "id": "F89",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE1, SCE7, SCE10; flag F64",
+   "flag": "F64 remainder (the tender). No source opened places the tender's record in the TMS, so SCE1's Tender cell stays working. Found: X12 defines the 204 as the message by which \"shippers or other interested parties\" tender a load to a truckload carrier [independent]; the 2026 Magic Quadrant names \"bid and rate management and optimization\" under freight sourcing, uses neither \"rating\" nor \"tender\" in its definition, overview or criteria (keyword search), and its common feature of direct carrier integration exchanges rates, \"booking requests and confirmations\" over API or EDI [analyst]; product descriptions on Gartner's TMS review page claim load tendering, freight audit and payment [vendor-reported] (writer's Needs 1; fresh check, Flags; applier 1's notes; quality review, Flags given: F64 partly).",
+   "proposed": "SCE1's matrix keeps Tender \"working\"; by the correction route its legend adds that no analyst definition names tendering, that the 2026 report names bid and rate management and carrier booking confirmations, and that vendors in the TMS market claim tendering (vendor-reported). Units citing the 2026 report use that wording, not \"the report names no rating or tendering\". SCE10 places the tender on its system-of-record table with these sources.",
+   "status": "open"
+  },
+  {
+   "id": "F90",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE7, SCE8, SCE10, SCE13; the seed bibliography; flag F73",
+   "flag": "F73 carried forward. No transport textbook chapter was read: Rodrigue, 6th ed. (2024), §7.4 and its 3PL page hold no step-by-step lifecycle; the publisher's contents page of Novack, Gibson and Coyle, *Transportation: A Global Supply Chain Perspective*, 9th ed. (Cengage, 2019, ISBN 9781337406642) shows chapter 3 covers transportation software and the TMS, but the chapter was not read; the publisher lists a 10th edition (Novack, Gibson and Suzuki, ISBN 9780357908549), not opened. SCE7 §6's steps stay the course's working description (writer's Needs 2; fresh check, Flags; applier 2's notes; quality review: F73 not dealt with).",
+   "proposed": "The bibliography lists Novack et al. (9th ed., and the 10th ed. with its ISBN) as the textbook to open; SCE10 or SCE13 reads the TMS chapter of the latest edition it can open and grades the SCE7 §6 steps it confirms, correcting SCE7 by the correction route.",
+   "status": "open"
+  },
+  {
+   "id": "F91",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "the seed bibliography (T1, T2); SCE1; flag F75",
+   "flag": "F75: SCE8's part is done (the FreightLab address SCE1 cited redirects, 302, to ctl.mit.edu and was not followed; SCE1 is corrected, see this row's first flag; SCE8 cites only https://ctl.mit.edu/research/freightlab, opened). What remains is F75's bibliography part: marking T1 and T2 and adding Acocella, Caplice and Sheffi (2020) and Sheffi (2004) as seeds; and SCE1's source log should mark its FreightLab entry superseded rather than drop it (fresh check, writer's contradiction 1; writer's Needs 3; quality review: F75 partly).",
+   "proposed": "The bibliography marks the FreightLab procurement page \"redirect, not opened by SCE8\" and makes F75's other bibliography changes; SCE1's source log marks the FreightLab entry superseded by W-SCE8's correction. Then set F75 resolved.",
+   "status": "open"
+  },
+  {
+   "id": "F92",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE7, SCE8, SCE13, SCE16; flag F77",
+   "flag": "F77 carried forward. APQC's page for \"Total Cost to Operate Outbound Transportation per $1,000 in Revenue\" was opened; the measure's definition was not in the page text. The writer found no WERC transport measure; the quality review says WERC was not tried. SCE7 §11 and SCE8's role cards (the measures on cards 1 to 5) rest on the course's working definitions (writer's Needs 4; quality review: F77 partly).",
+   "proposed": "SCE16 tries APQC's measure definitions when it builds the cost model, and SCE13 searches WERC's survey for transport measures; where a definition is found, SCE7 §11 and SCE8 deliverable A are corrected by the correction route. F77 stays open.",
+   "status": "open"
+  },
+  {
+   "id": "F93",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE1 key; SCE6, SCE8, SCE9, SCE17; flag F54",
+   "flag": "F54 still undecided. The owner's decision on \"case\" as a form value was not in SCE8's packet; SCE8 deliverable C uses \"case\", as SCE6 did, and SCE1's key has no \"case\" line (writer's Needs 5; quality review: F54 partly, decide before SCE9 and SCE17).",
+   "proposed": "The owner decides F54 before W-SCE9. If vetoed, every Grade cell of SCE8 deliverable C reading \"case\" becomes \"case register, not graded\" by the correction route, as SCE6's do.",
+   "status": "open"
+  },
+  {
+   "id": "F94",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE1 key; SCE7, SCE8, SCE10, SCE16, DD-SCE1, DD-SCE2; flag F18",
+   "flag": "F18: the grade of official statistics. SCE8 grades FMCSA's registration counts (2024 Pocket Guide) independent, as official registration statistics, while its own opening paragraph grades a public authority's account of a rule or of its own occupational data practice until F18 is decided; a registration snapshot is not one of SCE1's key's named kinds, and SCE7's preamble covers only surveys whose design is stated (fresh check, pass 3 and Flags; quality review, Flags; unsure item 7).",
+   "proposed": "At a syllabus review the owner decides how official statistics are graded (registration counts, occupational data, an authority's statement of a rule), and SCE1's key gains the line by the correction route; SCE8's FMCSA cells (section 5, deliverable A card 3 row 3) follow the decision. Proposed; not applied.",
+   "status": "open"
+  },
+  {
+   "id": "F95",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE8 (section 4, deliverable B row 10), DD-SCE1; any later unit on brokers",
+   "flag": "Broker records: whether FMCSA's 2024 broker-transparency proposal (Docket FMCSA-2023-0257, Federal Register 20 Nov 2024, FR Doc. 2024-27115) became a final rule was not read; trade press, not a course source, reports that it was never finalised and that a supplemental proposal went for review on 27 Aug 2026 (fresh check, Flags). The current text of 49 CFR §371.3 was read in the Legal Information Institute's copy, with no currency date shown, by the quality-review applier (repair X1 of finding f2). SCE8's unsure item 6 still says §371.3 was not read directly (quality review, Flags; applier 2's notes).",
+   "proposed": "DD-SCE1, and any unit on brokers, opens the Federal Register (or the eCFR) for the rule's status and §371.3's current text before relying on them; SCE8's staleness check re-reads both. SCE8's unsure item 6 is brought in line with section 4 by the correction route.",
+   "status": "open"
+  },
+  {
+   "id": "F96",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE8 (section 2), SCE10",
+   "flag": "The rest of Gartner's vehicle routing and scheduling (VRS) definition (\"while minimising fleet costs and mileage\") is unverified: the Peer Insights page failed to load at the fresh check and at the quality review's check, and SCE8 §2 marks it so (applier 2's notes, X3).",
+   "proposed": "SCE8's staleness check, or SCE10 if it reuses the definition, opens the VRS market page again and removes the mark, or corrects the wording, by the correction route.",
+   "status": "open"
+  },
+  {
+   "id": "F97",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE1 (C10, C11), SCE8 (sections 1 and 10); any later unit citing the 2026 TMS Magic Quadrant or Staudt et al. (2026)",
+   "flag": "Two readings fixed by the fresh check. (1) The 2026 report's common analytics feature is itself embedded analysis and reporting of measures such as on-time performance, emissions and costs by mode; it is not \"beyond the embedded kind\". (2) Staudt et al. (2026) build end-to-end visibility into their definition of a control tower as an aim; their findings are that end-to-end supply chain management was not identified in the cases and that two of three companies had no real-time tracking or visibility layers, not that \"end-to-end visibility was found unmet\" (applier 1's notes, For syllabus flags; fresh check f8 and f11, f11 repaired as X2).",
+   "proposed": "Later units cite both in these words. SCE1 §11's C11 row, column \"What this unit found\", gains by the correction route: \"SCE8 §10 sets it against the analyst definitions and Staudt et al. (2026): no independent source found.\"",
+   "status": "open"
+  },
+  {
+   "id": "F98",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE6, SCE8, SCE10",
+   "flag": "Overlapping lines across the two capability lists: T7 (appointment and dock scheduling) overlaps SCE6's W2, and T8 (parcel carrier selection and manifesting) overlaps W22; Halvern (fictional) lists Yard in its warehouse line only (writer's Needs 9).",
+   "proposed": "SCE10's system-of-record table decides which list holds each line, and SCE6 and SCE8 cross-refer by the correction route.",
+   "status": "open"
+  },
+  {
+   "id": "F99",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE5, SCE8, SCE13",
+   "flag": "One person, two cards: Sofia (Ostrel Foods, fictional) has SCE5's card 4 as the warehouse's release planner and SCE8's card 1 as transport planner (writer's Needs 10; the fresh check agrees).",
+   "proposed": "SCE13 merges them into one card, or keeps both and says that at Ostrel one person holds both roles.",
+   "status": "open"
+  },
+  {
+   "id": "F100",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE7, SCE8, SCE13, DD-SCE1; the case register",
+   "flag": "Register gaps: the register has no carrier staff and no transport analyst, so SCE8's card 3 is unnamed and card 5 rests on Olu by this unit's reading; it still lacks Tandric's region (SCE7's note) (writer's Needs 11).",
+   "proposed": "The register gains a named carrier representative at a carrier Tandric tenders to, and either an analyst at Tandric or Ostrel or a row confirming that Olu does the analysis, and a row on Tandric's region; a register change is the course's setup decision, proposed only.",
+   "status": "open"
+  },
+  {
+   "id": "F101",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "SCE16, DD-SCE1",
+   "flag": "The provider's margin: no public figure was opened for a provider's or broker's margin per load (private companies publish none; the course's rule 7 applies). The 2025 Third-Party Logistics Study's total respondent count was not found in the text read (writer's Needs 12; unsure item 5).",
+   "proposed": "DD-SCE1 decides whether an audited filing of a listed broker can supply brokerage margins, within the vendor rule's limits (see F72), and reads the 3PL Study's respondent section in full.",
+   "status": "open"
+  },
+  {
+   "id": "F102",
+   "date": "27 Nov 2026",
+   "raised_by": "SCE8",
+   "affects": "the seed bibliography; the later transport units SCE10, SCE13, SCE16, SCE17 and DD-SCE1",
+   "flag": "References read by SCE8 that the seed bibliography lacks (writer's Needs 13; appliers' notes): Gartner, Magic Quadrant for Transportation Management Systems, 30 Mar 2026, ID G00832918, read in a reprint (seed A2's abstract page failed on 27 Nov 2026); Gartner Peer Insights market pages for TMS, real-time transportation visibility platforms, freight audit and payment providers, and vehicle routing and scheduling; Gartner glossary, TMS entry; X12 pages for 204, 210 and 214; O*NET 43-5032.00, 13-1081.02, 43-5011.00, 43-5011.01 and 43-3021.00; FMCSA 2024 Pocket Guide (July 2025); FMCSA docket FMCSA-2023-0257 and its Federal Register notice (FR Doc. 2024-27115, govinfo); 49 CFR §371.3 (Legal Information Institute copy); Staudt et al. (2026), https://doi.org/10.14488/1980-5411.20250126; Evangelista, McKinnon and Sweeney (2013), https://doi.org/10.1108/IMDS-10-2012-0374; Rodrigue, 6th ed. (2024); Novack, Gibson and Coyle, 9th ed. (2019) and the 10th ed. listing; APQC's outbound transport cost measure; MIT CTL's FreightLab page; the 2025 Third-Party Logistics Study. Seed A7 (IDC MarketScape TMS 2026): IDC's own page not found by SCE8, vendor releases only.",
+   "proposed": "Add them to the seed bibliography with SCE8 in the Units column; mark A7 \"IDC's own page not found by SCE8; vendor releases only\".",
+   "status": "open"
+  }
+ ],
+ "flags_carried": [
+  {
+   "id": "F2",
+   "status": "carried (W-SCE8: C11 stated as it circulates and tested in SCE8 §10: the analyst definitions draw visibility from pickup or the warehouse door onward [analyst]; the sponsored 2025 Third-Party Logistics Study measures demand and offer, not reach [vendor-reported]; Staudt et al. (2026), three companies in Brazil, found visibility layers missing in two and end-to-end management in none [independent]; no independent source found for the claim; SCE1 §11's C11 row gains the result by the correction route, F97)"
+  },
+  {
+   "id": "F62",
+   "status": "carried (W-SCE8: SCE8 numbers its transport lines T1 to T24 in SCE6's form, deliverable C; SCE9 takes O1 onward; the grade value \"case\" stays with F54)"
+  },
+  {
+   "id": "F67",
+   "status": "carried (W-SCE8: SCE8 states no air cargo liability limit, so nothing was taken from ICAO; the rule stays for any later unit that states one)"
+  },
+  {
+   "id": "F71",
+   "status": "carried (W-SCE8: SCE8 credits the routing guide to Acocella, Caplice and Sheffi (2020) as SCE7 §3 reads it, in section 3 and line T1 (after the quality review's finding); SCE1 and SCE7 corrected to the same source, F87; the rule stays for SCE10)"
+  }
+ ],
+ "index_edits": [
+  {
+   "old": "Eighteen core units in an opening and three parts, and two deep dives, in the Supply Chain track, the first of its courses. 7 of 20 written.",
+   "new": "Eighteen core units in an opening and three parts, and two deep dives, in the Supply Chain track, the first of its courses. 8 of 20 written."
+  },
+  {
+   "old": "| 8 | SCE8 | SCE | The transport system as a product | not written | Opus 5.5 | on | `courses/supply-chain-execution/SCE8-the-transport-system-as-a-product.md` |",
+   "new": "| 8 | SCE8 | SCE | The transport system as a product | written 27 Nov 2026 (W-SCE8; fresh check `audits/supply-chain-execution/fresh-check-SCE8.md`, fix: 14 edits applied, 2 held) | Opus 5.5 | on | `courses/supply-chain-execution/SCE8-the-transport-system-as-a-product.md` |"
+  },
+  {
+   "old": "| SCE6 | 24 Nov 2026 (search on: Gartner's WMS glossary entry, its Peer Insights WMS market page and its Magic Quadrant index; the 1 June 2022 WMS Magic Quadrant, read in a reprint; to try again: the 29 April 2026 WMS Magic Quadrant (document 7780053) and its \"Midmarket Context\" companion; NIST SP 800-145; the GS1 Logistic Label Guideline; Abendroth et al. (2024) and Light (2001, abstract); the Modern Materials Handling article on cloud WMS, claim C8) | 24 May 2027 |",
+   "new": "| SCE6 | 24 Nov 2026 (search on: Gartner's WMS glossary entry, its Peer Insights WMS market page and its Magic Quadrant index; the 1 June 2022 WMS Magic Quadrant, read in a reprint; to try again: the 29 April 2026 WMS Magic Quadrant (document 7780053) and its \"Midmarket Context\" companion; NIST SP 800-145; the GS1 Logistic Label Guideline; Abendroth et al. (2024) and Light (2001, abstract); the Modern Materials Handling article on cloud WMS, claim C8) | 24 May 2027 |\n| SCE8 | 27 Nov 2026 (search on: Gartner's Magic Quadrant for Transportation Management Systems of 30 March 2026, read in a reprint (to try again: Gartner's own abstract page), its glossary TMS entry, and its Peer Insights TMS, real-time transportation visibility, freight audit and payment, and vehicle routing and scheduling market pages (to try again: the rest of the routing definition); X12's 204, 210 and 214 pages; five O*NET occupation pages; FMCSA's 2024 Pocket Guide and its broker-transparency docket, with whether the 2024 proposal became final; 49 CFR §371.3; the 2025 Third-Party Logistics Study; APQC's outbound transport cost measure; Rodrigue, 6th ed., and Cengage's pages for Novack et al.; MIT CTL's FreightLab page; Staudt et al. (2026) and Evangelista et al. (2013), claim C11) | 27 May 2027 |"
+  }
+ ],
+ "changelog_row": {
+  "date": "27 Nov 2026",
+  "chat": "https://claude.ai/code/session_01KMmgR1VZACTLVqHg81yMhf",
+  "model": "claude-fable-5-2 (main chat; not Sonnet 5.5 as the models rule asks; recorded and carried on); the writer, fresh checker, two appliers, quality reviewer, two corrections checkers and the filer each a fresh agent, claude-opus-5-5",
+  "result": "W-SCE8: SCE8 The transport system as a product written and filed: 13,044 words at hand-in, 3 figures, 24 references; fresh check fix (1 error, 4 should-fix, 11 minor), 14 applied, 2 held and repaired, 3 extra fixes; quality review keep (0 error, 2 should-fix, 10 minor), 11 applied, 1 held and repaired, 3 extra fixes; corrections to SCE1 (9 passed and applied) and to SCE7 (1 passed and applied); F87 to F102 raised (F87 resolved); F84 resolved; 8 of 20 written. Published: see the row's close."
+ },
+ "kit_bullet": "- **27 Nov 2026 (W-SCE8): no kit code changed.** The eight carried proposals (P-DEC24, P-DEC27, P-HK4, P-HK5, P-NAV7, P-AC13, P-AC14, P-EG2) were not worked in this unit row and stay carried.",
+ "kit_session": {
+  "heading": "27 Nov 2026 · Session [number not in the filer's packet] · W-SCE8: no kit change",
+  "body": "Row W-SCE8, filing SCE8 The transport system as a product, changed no kit code. The eight carried proposals (P-DEC24, P-DEC27, P-HK4, P-HK5, P-NAV7, P-AC13, P-AC14, P-EG2) are kit and site changes with their own disruption flags; they were not worked here and stay carried. Published: see the row's close."
+ }
+}

@@ -50,3 +50,8 @@ Writer: claude-opus-5-5. Every address below was returned verbatim by a WebSearc
 | 32 | MIT FreightLab. "Optimization Based Transportation Procurement" (the page SCE1 cites) | https://freightlab.mit.edu/optimization-based-transportation-procurement | 302 redirect to ctl.mit.edu; not followed (flag F75) |
 
 Counts: 23 opened and cited; 4 opened and carrying no claim; 5 not opened.
+
+
+Added by the chat of W-SCE8 from the quality-review applier's notes (opened 27 Nov 2026, each address returned verbatim by its search):
+- Federal Register, Vol. 89, No. 224, 20 November 2024, FR Doc. 2024-27115, https://govinfo.gov/content/pkg/FR-2024-11-20/pdf/2024-27115.pdf : the date of the broker-transparency proposal (§4, Sources).
+- 49 CFR §371.3, Legal Information Institute, https://www.law.cornell.edu/cfr/text/49/371.3 : what the broker's record holds and who may review it (§4, deliverable B row 10).
