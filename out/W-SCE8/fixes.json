@@ -1,0 +1,130 @@
+[
+ {
+  "id": "f1",
+  "severity": "error",
+  "kind": "accuracy",
+  "where": "§5 Portals",
+  "current": "**Direct integration to carrier networks**, connecting a large number of external carriers, is a common feature of the 2026 evaluation (section 1) [analyst]; the report's wording does not say by which technology.",
+  "fix": "**Direct integration to carrier networks**, a large number of external carriers \"connected via API or electronic data interchange [EDI]\" and exchanging data such as rates, booking requests and confirmations and tracking events, either in the core product or through partnerships with external carrier networks, is a common feature of the 2026 evaluation (section 1) [analyst]."
+ },
+ {
+  "id": "f2",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§1 Rating",
+  "current": "- **Rating.** The glossary names freight rating; the 2026 report names neither rating nor tendering in its definition, overview or criteria (same keyword search) [analyst]. Tendering is folded, at most, into \"communications with carriers\".",
+  "fix": "- **Rating.** The glossary names freight rating; the 2026 report's Market Definition names \"bid and rate management and optimization\" under sourcing, and neither the word \"rating\" nor \"tender\" appears in its definition, overview or criteria (same keyword search) [analyst]. Tendering is folded, at most, into \"communications with carriers\" and into the common feature of direct carrier integration, which exchanges \"booking requests and confirmations\" (section 5) [analyst]."
+ },
+ {
+  "id": "f3",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§10 One study looked inside",
+  "current": "They define a control tower as a technology-enabled platform that integrates real-time data with analytics and organisational knowledge; they found",
+  "fix": "They define a control tower as a technology-enabled platform that integrates real-time data, advanced analytics and organisational knowledge \"to provide end-to-end visibility\", among other aims; they found"
+ },
+ {
+  "id": "f4",
+  "severity": "should-fix",
+  "kind": "accuracy",
+  "where": "§5 EDI",
+  "current": "In GS1's EANCOM subset of UN/EDIFACT messages, IFTSTA carries transport status (SCE7 §6, step 7) [independent].",
+  "fix": "In GS1's EANCOM subset, IFTSTA carries transport status (SCE7 §6, step 7, which leaves its UN/EDIFACT status unverified) [independent]."
+ },
+ {
+  "id": "f5",
+  "severity": "should-fix",
+  "kind": "deliverable",
+  "where": "D. Templates, D2",
+  "current": "**D2. Shipper versus provider.** One row per need; keep rows 1 to 15 and add rows the operation has.",
+  "fix": "**D2. Shipper versus provider.** One row per need; keep rows 1 to 15 and add rows the operation has. A bare blank takes, for that row's need: in Shipper and Provider, what that company does or holds, with \"no public figure\" for a private company's number; in the fourth column, the difference that matters to the product; in Basis, the source with its grade, or \"register\" or \"observed\"."
+ },
+ {
+  "id": "f6",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "Self-check 1",
+  "current": "The glossary adds freight rating and the management of freight bills and payments; neither text names tendering (section 1).",
+  "fix": "The glossary adds freight rating (the report names only \"bid and rate management\" under sourcing) and the management of freight bills and payments; neither text uses the word tender (section 1)."
+ },
+ {
+  "id": "f7",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§1 Payment",
+  "current": "found no \"payment\" outside one vendor's profile",
+  "fix": "found \"payment\" only in two vendors' profiles"
+ },
+ {
+  "id": "f8",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§1 common features",
+  "current": "analytics beyond the embedded kind",
+  "fix": "analytics measuring key performance indicators such as on-time performance, emissions and costs by mode, customer, product line and location"
+ },
+ {
+  "id": "f9",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§8",
+  "current": "was dropped as it did not meet the inclusion criteria [analyst]",
+  "fix": "was dropped as it did not meet the TMS technology customer criteria [analyst]"
+ },
+ {
+  "id": "f10",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§4 What small providers can spend",
+  "current": "only 38% of the sample offered track and trace, partly because customers did not demand it",
+  "fix": "only 38% of the sample offered track and trace, and case companies that did not offer it said mainly that customers did not demand it and their systems would not support it"
+ },
+ {
+  "id": "f11",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "Deliverable E",
+  "current": "| Control tower | A platform integrating real-time data with analytics and organisational knowledge (one study's definition); a selling term with no agreed reach |",
+  "fix": "| Control tower | A platform integrating real-time data, analytics and organisational knowledge to provide end-to-end visibility (one study's definition, which states the aim; the same study found it unmet in its cases); a selling term with no agreed reach |"
+ },
+ {
+  "id": "f12",
+  "severity": "minor",
+  "kind": "label",
+  "where": "§3.1 In the case",
+  "current": "Sofia (fictional) builds Ostrel Foods' next day's routes",
+  "fix": "Sofia builds Ostrel Foods' (fictional) next day's routes"
+ },
+ {
+  "id": "f13",
+  "severity": "minor",
+  "kind": "label",
+  "where": "front matter intro",
+  "current": "five transport role cards on Ostrel's and Tandric's staff",
+  "fix": "five transport role cards on the staff of Ostrel and Tandric (both fictional)"
+ },
+ {
+  "id": "f14",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "Deliverable A card 2 field 3",
+  "current": "calls from 40 drivers and from customers [register]",
+  "fix": "calls from the drivers of 40 vehicles and from customers [register]"
+ },
+ {
+  "id": "f15",
+  "severity": "minor",
+  "kind": "style",
+  "where": "§2 Visibility",
+  "current": "independent of the ETA other parties give",
+  "fix": "independent of the estimated time of arrival (ETA) other parties give"
+ },
+ {
+  "id": "f16",
+  "severity": "minor",
+  "kind": "deliverable",
+  "where": "D3",
+  "current": "by the steps of SCE6 deliverable C",
+  "fix": "by the steps of SCE6 §9"
+ }
+]

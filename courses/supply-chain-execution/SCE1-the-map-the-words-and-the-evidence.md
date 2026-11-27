@@ -276,7 +276,7 @@ Later units extend this list; each term is defined as this unit uses it, with it
 | Visibility tool | Software that reports where shipments and goods are | Gartner SCE glossary [analyst] |
 | Global trade management (GTM) | Software for trade compliance and international logistics | Gartner SCE glossary [analyst] |
 | Carrier | The company that moves the goods | Course term |
-| Shipper | The company whose goods are moved and which buys the carriage | SCE7 §1 [course term] |
+| Shipper | The company whose goods are moved and which buys the carriage | Course term (also SCE7 §1) |
 | Routing guide | A shipper's catalogue of carrier assignments, prices and priority for its lanes | Acocella et al. 2020 [practice] (SCE7 §3) |
 | Tender | The offer of one load to one carrier, which accepts or rejects it | Acocella, Caplice & Sheffi 2020 [practice] (SCE7 §3) |
 | Truckload (TL; FTL in Europe, working term) | A vehicle dedicated to one shipper's shipment from origin to destination | Sheffi 2004 [practice] (SCE7 §2) |
@@ -396,3 +396,5 @@ Correction 24 Nov 2026, found by SCE6 (row W-SCE6) and its corrections check (ro
 Correction 25 Nov 2026, found by SCE7 (the writer's contradictions; checked by a fresh Opus 5.5 agent, report audits/supply-chain-execution/corrections-2026-11-25-C-SCE7.md)
 
 Correction 27 Nov 2026, found by SCE8 (the writer's contradictions; checked by a fresh Opus 5.5 agent, report audits/supply-chain-execution/corrections-2026-11-27-C-SCE8.md)
+
+Correction 27 Nov 2026, found by the fresh check of SCE8 (Writer's contradictions, gap 2: the Shipper row's source cell pointed to SCE7 §1, which points back here; report audits/supply-chain-execution/fresh-check-SCE8.md)
