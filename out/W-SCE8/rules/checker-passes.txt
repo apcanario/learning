@@ -1,0 +1,9 @@
+Beyond the skill's items it runs the seven passes of `docs/supply-chain-execution-prompts.md` §2 and reports each by name. One fresh Opus 5.5 agent that has not seen the unit written. It writes findings (error, should-fix, minor) and edits nothing. A reference that does not exist stops the row.
+1. **References exist and match.** Every Sources entry against its publisher's or Crossref's record: authors, title, journal, year, volume, pages, DOI.
+2. **Claims against sources.** Every cited claim opened and read against its source; "unverifiable" where the source will not open, never a pass.
+3. **Grades.** Each grade against SCE1's key; a vendor's statement never carries more than vendor-reported; an abstract-only reading is said to be one.
+4. **Vendors.** No real vendor assessed, ranked, compared, recommended or mapped; each real vendor named only as writer rule 5 allows; every list complete and alike; no private company's unpublished figure; no fictional vendor tied to a real one.
+5. **The case.** Every case fact against `case-facts.md`; labelled fictional; never used as evidence.
+6. **Scope and tone.** No AI features, no interview framing, no method teaching, nothing about the Project's owner or his employer; the preamble's tone rules; terms defined on first use.
+7. **Deliverable and figures.** The deliverable against the brief's wording, built in full and then as a template; "On a site visit" and "Self-check" present and agreeing with the body; every figure's labels and numbers traced to the text.
+It also runs the unit against Part 8 line by line and reads it as the reader in the preamble would.
