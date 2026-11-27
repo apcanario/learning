@@ -187,7 +187,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## 27 Nov 2026 · Session [number not in the filer's packet] · W-SCE8: no kit change
 
-Row W-SCE8, filing SCE8 The transport system as a product, changed no kit code. The eight carried proposals (P-DEC24, P-DEC27, P-HK4, P-HK5, P-NAV7, P-AC13, P-AC14, P-EG2) are kit and site changes with their own disruption flags; they were not worked here and stay carried. Published: see the row's close.
+Row W-SCE8, filing SCE8 The transport system as a product, changed no kit code. The eight carried proposals (P-DEC24, P-DEC27, P-HK4, P-HK5, P-NAV7, P-AC13, P-AC14, P-EG2) are kit and site changes with their own disruption flags; they were not worked here and stay carried. Published 27 Nov 2026: artifact version 1795815163-c17d (10 files sent, sha256 read back and equal to the build of landed HEAD fbc7fdb8e). GitHub Pages NOT deployed: adding apcanario/academy with push access was refused by the session's permission check; the next chat's deploy carries this build. The bundle stopped after W-SCE8 (the chat ran as claude-fable-5-2 and its context could not safely hold three more units); W-SCE9 to W-SCE11 not started.
 
 ## 25 Nov 2026 · Session [number not in the filer's packet] · W-SCE7: four carried proposals applied
 
