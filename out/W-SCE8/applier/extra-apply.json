@@ -1,0 +1,17 @@
+[
+ {
+  "id": "X1",
+  "decision": "apply",
+  "reason": "Repaired f5: names the column by its header instead of \"the fourth column\" (which would be Provider). Rule otherwise as the report proposed; matches row 1 and row 14 wording."
+ },
+ {
+  "id": "X2",
+  "decision": "apply",
+  "reason": "Repaired f11: keeps the restored aim (verified in Staudt et al., SciELO) and replaces \"found it unmet\" with the paper's own finding that end-to-end supply chain management was not identified in the cases, as section 10 already says."
+ },
+ {
+  "id": "X3",
+  "decision": "apply",
+  "reason": "Could-not-verify item: x12.org \"About X12\" calls X12 \"an ANSI-accredited, consensus-based, non-profit organization\", chartered by ANSI, that develops EDI standards; it does not state a US base. Replaced \"US-based\" with what the page says."
+ }
+]

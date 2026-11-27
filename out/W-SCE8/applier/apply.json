@@ -1,0 +1,82 @@
+[
+ {
+  "id": "f1",
+  "decision": "apply",
+  "reason": "Real error: the reprint says carriers are \"connected via API or electronic data interchange [EDI]\" and exchange rates, booking requests, confirmations and tracking events, in the core product or through partnerships (Gartner MQ TMS 2026 reprint, re-read this run). Fix quotes it correctly."
+ },
+ {
+  "id": "f2",
+  "decision": "apply",
+  "reason": "\"bid and rate management and optimization\" is in the freight sourcing bullet; no standalone \"rating\" or \"tender\" in the reprint; the carrier-integration feature exchanges booking requests and confirmations (Gartner MQ TMS 2026 reprint, re-read this run). Fix is accurate and points to section 5, where f1 puts that feature."
+ },
+ {
+  "id": "f3",
+  "decision": "apply",
+  "reason": "Staudt et al. define a control tower as integrating \"real-time data, advanced analytics, and organizational knowledge to provide end-to-end visibility, automate decision-making...\" (SciELO full text, re-read). Fix quotes it correctly."
+ },
+ {
+  "id": "f4",
+  "decision": "apply",
+  "reason": "Filed SCE7 section 6 step 7 says \"that it is a UN/EDIFACT message is unverified here\"; the SCE8 pointer stated it as fact. Fix matches SCE7."
+ },
+ {
+  "id": "f5",
+  "decision": "hold",
+  "reason": "Problem is real (D2 bare blanks have no rule; D3 has one), but the fix names \"the fourth column\", which in D2 (#, Need, Shipper, Provider, ...) is Provider, not \"Where the needs pull apart\". Repaired as X1."
+ },
+ {
+  "id": "f6",
+  "decision": "apply",
+  "reason": "Must agree with f2; the reprint names \"bid and rate management\" under sourcing and has no word \"tender\". Accurate."
+ },
+ {
+  "id": "f7",
+  "decision": "apply",
+  "reason": "\"payment\" appears in two vendor profiles, Manhattan Associates (\"Freight Payment Agent\") and Pando (\"freight audit and payment\") (Gartner MQ TMS 2026 reprint, re-read this run)."
+ },
+ {
+  "id": "f8",
+  "decision": "apply",
+  "reason": "The common analytics feature (\"Analytic capabilities to make better transportation decisions\") uses embedded analysis and reporting to measure KPIs such as on-time performance, emissions and costs by mode, customer, product line and location (Gartner MQ TMS 2026 reprint, re-read this run); \"beyond the embedded kind\" is wrong."
+ },
+ {
+  "id": "f9",
+  "decision": "apply",
+  "reason": "Reprint: \"Aptean was dropped from this Magic Quadrant, as it did not meet the TMS technology customer criteria\" (Gartner MQ TMS 2026 reprint, re-read this run)."
+ },
+ {
+  "id": "f10",
+  "decision": "apply",
+  "reason": "Manuscript: 38% across the sample; the reasons (customers did not demand it; existing ICT systems would not support it) come from the case companies without the service, \"most\" of them (Aston manuscript, re-read)."
+ },
+ {
+  "id": "f11",
+  "decision": "hold",
+  "reason": "Right to restore the aim, but \"the same study found it unmet in its cases\" goes beyond the paper, which reports that end-to-end supply chain management was not identified in the cases and two of three lacked real-time tracking or visibility layers; it does not state that end-to-end visibility was found unmet. Repaired as X2 using the paper's own finding."
+ },
+ {
+  "id": "f12",
+  "decision": "apply",
+  "reason": "First body use of Ostrel Foods in section 3.1 carries no label; Sofia is a person of the same case. Fix moves the label correctly."
+ },
+ {
+  "id": "f13",
+  "decision": "apply",
+  "reason": "Front-matter intro names Ostrel and Tandric without the fictional label while Halvern has it. Fix is right."
+ },
+ {
+  "id": "f14",
+  "decision": "apply",
+  "reason": "Case register in filed units (SCE1 section 2, SCE3 register note, SCE7 sections 1 and 8) gives 40 vehicles, not 40 drivers. Fix is right."
+ },
+ {
+  "id": "f15",
+  "decision": "apply",
+  "reason": "ETA is used once, in section 2, undefined. Fix spells it out; adds no claim."
+ },
+ {
+  "id": "f16",
+  "decision": "apply",
+  "reason": "Filed SCE6: deliverable C is the template; the steps are section 9's method, as SCE8 section 9 itself says. Fix is right."
+ }
+]

@@ -1,0 +1,26 @@
+[
+ {
+  "id": "X1",
+  "severity": "should-fix",
+  "kind": "deliverable",
+  "where": "D. Templates, D2",
+  "current": "**D2. Shipper versus provider.** One row per need; keep rows 1 to 15 and add rows the operation has.",
+  "fix": "**D2. Shipper versus provider.** One row per need; keep rows 1 to 15 and add rows the operation has. A bare blank takes, for that row's need: in Shipper and Provider, what that company does or holds, with \"no public figure\" for a private company's number; in Where the needs pull apart, the difference that matters to the product; in Basis, the source with its grade, or \"register\" or \"observed\"."
+ },
+ {
+  "id": "X2",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "Deliverable E",
+  "current": "| Control tower | A platform integrating real-time data with analytics and organisational knowledge (one study's definition); a selling term with no agreed reach |",
+  "fix": "| Control tower | A platform integrating real-time data, analytics and organisational knowledge to provide end-to-end visibility (one study's definition, which states this as an aim; the same study did not find end-to-end supply chain management in its cases); a selling term with no agreed reach |"
+ },
+ {
+  "id": "X3",
+  "severity": "minor",
+  "kind": "accuracy",
+  "where": "§3.3 Carrier representative",
+  "current": "In X12, the US-based standards body for electronic data interchange,",
+  "fix": "In X12, a standards body accredited by the American National Standards Institute for electronic data interchange,"
+ }
+]
