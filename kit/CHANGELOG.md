@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **W-SCE12 (28 Nov 2026)**: SCE12 The sale filed (fresh check fix, 12 applied, 7 held, 7 extra fixes; 7 edits outside the unit to SCE11 and the notes); quality review of SCE12 (F137) run, fix, all 18 findings applied; 8 case facts, 14 flag rows (SCE13, SCE14 and SCE15 quality reviews open); no kit code changed.
 - **W-SCE11 (28 Nov 2026)**: SCE11 The buying committee filed (fresh check keep, 21 applied, 2 held); quality review of SCE7 run (fix; f1, f2 held on Eurostat 2023); 9 case facts, 11 flag rows; no kit code changed.
 - **SCE10 filed (W-SCE10, 28 Nov 2026).** SCE10 The seams, with its system-of-record table and handoff failure catalogue; 41 corrections to filed SCE units and the case register applied; quality reviews of SCE10 (F116) and SCE9 (F117) done; no kit code changed.
 - **P-DEC24, P-HK4, P-HK5, P-AC13, P-AC14, P-EG2 done (W-SCE9, 27 Nov 2026).** P-DEC24: a mixed edition's private-terms scan leaves out a private course's own text in the shell too (its panels, drawer section and every link to its pages: drawer entries, tiles, What's new rows); the shell's own text and the public courses' stay scanned; probes brand-ai or ux with personal-brand pass (28 and 4 hits before), plants in public parts fail. P-HK4: a history course's How it was built Audit cadence cell is its own (`kit/howbuilt.py` HISTORY_CADENCE, or course.toml `audit_cadence`); the S-NOAUDIT sentence left greece's and rome's built.html. Publish needed. P-HK5: `hero_interval` scans 2,000 words above the floor, then bisects and scans 2,000 words below the fit (`kit/build.py` HERO_SCAN_WINDOW); interval unchanged on today's tree (baseline identical); at most about 53 drawings. P-AC13: the planned drawer's count pluralises from the count (`kit/build.py`); the Sports drawer reads '1 course'. P-AC14: `verify.py` check_tiles measures a grid's content box; S-AC0's lone-tile workaround rule left `design/theme.css` (shell.css copied); the Sports planned tile is a column wide. P-EG2: a history-family pack course's reading pages (Egypt) render the dispute box, the Self-test quiz and the Carry forward list (`kit/mdcourse.py` pack_history_forms); no other course's page changed.
@@ -187,6 +188,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 ## 
 
 
+
+## 28 Nov 2026 · W-SCE12 · SCE12 The sale
+
+Row W-SCE12 wrote, fresh-checked, quality-reviewed (flag F137) and filed SCE12 (search on; staleness check 28 May 2027), and applied the SCE11 regrades (§3.4, its Sources, its §3 caption, Corvane and Tandric card 5) that SCE12's notes and fresh check gave. Writer, checker, applier, quality reviewer and filer each a fresh Opus 5.5 agent, launched without worktree isolation (isolation by packet folder and instructions); main chat Sonnet 5.5. The writer's agent was stopped once by a server restart and resumed from its transcript. No kit code changed. The figures were rendered by the writer against a stub theme (unsure item 10); filing renders them with design/theme.css.
 
 ## 28 Nov 2026 · this session · W-SCE11, SCE11 The buying committee
 

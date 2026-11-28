@@ -88,7 +88,7 @@ For each role: what the person answers for, what a failed project costs them, an
 
 ### 3.4 Procurement
 
-**Answers for.** The buying process and the contract: the formal request to vendors, the commercial terms, compliance with the company's purchasing rules. This is the "buyers" role of the buying centre (section 1). Working description.
+**Answers for.** The buying process and the contract: the formal request to vendors, the commercial terms, compliance with the company's purchasing rules. This is the "buyers" role of the buying centre (section 1). In one US state's guidance for IT procurements, the procurement lead "Leads the negotiation process" and prepares the contract, the business owner sets the negotiation objectives, and it recommends that business, technical, legal and financial expertise ("these four corners of expertise") be represented on the evaluation team ([VITA, 24.3.1](https://www.vita.virginia.gov/procurement/buy-it-manual/chapter-24---requests-for-proposals-and-competitive-negotiations/2431-putting-together-the-procurement-project-team-ppt-and-evaluation-team-et.html)) [practice: public-sector guidance]; New Zealand's government guidance gives an evaluation panel of 3–5 people ([NZ Government Procurement](https://procurement.govt.nz/procurement/guide-to-procurement/plan-your-procurement/setting-up-the-evaluation-panel)) [practice]. Their transfer to a private company's selection is an inference, drawn in SCE12 §4.
 
 **What a failed project costs.** A contract that does not protect the company when the project goes wrong. Working description. Whether a given contract term is enforceable is a question for the company's legal counsel.
 
@@ -123,7 +123,7 @@ The **executive sponsor** is the senior person who asks for the money, owns the 
 **Trusts.** The judgement of the people around them, and evidence from peers. Working description. Bonoma's argument that power does not follow rank (section 1) [practice] is the reason to ask who the sponsor listens to before assuming the sponsor decides.
 
 ```viz
-{"kind": "matrix", "title": "What each committee role answers for (working)", "cols": ["Operation", "Systems", "Money", "Contract", "Building", "Delivery", "Outcome"], "rows": [{"label": "Operations executive", "tone": 1, "cells": ["owns", null, null, null, null, null, null]}, {"label": "IT leader", "tone": 2, "cells": [null, "owns", "shares", null, null, null, null]}, {"label": "Finance", "tone": 3, "cells": [null, null, "owns", null, null, null, null]}, {"label": "Procurement", "tone": 4, "cells": [null, null, null, "owns", null, null, null]}, {"label": "Site manager", "tone": 5, "cells": ["shares", null, null, null, "owns", null, null]}, {"label": "Consultant or integrator", "tone": 6, "cells": [null, null, null, null, null, "owns", null]}, {"label": "Executive sponsor", "tone": 1, "cells": [null, null, "shares", null, null, null, "owns"]}], "legend": [{"mark": "owns", "means": "answers for it", "tone": 2}, {"mark": "shares", "means": "has a say in it", "tone": 4}], "caption": "Section 3 of this unit: the 'Answers for' line of each role, as a grid; the site manager shares the operation through the building's cost and service, the sponsor shares money by asking for it. Every cell is a working description from section 3 except IT's share of money (Gartner press release, 13 April 2022: IT funds at least part of 70% of technology purchases). The grid adds no fact."}
+{"kind": "matrix", "title": "What each committee role answers for (working)", "cols": ["Operation", "Systems", "Money", "Contract", "Building", "Delivery", "Outcome"], "rows": [{"label": "Operations executive", "tone": 1, "cells": ["owns", null, null, null, null, null, null]}, {"label": "IT leader", "tone": 2, "cells": [null, "owns", "shares", null, null, null, null]}, {"label": "Finance", "tone": 3, "cells": [null, null, "owns", null, null, null, null]}, {"label": "Procurement", "tone": 4, "cells": [null, null, null, "owns", null, null, null]}, {"label": "Site manager", "tone": 5, "cells": ["shares", null, null, null, "owns", null, null]}, {"label": "Consultant or integrator", "tone": 6, "cells": [null, null, null, null, null, "owns", null]}, {"label": "Executive sponsor", "tone": 1, "cells": [null, null, "shares", null, null, null, "owns"]}], "legend": [{"mark": "owns", "means": "answers for it", "tone": 2}, {"mark": "shares", "means": "has a say in it", "tone": 4}], "caption": "Section 3 of this unit: the 'Answers for' line of each role, as a grid; the site manager shares the operation through the building's cost and service, the sponsor shares money by asking for it. Every cell is a working description from section 3 except IT's share of money (Gartner press release, 13 April 2022: IT funds at least part of 70% of technology purchases) and procurement's contract (VITA 24.3.1, public-sector guidance [practice], added from SCE12). The grid adds no fact."}
 ```
 
 ## 4. How the room differs by kind of operation
@@ -275,7 +275,7 @@ Corvane (fictional) is a fashion retailer with 60 stores in four European countr
 | # | Field | Content |
 |---|---|---|
 | 1 | Who | Corvane's procurement or purchasing function; the register names no one; committee role 3.4; card set by SCE11 |
-| 2 | Accountable for | The buying process and the contract: the formal request to vendors, commercial terms, purchasing rules (section 3.4) [working] |
+| 2 | Accountable for | The buying process and the contract: the formal request to vendors, commercial terms, purchasing rules; leads the negotiation (section 3.4) [practice: VITA, public sector; its transfer to Corvane working] |
 | 3 | Fears | A contract that does not protect Corvane if the project fails [working] |
 | 4 | Rewarded for | Comparable bids and terms within the company's rules [working] |
 | 5 | Trusts | Written answers to the same questions from every vendor [working] |
@@ -351,7 +351,7 @@ Tandric Logistics (fictional) runs one multi-client warehouse for nine clients (
 | # | Field | Content |
 |---|---|---|
 | 1 | Who | Tandric's purchasing function, if any; the register names no one; committee role 3.4; card set by SCE11 |
-| 2 | Accountable for | The software contract and its terms against the client contracts Karin signs [working] |
+| 2 | Accountable for | The software contract and its terms against the client contracts Karin signs; the procurement lead leads negotiation in VITA's account (section 3.4) [practice, public sector; at Tandric working] |
 | 3 | Fears | A software contract that cannot follow client volume up or down [working] |
 | 4 | Rewarded for | Terms that match the client contract cycle [working] |
 | 5 | Trusts | Written, comparable answers [working] |
@@ -422,10 +422,12 @@ All addresses opened on 28 November 2026; the source log gives what was read at 
 - Howcroft, D. & Light, B. (2008). IT consultants, salesmanship and the challenges of packaged software selection in SMEs. *Journal of Enterprise Information Management* 21(6), 597–615. https://doi.org/10.1108/17410390810911203 (abstract, read at https://emeraldinsight.com/insight/content/doi/10.1108/17410390810911203/full/html)
 - Howcroft, D. & Light, B. (2010). The Social Shaping of Packaged Software Selection. *Journal of the Association for Information Systems* 11(3). https://doi.org/10.17705/1jais.00224 (abstract, read at https://aisel.aisnet.org/jais/vol11/iss3/2)
 - Johnston, W. J. & Bonoma, T. V. (1981). The Buying Center: Structure and Interaction Patterns. *Journal of Marketing* 45(3), 143–156. https://doi.org/10.1177/002224298104500312 (abstract, read at https://journals.sagepub.com/doi/10.1177/002224298104500312)
+- New Zealand Government Procurement. "Setting up the evaluation panel". Published 5 October 2017, last modified 9 February 2021. https://procurement.govt.nz/procurement/guide-to-procurement/plan-your-procurement/setting-up-the-evaluation-panel
 - Olson, D. L., Johansson, B. & de Carvalho, R. A. (2012). A Combined Method for Evaluating Criteria When Selecting ERP Systems. In C. Møller & S. Chaudhry (eds.), proceedings of CONFENIS 2011, Lecture Notes in Business Information Processing vol. 105, 64–74. https://doi.org/10.1007/978-3-642-28827-2_5 (read in full at https://rd.springer.com/content/pdf/10.1007/978-3-642-28827-2_5.pdf)
 - Venkatesh, V. & Davis, F. D. (2000). A Theoretical Extension of the Technology Acceptance Model: Four Longitudinal Field Studies. *Management Science* 46(2), 186–204. https://doi.org/10.1287/mnsc.46.2.186.11926 (abstract, read at https://pubsonline.informs.org/stoken/default+domain/EC-25/full/10.1287/mnsc.46.2.186.11926)
 - Verville, J. & Halingten, A. (2002). An investigation of the decision process for selecting an ERP software: the case of ESC. *Management Decision* 40(3), 206–216. https://doi.org/10.1108/00251740210420156 (abstract)
 - Verville, J. C. & Halingten, A. (2002). A qualitative study of the influencing factors on the decision process for acquiring ERP software. *Qualitative Market Research: An International Journal* 5(3), 188–198. https://doi.org/10.1108/13522750210432995 (abstract)
+- Virginia Information Technologies Agency (VITA). "24.3.1 Putting together the procurement project team (PPT) and evaluation team (ET)", in chapter 24, "Requests for Proposals and Competitive Negotiations". Undated. https://www.vita.virginia.gov/procurement/buy-it-manual/chapter-24---requests-for-proposals-and-competitive-negotiations/2431-putting-together-the-procurement-project-team-ppt-and-evaluation-team-et.html
 
 Filed units cited: SCE1 (§§1, 7, 8, 9, 10; deliverable A row 11), SCE3 and SCE4 (their measures, section 3.1), SCE5 (§§1.5, 2; cards 1, 4, 5; deliverable A; notes for the case register), SCE6 (§§3, 12), SCE8 (§4; cards 4, 5), SCE9, SCE10 (§7; deliverable B rows 2, 10, 11, 12 and 14).
 
@@ -446,3 +448,5 @@ Filed units cited: SCE1 (§§1, 7, 8, 9, 10; deliverable A row 11), SCE3 and SCE
 Object: none
 
 Fresh check 2026-11-28 (Opus 5.5 (claude-opus-5-5)): keep · 0 errors, 5 should-fix, 18 minor; report `audits/supply-chain-execution/fresh-check-SCE11.md`
+
+Correction 28 Nov 2026, found by the fresh check of SCE12: section 3.4 now says the VITA guidance recommends, and does not require, the four kinds of expertise on the evaluation team, and adds the NZ and VITA public-sector sources; procurement's contract in the section 3 grid and the figure caption, and Tandric and Corvane card 5 field 2, follow it (SCE12 section 4).
