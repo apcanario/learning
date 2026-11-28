@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **W-SCE13 (28 Nov 2026)**: SCE13 Users by role filed (fresh check fix, 16 applied, 2 held, 6 extra fixes); quality review of SCE13 (F150) run on the unit as corrected, fix, all 27 findings applied; 8 case facts, 16 flag rows (five corrections to filed units held for W-SCE-CORR); 0 edits outside the unit; no kit code changed.
 - **W-SCE12 (28 Nov 2026)**: SCE12 The sale filed (fresh check fix, 12 applied, 7 held, 7 extra fixes; 7 edits outside the unit to SCE11 and the notes); quality review of SCE12 (F137) run, fix, all 18 findings applied; 8 case facts, 14 flag rows (SCE13, SCE14 and SCE15 quality reviews open); no kit code changed.
 - **W-SCE11 (28 Nov 2026)**: SCE11 The buying committee filed (fresh check keep, 21 applied, 2 held); quality review of SCE7 run (fix; f1, f2 held on Eurostat 2023); 9 case facts, 11 flag rows; no kit code changed.
 - **SCE10 filed (W-SCE10, 28 Nov 2026).** SCE10 The seams, with its system-of-record table and handoff failure catalogue; 41 corrections to filed SCE units and the case register applied; quality reviews of SCE10 (F116) and SCE9 (F117) done; no kit code changed.
@@ -188,6 +189,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 ## 
 
 
+
+## 28 Nov 2026 · W-SCE13 · SCE13 Users by role
+
+Row W-SCE13 wrote, fresh-checked, quality-reviewed (flag F150, on SCE13 as corrected by the fresh check, the reviewer not shown the writing) and filed SCE13 (search off; no staleness check). Writer, checker, applier, quality reviewer and filer each a fresh Opus 5.5 agent, launched without worktree isolation (isolation by packet folder and instructions); main chat Sonnet 5.5. By Pedro's instruction of 28 Nov 2026, 18:05, corrections to filed units are held for the correction pass W-SCE-CORR after SCE18 and before DD-SCE1 and raised as flags (F153, F154, F159, F166, F168); 0 edits outside the unit. No kit code changed.
 
 ## 28 Nov 2026 · W-SCE12 · SCE12 The sale
 
