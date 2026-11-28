@@ -4,6 +4,7 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 
 ## Where things stand
 
+- **SCE10 filed (W-SCE10, 28 Nov 2026).** SCE10 The seams, with its system-of-record table and handoff failure catalogue; 41 corrections to filed SCE units and the case register applied; quality reviews of SCE10 (F116) and SCE9 (F117) done; no kit code changed.
 - **P-DEC24, P-HK4, P-HK5, P-AC13, P-AC14, P-EG2 done (W-SCE9, 27 Nov 2026).** P-DEC24: a mixed edition's private-terms scan leaves out a private course's own text in the shell too (its panels, drawer section and every link to its pages: drawer entries, tiles, What's new rows); the shell's own text and the public courses' stay scanned; probes brand-ai or ux with personal-brand pass (28 and 4 hits before), plants in public parts fail. P-HK4: a history course's How it was built Audit cadence cell is its own (`kit/howbuilt.py` HISTORY_CADENCE, or course.toml `audit_cadence`); the S-NOAUDIT sentence left greece's and rome's built.html. Publish needed. P-HK5: `hero_interval` scans 2,000 words above the floor, then bisects and scans 2,000 words below the fit (`kit/build.py` HERO_SCAN_WINDOW); interval unchanged on today's tree (baseline identical); at most about 53 drawings. P-AC13: the planned drawer's count pluralises from the count (`kit/build.py`); the Sports drawer reads '1 course'. P-AC14: `verify.py` check_tiles measures a grid's content box; S-AC0's lone-tile workaround rule left `design/theme.css` (shell.css copied); the Sports planned tile is a column wide. P-EG2: a history-family pack course's reading pages (Egypt) render the dispute box, the Self-test quiz and the Carry forward list (`kit/mdcourse.py` pack_history_forms); no other course's page changed.
 - **27 Nov 2026 (W-SCE8): no kit code changed.** The eight carried proposals (P-DEC24, P-DEC27, P-HK4, P-HK5, P-NAV7, P-AC13, P-AC14, P-EG2) were not worked in this unit row and stay carried.
 - **25 Nov 2026 (W-SCE7): carried proposals P-SCP1, P-AIE8, P-AIE9 and P-HK3 applied as one kit/doc change.** What each changes is in its BACKLOG row; the filer's packet does not hold their text.
@@ -185,6 +186,10 @@ Everything that has happened to Personal Mythology and, from session 13, to Acad
 ## 
 
 
+
+## 28 Nov 2026 · Session W-SCE10 · SCE10 The seams (W-SCE10)
+
+Main chat Sonnet 5.5 (thin); writer, fresh checker, applier, quality reviewer, corrections drafter, corrections checker and filer each a fresh Opus 5.5 agent. SCE10 written, fresh-checked (fix: 1 error, 5 should-fix, 18 minor; 21 of 22 applied, 1 held, 6 extra fixes) and quality-reviewed (F116; fix: 0/8/14; 17 applied, 5 handled outside the unit); SCE9 quality-reviewed (F117; keep: 0/5/9; all applied); 41 corrections to SCE1, SCE6, SCE7, SCE8, SCE9 and the case register passed and applied; 10 case facts and 8 syllabus flags (F118 to F125) filed (v11). No kit code changed. Next: SCE11.
 
 ## 27 Nov 2026 · Session W-SCE9 · six carried kit proposals applied
 

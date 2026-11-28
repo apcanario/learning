@@ -1,0 +1,925 @@
+<header class="phead">
+    <nav class="crumbs" aria-label="You are here"><a href="#home" data-target="home">Academy</a><span class="sep" aria-hidden="true">›</span><a href="#track-supply-chain" data-target="track-supply-chain">Supply Chain</a><span class="sep" aria-hidden="true">›</span><a href="#supply-chain-execution-sce" data-target="supply-chain-execution-sce">Course SCE · Supply chain execution · public</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">SCE10</span></nav>
+    <div class="eyebrow"><span class="u" style="--c:var(--gold)">SUPPLY CHAIN EXECUTION · PUBLIC</span> · SCE10 <span class="pill live">SCE10</span></div>
+    <h1>The seams</h1>
+    <p class="scope">The handoffs between order, warehouse, transport and finance systems: what crosses each, who owns which fact, and how they fail.</p>
+  </header>
+  <div class="stepbar" data-n="15"><details class="secmenu"><summary><span class="sh"><span class="sof">Section <b>1</b> of 15</span><span class="stt">1. Where the three lifecycles join</span></span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></summary><ol class="seclist"><li><a href="#read-sce10-0" data-step="0"><span class="n">01</span><span class="t">1. Where the three lifecycles join</span></a></li><li><a href="#read-sce10-1" data-step="1"><span class="n">02</span><span class="t">2. Order to warehouse: release and allocation</span></a></li><li><a href="#read-sce10-2" data-step="2"><span class="n">03</span><span class="t">3. Warehouse to transport: ship confirmation and loading</span></a></li><li><a href="#read-sce10-3" data-step="3"><span class="n">04</span><span class="t">4. Transport to the customer: status</span></a></li><li><a href="#read-sce10-4" data-step="4"><span class="n">05</span><span class="t">5. Back to the ERP and finance</span></a></li><li><a href="#read-sce10-5" data-step="5"><span class="n">06</span><span class="t">6. The data every system shares</span></a></li><li><a href="#read-sce10-6" data-step="6"><span class="n">07</span><span class="t">7. Which system holds the truth, and where the sources disagree</span></a></li><li><a href="#read-sce10-7" data-step="7"><span class="n">08</span><span class="t">8. One order in three systems: Corvane (fictional)</span></a></li><li><a href="#read-sce10-8" data-step="8"><span class="n">09</span><span class="t">9. How integration is done, at the level a product person needs</span></a></li><li><a href="#read-sce10-9" data-step="9"><span class="n">10</span><span class="t">10. The yard and the dock: a seam of its own</span></a></li><li><a href="#read-sce10-10" data-step="10"><span class="n">11</span><span class="t">11. What people do around a broken seam</span></a></li><li><a href="#read-sce10-11" data-step="11"><span class="n">12</span><span class="t">12. One vendor or specialists: common claim C9</span></a></li><li><a href="#read-sce10-12" data-step="12"><span class="n">13</span><span class="t">On a site visit</span></a></li><li><a href="#read-sce10-13" data-step="13"><span class="n">14</span><span class="t">Self-check</span></a></li><li><a href="#read-sce10-14" data-step="14"><span class="n">15</span><span class="t">Deliverable</span></a></li></ol><div class="secx"><a href="#read-sce10-sources" data-acc>Sources</a><a href="#read-sce10-note" data-acc>The writer's opening note</a><a href="#read-sce10-made" data-acc>How this unit was made</a><button class="whole" type="button" aria-pressed="false">Whole unit</button></div></details><div class="sprog" aria-hidden="true"><i></i></div></div><div class="report steps"><section class="sec" data-step="0"><h2 id="read-sce10-0" class="band"><span class="bn" aria-hidden="true">01</span><span class="bh"><span class="bt">1. Where the three lifecycles join</span></span></h2>
+<p>SCE9 numbered an order's life in twelve steps, SCE3 the warehouse's outbound in eight, SCE7 a shipment's in twelve. They overlap at two places, and SCE9 named both (its opening, and deliverable A): for an order the distribution centre fills, SCE9's rows 5 to 8 are SCE3 deliverable C's rows 1 to 8, and SCE9's rows 8 to 10 are SCE7 §6's steps 6 to 8. The join, row by row, is this course's own; no source opened sets the three side by side.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Order (SCE9)</th>
+<th>Warehouse (SCE3 C)</th>
+<th>Transport (SCE7 §6)</th>
+<th>The seam</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4 Source</td>
+<td></td>
+<td></td>
+<td>Order system chooses the centre</td>
+</tr>
+<tr>
+<td>5 Release to the location</td>
+<td>1 Release</td>
+<td></td>
+<td><strong>Order to warehouse</strong> (section 2)</td>
+</tr>
+<tr>
+<td>6 Pick</td>
+<td>2 Pick; 3 Replenish forward; 4 Sort and consolidate</td>
+<td></td>
+<td>Inside the warehouse; a short pick goes back to the order system</td>
+</tr>
+<tr>
+<td>7 Pack and label</td>
+<td>5 Check and pack; 6 Label</td>
+<td>(1 Plan, 2 Rate, 3 Tender, 4 Accept or refuse, 5 Book a dock, done ahead)</td>
+<td>Carrier label and service come from transport</td>
+</tr>
+<tr>
+<td>8 Hand over</td>
+<td>7 Stage and load; 8 Ship</td>
+<td>6 Pick up</td>
+<td><strong>Warehouse to transport</strong> (section 3)</td>
+</tr>
+<tr>
+<td>9 Track and inform</td>
+<td></td>
+<td>7 Track</td>
+<td><strong>Transport to the customer</strong> (section 4)</td>
+</tr>
+<tr>
+<td>10 Deliver</td>
+<td></td>
+<td>8 Deliver and prove delivery</td>
+<td>Proof of delivery back to the order</td>
+</tr>
+<tr>
+<td>11 Return; 12 Refund</td>
+<td>(returns: SCE4 §7)</td>
+<td>9 to 12 Invoice, check, pay, claim</td>
+<td><strong>Back to the ERP and finance</strong> (section 5)</td>
+</tr>
+</tbody>
+</table></div>
+<p>SCE7's steps 1 to 5 happen while the goods are still on the shelf. For a parcel booked in a carrier's own portal, as Corvane (fictional; a fashion retailer with 60 stores, one website and one distribution centre) books its carriers (case register), steps 2 to 4 shrink to choosing a service and printing a label (this unit's reading; SCE3 deliverable C, row 6).</p>
+<figure class="viz viz-swimlanes viz-wide"><div class="viz-scroll"><svg viewBox="0 0 1484 297.0" width="1484" height="297.0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="swimlanes"><rect class="viz-lane viz-t3" x="8" y="8.0" width="1468.0" height="72.0"/><g data-box=""><rect class="viz-band viz-t3" x="8" y="8.0" width="112" height="72.0"/><text class="viz-nodelabel" x="17.0" y="48.3" text-anchor="start">Order system</text></g><rect class="viz-lane viz-t2" x="8" y="80.0" width="1468.0" height="72.5"/><g data-box=""><rect class="viz-band viz-t2" x="8" y="80.0" width="112" height="72.5"/><text class="viz-nodelabel" x="17.0" y="113.6" text-anchor="start">Warehouse</text><text class="viz-nodelabel" x="17.0" y="127.6" text-anchor="start">system</text></g><path class="viz-line" d="M8.0,80.0 L1476.0,80.0"/><rect class="viz-lane viz-t4" x="8" y="152.5" width="1468.0" height="72.5"/><g data-box=""><rect class="viz-band viz-t4" x="8" y="152.5" width="112" height="72.5"/><text class="viz-nodelabel" x="17.0" y="179.1" text-anchor="start">Transport</text><text class="viz-nodelabel" x="17.0" y="193.1" text-anchor="start">system or</text><text class="viz-nodelabel" x="17.0" y="207.1" text-anchor="start">carrier</text></g><path class="viz-line" d="M8.0,152.5 L1476.0,152.5"/><rect class="viz-lane viz-t1" x="8" y="225.0" width="1468.0" height="64.0"/><g data-box=""><rect class="viz-band viz-t1" x="8" y="225.0" width="112" height="64.0"/><text class="viz-nodelabel" x="17.0" y="261.3" text-anchor="start">ERP</text></g><path class="viz-line" d="M8.0,225.0 L1476.0,225.0"/><path class="viz-link" d="M260.0,44.0 L298.0,44.0 L298.0,116.2 L329.0,116.2"/><path class="viz-head" d="M336.0,116.2 L329.0,120.2 L329.0,112.2 z"/><path class="viz-link" d="M460.0,116.2 L529.0,116.2"/><path class="viz-head" d="M536.0,116.2 L529.0,120.2 L529.0,112.2 z"/><path class="viz-link" d="M598.0,170.8 L598.0,141.2"/><path class="viz-head" d="M598.0,134.2 L602.0,141.2 L594.0,141.2 z"/><path class="viz-link" d="M660.0,116.2 L729.0,116.2"/><path class="viz-head" d="M736.0,116.2 L729.0,120.2 L729.0,112.2 z"/><path class="viz-link" d="M860.0,108.8 L904.0,108.8 L904.0,188.8 L929.0,188.8"/><path class="viz-head" d="M936.0,188.8 L929.0,192.8 L929.0,184.8 z"/><path class="viz-link" d="M860.0,123.7 L892.0,123.7 L892.0,257.0 L929.0,257.0"/><path class="viz-head" d="M936.0,257.0 L929.0,261.0 L929.0,253.0 z"/><path class="viz-link" d="M1060.0,181.3 L1098.0,181.3 L1098.0,44.0 L1129.0,44.0"/><path class="viz-head" d="M1136.0,44.0 L1129.0,48.0 L1129.0,40.0 z"/><path class="viz-link" d="M1060.0,196.2 L1298.0,196.2 L1298.0,257.0 L1329.0,257.0"/><path class="viz-head" d="M1336.0,257.0 L1329.0,261.0 L1329.0,253.0 z"/><g data-box=""><rect class="viz-lblbg" x="280.2" y="71.9" width="35.6" height="16.5"/><text class="viz-linklabel" x="298.0" y="83.9" text-anchor="middle">order</text></g><g data-box=""><rect class="viz-lblbg" x="582.1" y="144.2" width="31.8" height="16.5"/><text class="viz-linklabel" x="598.0" y="156.3" text-anchor="middle">label</text></g><g data-box=""><rect class="viz-lblbg" x="908.0" y="140.5" width="55.7" height="16.5"/><text class="viz-linklabel" x="935.8" y="152.6" text-anchor="middle">shipment</text></g><g data-box=""><rect class="viz-lblbg" x="867.4" y="190.1" width="49.1" height="16.5"/><text class="viz-linklabel" x="892.0" y="202.1" text-anchor="middle">shipped</text></g><g data-box=""><rect class="viz-lblbg" x="1076.9" y="104.4" width="42.2" height="16.5"/><text class="viz-linklabel" x="1098.0" y="116.4" text-anchor="middle">events</text></g><g data-box=""><rect class="viz-lblbg" x="1268.8" y="218.3" width="58.5" height="16.5"/><text class="viz-linklabel" x="1298.0" y="230.4" text-anchor="middle">freight bill</text></g><g data-box=""><rect class="viz-node viz-t3" x="136.0" y="26.0" width="124" height="36.0" rx="2"/><text class="viz-nodelabel" x="144.0" y="48.3" text-anchor="start">4 Source</text></g><g data-box=""><rect class="viz-node viz-t2" x="336.0" y="94.0" width="124" height="44.5" rx="2"/><text class="viz-nodelabel" x="344.0" y="113.3" text-anchor="start">Release</text><text class="viz-small" x="344.0" y="127.8" text-anchor="start">X12 940</text></g><g data-box=""><rect class="viz-node viz-t2" x="536.0" y="98.2" width="124" height="36.0" rx="2"/><text class="viz-nodelabel" x="544.0" y="120.6" text-anchor="start">Pick, pack, label</text></g><g data-box=""><rect class="viz-node viz-t4" x="536.0" y="170.8" width="124" height="36.0" rx="2"/><text class="viz-nodelabel" x="544.0" y="193.1" text-anchor="start">Plan, book carrier</text></g><g data-box=""><rect class="viz-node viz-t2" x="736.0" y="94.0" width="124" height="44.5" rx="2"/><text class="viz-nodelabel" x="744.0" y="113.3" text-anchor="start">Ship confirm</text><text class="viz-small" x="744.0" y="127.8" text-anchor="start">X12 945, 856</text></g><g data-box=""><rect class="viz-node viz-t4" x="936.0" y="166.5" width="124" height="44.5" rx="2"/><text class="viz-nodelabel" x="944.0" y="185.8" text-anchor="start">Pick up, track</text><text class="viz-small" x="944.0" y="200.3" text-anchor="start">214, IFTSTA</text></g><g data-box=""><rect class="viz-node viz-t3" x="1136.0" y="22.0" width="124" height="44.0" rx="2"/><text class="viz-nodelabel" x="1144.0" y="41.3" text-anchor="start">Status to</text><text class="viz-nodelabel" x="1144.0" y="55.3" text-anchor="start">customer</text></g><g data-box=""><rect class="viz-node viz-t1" x="936.0" y="239.0" width="124" height="36.0" rx="2"/><text class="viz-nodelabel" x="944.0" y="261.3" text-anchor="start">Invoice customer</text></g><g data-box=""><rect class="viz-node viz-t1" x="1336.0" y="239.0" width="124" height="36.0" rx="2"/><text class="viz-nodelabel" x="1344.0" y="261.3" text-anchor="start">Pay carrier</text></g></svg></div><figcaption>The four seams of sections 1 to 5 of this unit, by the system that acts. Step names are this course's (SCE3 deliverable C, SCE7 section 6, SCE9 deliverable A); messages from X12's pages for 940, 945 and 856 (read 28 November 2026; the 940 and 945 between companies, such as a logistics provider and its clients, section 2), SCE8 section 5 for 214, and UN/CEFACT's D.01A directory for IFTSTA (section 4); the shipment-to-invoice link from Bartholdi and Hackman, release 0.98, section 4.1; payment in the ERP is SCE1's working placement.</figcaption></figure>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="84" data-rings="5" style="--o:360px 88px"><path style="--d:1;--o:586px 92px" d="M448 40l-96 4-144 14-64 11-13 3-21 8-7 8 2 8 11 8 12 6 24 8 24 6 32 6 32 4 48 4 48 2 48-1 48-4 24-3 32-6 67-22 37-4 24 2 64 16 56 8 56 4 56 2 64 0 48-1 64-5 40-6 23-8 2-8-14-8-35-8-57-8-45-8-50-11-32-4-64-4-136-3-128-9-80-1"/><path style="--d:.75" d="M336 56l-64 6-64 8-37 10-9 8 3 8 3 2 11 6 24 8 45 9 48 5 40 2 40-1 32-2 32-4 32-8 20-9 23-8 72-16 13-8-18-8-14-3-33-5-39-4-40-1-40 0z"/><path style="--d:.5" d="M336 63l-64 7-32 5-22 5-11 8 5 8 18 8 10 3 32 6 48 5 56 0 32-3 21-3 19-6 24-10 31-8 22-8 1-8-28-8-50-4-56 0z"/><path style="--d:.25" d="M328 72l-63 8-16 8 7 8 24 7 24 4 24 2 40 1 40-4 8-2 19-8 27-8 17-8-13-8-34-4-48 0z"/><path d="M336 80l-37 8 15 8 38 4 24-1 17-3 23-8 4-8-36-3z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="64" data-rings="4" style="--o:840px 96px"><path style="--d:.67" d="M696 71l-16 4-10 5 5 8 11 8 13 8 21 6 40 7 88 4 88 0 32-3 32-5 6-1 14-8-11-8-17-4-72-11-48-10-24-3-40-3-40 0-40 2z"/><path style="--d:.33" d="M752 80l-16 8 2 8 15 8 31 5 48 4 64 0 32-3 31-6-6-8-97-18-24-2-32 0-24 1z"/><path d="M808 93l-6 3 30 5 32-1 18-4-50-7-16 1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="snext" href="#read-sce10-1" data-step="1"><span>Next · 2 of 15</span><b>2. Order to warehouse: release and allocation</b></a></nav></section><section class="sec" data-step="1"><h2 id="read-sce10-1" class="band"><span class="bn" aria-hidden="true">02</span><span class="bh"><span class="bt">2. Order to warehouse: release and allocation</span></span></h2>
+<p><strong>The physical event.</strong> None yet: a promise turns into work.</p>
+<p><strong>What crosses.</strong> The order lines (item, quantity), the ship-to address, the carrier or service, the date the goods must leave; back across, whether the lines were allocated, picked short or cancelled. X12, a standards body chartered by the American National Standards Institute (<a target="_blank" rel="noopener" href="https://x12.org/about/about-x12">X12, "About X12"</a>), publishes the <strong>940 Warehouse Shipping Order</strong>, which a depositor (the owner of goods held in a warehouse) or another business party uses to tell a warehouse to make a shipment, to confirm one, or to change or cancel a shipping order sent earlier (<a target="_blank" rel="noopener" href="https://x12.org/node/4444">X12, 940</a>) [independent, for what the standard says]. The 940 is a message between companies: it fits Tandric Logistics (fictional; a logistics provider running one warehouse for nine clients, case register), whose clients are depositors; inside one company the same facts cross an internal interface (this unit's reading).</p>
+<p><strong>People.</strong> At Corvane, Tobias, the outbound shift supervisor, answers for release (case register); Lena runs the online orders' exception queue (register, added by SCE9).</p>
+<p><strong>What the software does.</strong> The order system chooses the location and sends the order; the warehouse system turns it into pick lists by wave or continuously (SCE3 §2) and reports what it could not fill. Gartner's market definition of distributed order management lists as mandatory "Enterprise Inventory for available-to-promise and available-to-ship items in the supply chain" and order orchestration "that optimizes order routing and inventory allocation" (<a target="_blank" rel="noopener" href="https://external.pi.gpi.aws.gartner.com/reviews/market/distributed-order-management-systems">Gartner Peer Insights, Distributed Order Management (DOM) Systems, features updated July 2025</a>) [analyst]. Gartner's WMS definition gives the warehouse system the core capabilities to receive, put away, store, count, pick, pack and ship (<a target="_blank" rel="noopener" href="https://external.pi.gpi.aws.gartner.com/reviews/market/warehouse-management-systems">Gartner Peer Insights, Warehouse Management Systems, features updated May 2026</a>) [analyst]. The DOM definition names inventory and allocation, and the WMS definition names storing and counting, so the seam is a place where two systems each hold a view of the same stock (this unit's reading).</p>
+<p>Stores add a second source of stock to the same seam: in a study combining 50 interviews with supply chain executives at large retailers with secondary data on firm size, store and distribution networks and online sales, Ishfaq, Defee, Gibson and Raja found retailers integrating store and distribution centre inventories as stores take a larger part in online fulfilment (<a target="_blank" rel="noopener" href="https://doi.org/10.1108/IJPDLM-02-2015-0032">Ishfaq et al., 2016, abstract</a>) [independent, abstract only].</p>
+<p><strong>How it commonly fails.</strong> The order system promises from a stock figure the warehouse cannot pick: Corvane's known trouble is web orders promised from stock the centre cannot find (case register), and SCE4 §9 traced the chain. A cancellation reaches the order system and not the work already released, so the parcel ships and comes back (SCE9 §8). A short pick is reported in the warehouse and not passed back, so the order shows lines that will never ship (this unit's inference from SCE4 §9).</p>
+<p><strong>The measure.</strong> No source opened measures release failures between systems. SCE3 §12's Internal Order Cycle Time and SCE9 §3's promise accuracy bracket the seam from each side.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.357"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="10" data-rings="0"><circle class="ct-spot" cx="192" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="141" data-rings="5"><path style="--d:.93;--o:581px 89px" d="M600 32l-144 9-144 1-48 1-56 6-40 8-16 4-16 8-16 11-7 8-2 8 2 8 8 8 18 8 29 7 40 6 88 7 104 3 112 0 200-4 80-6 96-14 160-12 48-8 10-3 11-8-8-8-21-6-16-3-32-4-96-4-49-7-63-14-48-7-88-5-48 0-48 2"/><path style="--d:.78;--o:576px 89px" d="M520 48l-88 4-144 3-56 5-40 9-10 3-14 7-10 9-1 8 5 8 14 8 24 6 32 6 32 3 80 4 80 2 248-4 56-2 56-4 96-13 128-12 24-3 23-7-9-8-14-3-24-2-96-7-104-17-64-8-48-2-56 0-56 2-64 5"/><circle class="ct-spot" cx="328" cy="96" r="12"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="24" data-rings="0"><circle class="ct-spot" cx="464" cy="80" r="7"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="149" data-rings="5"><path style="--d:.57;--o:583px 88px" d="M656 48l-56 2-136 8-144 4-48 4-40 6-27 8-10 8-1 8 7 8 15 6 16 4 48 6 64 3 80 1 152-3 104 1 40-2 48-3 96-13 79-8 43-8-2-1-12-7-68-5-144-22-48-4-56-1"/><path style="--d:.38;--o:559px 88px" d="M608 56l-176 11-96 3-40 3-45 7-14 8-5 8 9 8 31 6 32 4 56 3 64 0 144-4 120 2 40-2 32-3 106-14 46-8-27-8-101-16-40-5-64-4-72 1"/><path style="--d:.19;--o:561px 87px" d="M584 64l-152 12-72 1-43 3-34 8-5 8 19 8 39 3 40 2 40 0 104-5 160 4 32-1 34-3 50-8 37-8-14-8-75-13-40-5-56-1-64 3"/><path style="--d:.16;--o:608px 81px" d="M576 72l-55 8 11 8 56 8 60 3 40 0 33-3 17-8 0-8-20-8-14-2-56-2-72 4"/><path d="M632 80l-7 0 4 8 22 0-5-8z"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="69" data-rings="2"><circle class="ct-spot" cx="736" cy="96" r="9"/></g><g class="ct-rise ct-t6" data-label="¶6" data-words="85" data-rings="3"><circle class="ct-spot" cx="872" cy="88" r="10"/></g><g class="ct-rise ct-t6" data-label="¶7" data-words="27" data-rings="0"><circle class="ct-spot" cx="1008" cy="80" r="7"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-0" data-step="0"><span>Previous · 1 of 15</span><b>1. Where the three lifecycles join</b></a><a class="snext" href="#read-sce10-2" data-step="2"><span>Next · 3 of 15</span><b>3. Warehouse to transport: ship confirmation and loading</b></a></nav></section><section class="sec" data-step="2"><h2 id="read-sce10-2" class="band"><span class="bn" aria-hidden="true">03</span><span class="bh"><span class="bt">3. Warehouse to transport: ship confirmation and loading</span></span></h2>
+<p><strong>The physical event.</strong> Packed units are staged, scanned onto a vehicle and leave; the driver signs (SCE3 §7; SCE7 §6, step 6). The handoff runs to a clock. The order cut-off is the latest time an order is accepted for a given dispatch, and the carrier departure is the time the vehicle leaves (SCE3 §8, working definitions). An order that misses the cut-off waits for the next departure (SCE3 §8; SCE7 §10, step 6).</p>
+<p><strong>What crosses.</strong> Which units left, on which vehicle, with which carrier, at what time, and what each unit holds. Three standard messages carry it:</p>
+<ul>
+<li>X12's <strong>856 Ship Notice/Manifest</strong> lets the sender "describe the contents and configuration of a shipment in various levels of detail": order information, products, packaging, marking, carrier and how goods sit in the equipment (<a target="_blank" rel="noopener" href="https://x12.org/node/4398">X12, 856</a>) [independent, for what the standard says].</li>
+<li>X12's <strong>945 Warehouse Shipping Advice</strong> is the warehouse's reply to the 940, telling the depositor that a shipment was made; "It is used to reconcile order quantities with shipment quantities" (<a target="_blank" rel="noopener" href="https://x12.org/node/4447">X12, 945</a>) [independent].</li>
+<li>GS1's logistic label puts the <strong>SSCC</strong> (Serial Shipping Container Code) on every logistic unit; "The SSCC is the single mandatory element for all logistic labels", the despatch advice (advance ship notice, ASN) should give each unit's SSCC and the trade items in it, and a scanned SSCC should match the information in that message (<a target="_blank" rel="noopener" href="https://gs1.org/standards/gs1-logistic-label-guideline">GS1, Logistic Label Guideline, release 1.3, July 2019</a>) [independent].</li>
+</ul>
+<p>The SSCC ties the label to the message (this unit's reading of GS1's guideline).</p>
+<p><strong>People.</strong> Loaders and the outbound supervisor; the carrier's driver; at the receiving end, whoever scans the units in (SCE2 §3.4).</p>
+<p><strong>What the software does.</strong> The warehouse records the shipment out, one of the records that Bartholdi and Hackman call a WMS's most basic: "shipping drives the sending of invoices downstream to the consignee" (<a target="_blank" rel="noopener" href="https://www2.isye.gatech.edu/~jjb/wh/book/editions/wh-sci-0.98.pdf">Bartholdi &amp; Hackman, <em>Warehouse &amp; Distribution Science</em>, release 0.98, 2017, §4.1, p. 34</a>) [practice]. The transport system, where there is one, records the shipment picked up (SCE7 §6, step 6, a working description).</p>
+<p><strong>How it commonly fails.</strong> A unit on the wrong vehicle (SCE3 §7). A label re-keyed from a carrier's portal, so the label and the warehouse's record differ: Corvane has no transport system and books every carrier in that carrier's portal (case register; SCE3 deliverable C, row 6, reads the re-keying). A notice sent with SSCCs that do not match the labels, so the receiver cannot match units to the message and counts by hand (this unit's inference from GS1's matching rule). The 945's stated purpose, reconciling ordered against shipped quantities, names one fact that can be in dispute at this seam (this unit's reading).</p>
+<p><strong>The measure.</strong> SCE3 §12's On Time Shipments and Correct Documentation sit on the warehouse side; SCE7 §11's on-time pickup on the transport side.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.714"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="74" data-rings="3"><path style="--d:.75;--o:273px 87px" d="M88 55l-16 4-15 5-9 8 1 8 9 8 22 11 40 14 24 6 32 3 32 1 32-1 72-4 32-4 32-8 25-10 7-4 13-4 1-8-184-16-78-11-40-1-32 3"/><path style="--d:.41;--o:217px 89px" d="M128 64l-16 3-16 5-5 8 7 8 17 8 21 8 24 6 24 2 24 1 80-4 46-5 20-8-2-8-72-12-56-5-56-7-24-1-16 1"/><path d="M136 77l-7 3 4 8 17 8 10 3 24 5 24 1 40-2 32-3 23-4-10-8-42-8-83-8-16 1z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="24" data-rings="1"><circle class="ct-spot" cx="328" cy="96" r="7"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="14" data-rings="0"><circle class="ct-spot" cx="464" cy="80" r="6"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="20" data-rings="1"><circle class="ct-spot" cx="600" cy="80" r="7"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="69" data-rings="3"><circle class="ct-spot" cx="736" cy="96" r="10"/></g><g class="ct-rise ct-t6" data-label="¶6" data-words="104" data-rings="5"><path style="--d:.89;--o:816px 89px" d="M728 47l-40 6-88 16-26 3-27 8 21 8 43 8 13 5 6 3 11 16 15 9 16 4 32 5 24 1 72 0 80 4 32-1 24-2 24-5 20-7 15-8 18-16 16-8 29-8 12-8-9-8-53-14-32-7-48-7-48-3-56-1-56 2-40 5"/><path style="--d:.77;--o:831px 90px" d="M744 56l-40 6-54 10-18 8 11 8 15 8 14 18 16 7 24 4 24 1 64 0 72 5 24-1 24-2 24-5 16-6 24-15 27-14 12-8-12-8-27-8-32-6-40-5-40-2-48-1-40 2-40 4"/><path style="--d:.56;--o:822px 91px" d="M752 63l-50 9-24 8-1 8 10 8 6 8 3 3 12 5 28 4 56 0 80 5 40-2 16-4 16-6 35-21 7-8-11-8-15-4-24-4-40-5-40-2-40 0-32 2-32 4"/><path style="--d:.34;--o:821px 91px" d="M816 64l-32 2-24 3-15 3-28 8-9 8 7 8 5 3 16 5 16 2 40 0 64 7 24 0 16-1 16-3 15-5 22-16 4-8-18-8-31-5-48-3-40 0"/><path style="--d:.16;--o:844px 90px" d="M792 72l-37 8-9 8 6 3 15 5 41 4 40 5 24 0 16-1 16-4 9-4 8-8-1-8-16-4-23-4-49-2-40 2"/><path d="M800 79l-4 1-6 8 58 8 16 0 8-2 15-6-15-8-16-2-32-1z"/></g><g class="ct-rise ct-t6" data-label="¶7" data-words="23" data-rings="1"><circle class="ct-spot" cx="1008" cy="80" r="7"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-1" data-step="1"><span>Previous · 2 of 15</span><b>2. Order to warehouse: release and allocation</b></a><a class="snext" href="#read-sce10-3" data-step="3"><span>Next · 4 of 15</span><b>4. Transport to the customer: status</b></a></nav></section><section class="sec" data-step="3"><h2 id="read-sce10-3" class="band"><span class="bn" aria-hidden="true">04</span><span class="bh"><span class="bt">4. Transport to the customer: status</span></span></h2>
+<p><strong>The physical event.</strong> The goods are in transit.</p>
+<p><strong>What crosses.</strong> Status events (picked up, in transit, delayed, delivered) from the carrier to the shipper's systems and on to the customer. X12's 214 carries carrier status in X12 (SCE8 §5). <strong>IFTSTA</strong>, the International multimodal status report message, is a United Nations Standard Message of UN/EDIFACT: the UN/CEFACT documentation for directory D.01A lists it with status "UNSM" from the transport sub-group (<a target="_blank" rel="noopener" href="https://digitallibrary.un.org/record/433163/files/%5EE_ECE_%5ETRADE_CEFACT_2001_33-EN.pdf">UN/CEFACT, UN/EDIFACT Standard Directory D.01A, TRADE/CEFACT/2001/33, 14 Feb 2001</a>) [independent]. GS1's EANCOM, the subset SCE7 §6 cited for IFTSTA, is a subset of UN/EDIFACT: "All EANCOM® 2002 messages are based on the UN/EDIFACT directory D.01B", and GS1 is the agency controlling the subset (<a target="_blank" rel="noopener" href="https://gs1.org/sites/gs1/files/docs/eancom/ean02s3/part1/part1_05.htm">GS1, EANCOM 2002, Part I, §5</a>) [independent]. This settles what SCE7 left unverified (flag F68; notes).</p>
+<p><strong>People.</strong> At Corvane, Jonas answers customers about shipments in transit (register); at Tandric, Olu answers clients' tracking questions (register, added by SCE7).</p>
+<p><strong>What the software does.</strong> The order system shows the customer the order's status; Gartner lists "Order Visibility by tracking order status throughout the supply chain" among DOM's mandatory features (DOM page) [analyst]. The status the customer reads is therefore a copy of the carrier's events, held in the order system (this unit's reading).</p>
+<p><strong>How it commonly fails.</strong> No event, or a late one, so the customer is told nothing (SCE7 §10). The customer asks before the company knows (SCE9 deliverable A, row 9). At Corvane, status lives in each carrier's portal (register), so Jonas reads it there, not in the order system (this unit's reading of the register).</p>
+<p><strong>The measure.</strong> SCE9 §10's "where is my order" contacts, a working measure; no source opened measures status latency.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.071"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="8" data-rings="0"><circle class="ct-spot" cx="200" cy="88" r="5"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="125" data-rings="5" style="--o:360px 96px"><path style="--d:.92;--o:597px 93px" d="M496 48l-96 5-216 15-48 6-31 6-16 8-4 8 3 8 11 8 29 11 32 8 40 6 40 5 80 3 72-3 32-3 32-5 71-14 33-3 40 0 104 5 56 1 48-2 120-6 48-5 32-5 24-7 18-10-11-8-23-3-104-10-120-6-80-11-48-4-80-2-88 4"/><path style="--d:.64;--o:549px 93px" d="M552 56l-144 5-208 16-28 3-20 6-6 2-3 8 7 8 10 5 16 6 24 7 56 8 64 3 40 0 40-3 40-6 54-12 58-5 64-1 112 5 48 1 48-1 94-7 41-8 1-8-51-8-53-4-96-6-64-9-40-4-48-2-56 1"/><path style="--d:.32;--o:494px 92px" d="M352 72l-109 8-51 8-6 8 12 8 18 7 44 9 44 4 48 1 40-3 24-3 40-9 32-6 64-6 104-1 128 3 32-1 33-3-4-8-21-2-72-3-72-12-56-6-56-1-112 2-56 2-48 4"/><path style="--d:.25" d="M328 80l-85 8-12 8 15 8 32 8 34 4 32 1 48-3 48-10 72-11 58-5 18-8-52-6-64-1-64 1z"/><path d="M320 88l-16 3-18 5 22 8 20 2 24 1 32-2 58-9 37-8-7-4-8-2-32-2-32 2z"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="22" data-rings="0"><circle class="ct-spot" cx="520" cy="80" r="7"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="53" data-rings="2"><circle class="ct-spot" cx="680" cy="80" r="9"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="55" data-rings="2"><circle class="ct-spot" cx="840" cy="96" r="9"/></g><g class="ct-rise ct-t6" data-label="¶6" data-words="18" data-rings="0"><circle class="ct-spot" cx="1000" cy="88" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-2" data-step="2"><span>Previous · 3 of 15</span><b>3. Warehouse to transport: ship confirmation and loading</b></a><a class="snext" href="#read-sce10-4" data-step="4"><span>Next · 5 of 15</span><b>5. Back to the ERP and finance</b></a></nav></section><section class="sec" data-step="4"><h2 id="read-sce10-4" class="band"><span class="bn" aria-hidden="true">05</span><span class="bh"><span class="bt">5. Back to the ERP and finance</span></span></h2>
+<p>Every seam above has a fourth party: the system that keeps the money. Bartholdi and Hackman: "receipt drives the paying of bills to suppliers upstream" and shipping drives the invoices to the consignee (§4.1, p. 34) [practice]; the WMS may pass summary data to a larger supply chain system (ch. 4 introduction, p. 33) [practice]. Four handoffs follow, as this unit's reading of the filed units:</p>
+<ul>
+<li><strong>Shipment to customer invoice.</strong> The ship confirmation of section 3 tells the ERP to bill (Bartholdi and Hackman §4.1) [practice]. If quantities shipped differ from quantities ordered and only one system knows, the invoice is wrong (this unit's inference from the 945's stated purpose).</li>
+<li><strong>Carrier invoice to payment.</strong> The carrier's bill is checked against the agreed charge and paid (SCE7 §6, steps 9 to 11). For the European Union, the late-payment directive requires Member States to ensure that, where the contract fixes no date, a creditor is entitled to interest for late payment after 30 calendar days from the debtor's receipt of the invoice, and that a contractual period between businesses does not exceed 60 calendar days unless expressly agreed and not grossly unfair to the creditor (Directive 2011/7/EU, Art. 3(3)(b)(i) and 3(5), as adopted, <a target="_blank" rel="noopener" href="https://www.legislation.gov.uk/eudr/2011/7/article/3/adopted">legislation.gov.uk copy</a>) [independent, for what the text says]; this copy is the text as adopted in 2011. No act amending Article 3 was found by search on 28 November 2026, and the regulation the Commission proposed in 2023 to replace the directive (COM(2023) 533) had not been adopted: EUR-Lex lists the procedure as ongoing (<a target="_blank" rel="noopener" href="https://eur-lex.europa.eu/procedure/EN/2023_323">EUR-Lex, procedure 2023/0323/COD</a>, read 28 November 2026) [practice: the EU's procedure record, not a legal text]. The Commission's 2027 work programme, adopted 4 November 2026, has an Annex III of pending proposals it intends to withdraw within six months (<a target="_blank" rel="noopener" href="https://commission.europa.eu/strategy-and-policy/strategy-documents/commission-work-programme/commission-work-programme-2027_en?prefLang=bg">European Commission, 2027 Commission work programme</a>, read 28 November 2026) [practice]. The annex was not opened, so whether this proposal is on it is not stated. No consolidated EU text was opened, so a later amendment is not ruled out. SCE7 §6 gives the US rule. Whether either applies to a given carrier contract is a question for the finance team and its legal advisers. No independent study of freight invoice error rates was found (search of 28 Nov 2026 returned vendors' blogs and trade press only).</li>
+<li><strong>Loss and damage to a claim.</strong> Under the CMR as amended by its Protocol of 5 July 1978, compensation "shall not, however, exceed 8.33 units of account per kilogram of gross weight short", the unit of account being the Special Drawing Right; the Protocol entered into force on 28 December 1980 (<a target="_blank" rel="noopener" href="https://treaties.un.org/doc/Publication/UNTS/Volume%201208/volume-1208-I-19487-English.pdf">UN Treaty Series vol. 1208, No. 19487</a>) [independent]. It applies between the states party to the Protocol, which this unit did not check; SCE7 §6 gave only the 1956 text's gold-franc cap (flag F66). Whether a claim lies is a question for the claims handler and counsel.</li>
+<li><strong>Return to refund.</strong> SCE9 left open which system triggers the refund (its deliverable A, row 12); this unit leaves it open too, as no source opened places it.</li>
+</ul>
+<p><strong>Who holds the money record.</strong> SCE1 kept the ERP's scope a working definition because no definition could be opened (flag F7). Gartner's ERP glossary page refused the fetch again on 28 November 2026. The research gives a reason why a single definition is hard to cite: Klaus, Rosemann and Gable, from a historical analysis, a meta-analysis of the information systems literature and a survey of academic experts, conclude that a broadly agreed definition of ERP is unlikely at that stage (<a target="_blank" rel="noopener" href="https://ideas.repec.org/a/spr/infosf/v2y2000i2d10.1023_a1026543906354.html">Klaus, Rosemann &amp; Gable, 2000, <em>Information Systems Frontiers</em> 2(2), 141–162, abstract read at a bibliographic index</a>) [independent, abstract only]. The course keeps its working line, the company's financial and master-data system, now with that finding beside it (notes).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.429"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="66" data-rings="3"><path d="M304 72l-50 8-14 8 18 8 6 1 32 3 88 4 40 1 40-2 16-4 10-3-12-8-86-15-40-3z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="120" data-rings="5" style="--o:840px 96px"><path style="--d:1;--o:633px 93px" d="M768 47l-32 5-24 5-22 7-35 16-23 5-24 2-24 1-32-3-152-24-64-3-64 3-56 7-17 4-26 8-9 8 9 8 27 6 24 3 40 3 88 4 64 4 100 4 28 3 72 13 48 5 48 3 48 0 104-3 104-10 48-7 32-6 20-6 14-8 4-8-4-8-18-12-24-10-32-9-40-7-48-5-48-2-56 0-48 4"/><path style="--d:.75" d="M824 56l-48 3-40 8-13 5-15 8-19 8-66 16-6 8 18 8 43 8 42 4 56 1 64-2 72-5 56-7 36-7 20-8 6-8-6-8-8-5-24-11-32-8-40-6-48-3z"/><path style="--d:.5" d="M768 72l-16 5-22 11-30 8-22 8 0 8 18 5 24 4 40 3 40 1 40-2 48-3 48-6 24-4 20-6 7-8-7-8-15-8-28-8-33-5-32-2-40 0-32 2z"/><path style="--d:.25" d="M784 79l-19 9-25 8-17 8 14 8 23 3 56 2 70-5 49-8 11-8-8-8-18-7-32-6-24-1-32-1-24 2z"/><path d="M808 87l-22 9-5 8 11 2 32 1 48-3 26-8-13-8-21-3-32-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-3" data-step="3"><span>Previous · 4 of 15</span><b>4. Transport to the customer: status</b></a><a class="snext" href="#read-sce10-5" data-step="5"><span>Next · 6 of 15</span><b>6. The data every system shares</b></a></nav></section><section class="sec" data-step="5"><h2 id="read-sce10-5" class="band"><span class="bn" aria-hidden="true">06</span><span class="bh"><span class="bt">6. The data every system shares</span></span></h2>
+<p>Five kinds of fact are held in every system at once: items, locations, customers, carriers and units of measure. When two copies differ, the error shows later, where someone acts on the wrong copy (this unit's inference).</p>
+<p><strong>The identifiers.</strong> GS1 publishes the keys most often used for them. On GS1's reference card: the <strong>GTIN</strong> (Global Trade Item Number) identifies products "at any packaging level"; the <strong>GLN</strong> (Global Location Number) identifies physical locations such as Ship From, Ship To and Read Point; the <strong>SSCC</strong> identifies logistic units such as unit loads on pallets or roll cages, and parcels; the <strong>GSIN</strong> (Global Shipment Identification Number) identifies a shipment of one or more logistic units intended to be delivered together; the <strong>GINC</strong> (Global Identification Number for Consignment) identifies a consignment of one or more logistic units, potentially of different shipments (<a target="_blank" rel="noopener" href="https://www.gs1.org/sites/default/files/docs/idkeys/gs1_id_keys_reference_card.pdf.pdf">GS1, "GS1 Identification Keys at Your Finger Tips", undated</a>) [independent]. GS1's GSIN page adds that a seller and shipper of goods assigns the GSIN (<a target="_blank" rel="noopener" href="https://www.gs1.org/gsin">GS1, GSIN</a>) [independent]. GS1's GINC page refused the fetch.</p>
+<p><strong>Keeping copies the same.</strong> GS1's Global Data Synchronisation Network (GDSN) exists so that trading partners hold the same product data: trading partners join certified data pools linked to a global registry, and "Everyone has access to the same continuously refreshed data" (<a target="_blank" rel="noopener" href="https://www.gs1.org/how-gdsn-works">GS1, "GS1's GDSN Keeps Trading Partners' Product Data in Sync", undated</a>) [practice: a standards body's description of its own service, as section 9 grades X12's]. No figure for how often copies differ was opened.</p>
+<p><strong>Units of measure.</strong> UN/CEFACT's Recommendation No. 20 sets one list of codes for units of measure because trade needs "the greatest possible clarity in the use of units of measure" (<a target="_blank" rel="noopener" href="https://digitallibrary.un.org/record/431844/files/%5BE_ECE_%5DTRADE_CEFACT_2001_20-EN.pdf">UN/CEFACT, Recommendation No. 20, TRADE/CEFACT/2001/20, 15 Jan 2001</a>) [independent]. The codes themselves sit in annexes this unit did not read.</p>
+<p>What goes wrong when each differs, as this unit's inference from SCE2 to SCE9 (no source opened measures any of them):</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Shared fact</th>
+<th>Typical owner</th>
+<th>Copies</th>
+<th>When the copies differ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Item: identifier, description</td>
+<td>ERP (working)</td>
+<td>Order system, warehouse system, carrier portals</td>
+<td>An item sold on the web that the warehouse cannot find by its number; a GTIN on the box the warehouse does not know</td>
+</tr>
+<tr>
+<td>Item: pack and dimensions</td>
+<td>ERP or warehouse system</td>
+<td>Transport system, carrier portals</td>
+<td>A carton too small at the pack station; a parcel billed at a size the shipper did not expect (this unit's inference; SCE2 §7 lists pack and dimensions in the item master the warehouse system needs)</td>
+</tr>
+<tr>
+<td>Unit of measure</td>
+<td>ERP</td>
+<td>Every system</td>
+<td>An order for 12 read as 12 cases, or 12 cases picked as 12 units (SCE2 §2's pallet, case and each)</td>
+</tr>
+<tr>
+<td>Location and address</td>
+<td>ERP or order system</td>
+<td>Warehouse, transport, carrier</td>
+<td>Goods addressed to a store's old address; a dock door that differs between the yard plan and the warehouse</td>
+</tr>
+<tr>
+<td>Customer</td>
+<td>ERP or order system</td>
+<td>Order system, transport, carrier</td>
+<td>A delivery window or a refusal rule known to the dispatcher and not to the planner</td>
+</tr>
+<tr>
+<td>Carrier and service</td>
+<td>Transport system or ERP</td>
+<td>Warehouse system, carrier portals</td>
+<td>A label printed for a service the carrier does not run on that lane</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.786"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="37" data-rings="1"><circle class="ct-spot" cx="216" cy="88" r="8"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="137" data-rings="5"><path style="--d:.92;--o:556px 90px" d="M384 40l-56 4-112 19-72 7-16 3-20 7 3 8 15 8 8 8 10 7 22 9 18 5 40 7 80 8 56 3 72 1 56 0 48-3 64-7 58-14 46-7 144-10 96-2 48-3 18-2 4-8-78-20-32-5-40-4-80-4-112-2-112-10-72-4-56-1-48 2"/><path style="--d:.71;--o:531px 89px" d="M344 55l-102 17-57 8-17 8 4 8 7 8 19 8 18 4 56 9 88 7 88 1 72-3 48-6 50-12 30-5 32-3 96-4 104-11 4-1 9-8-21-8-56-7-48-2-112-2-96-9-40-2-48-1-48 0-40 2-40 4"/><path style="--d:.46;--o:523px 89px" d="M352 63l-40 6-80 16-13 3-8 8 9 8 36 9 56 7 72 5 72 0 56-3 40-6 48-12 24-5 24-2 80-2 40-3 34-4 24-8-26-6-16-2-136-4-88-8-48-3-48-1-40 1-40 3-32 3"/><path style="--d:.35;--o:466px 91px" d="M432 64l-48 3-48 7-32 6-32 8-15 8 8 8 15 3 26 5 46 4 80 3 64-3 40-7 64-17 16-2 33-2 44-8-61-3-48-7-63-6-41-1-48 1"/><path style="--d:.18;--o:424px 95px" d="M416 72l-66 8-28 8-17 8 13 8 34 4 32 2 64 1 32-2 24-3 12-2 41-16 4-8-33-7-24-2-40-1-48 2"/><path d="M424 80l-24 3-28 5-10 8 30 6 32 2 32-2 31-6 12-8-11-8-32-1z"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="77" data-rings="3"><circle class="ct-spot" cx="600" cy="80" r="10"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="52" data-rings="2"><circle class="ct-spot" cx="792" cy="80" r="9"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="21" data-rings="0"><circle class="ct-spot" cx="984" cy="96" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-4" data-step="4"><span>Previous · 5 of 15</span><b>5. Back to the ERP and finance</b></a><a class="snext" href="#read-sce10-6" data-step="6"><span>Next · 7 of 15</span><b>7. Which system holds the truth, and where the sources disagree</b></a></nav></section><section class="sec" data-step="6"><h2 id="read-sce10-6" class="band"><span class="bn" aria-hidden="true">07</span><span class="bh"><span class="bt">7. Which system holds the truth, and where the sources disagree</span></span></h2>
+<p>SCE1 §3 drew the map-level answer; SCE6, SCE8 and SCE9 each asked this unit a question about a line on the boundary. The sources opened here give partial answers, and they do not all agree.</p>
+<p><strong>What the textbook says.</strong> Bartholdi and Hackman give the warehouse system the item-by-item record and a summary upward to a larger supply chain system (ch. 4 introduction, p. 33) [practice]; a WMS "may even talk to other specialized software such as Yard Management Systems (YMS)" (p. 33) [practice]; and on who sells which: warehouse systems are "extending their functionality out along the supply chain" and increasingly compete with enterprise systems; "WMS's have an advantage in that they are already connected to financial systems", while "The enterprise systems have advantages where they can grow out of a manufacturing enterprise" (§4.5, p. 36) [practice].</p>
+<p><strong>What the analysts say.</strong> Gartner's DOM definition gives the order system enterprise inventory for available-to-promise and order status across the supply chain (DOM page, July 2025) [analyst]; its WMS definition gives the warehouse system receive, put away, store, count, pick, pack and ship (WMS page, May 2026) [analyst]. The two claim the same stock, at different grain: the order system across locations, the warehouse system within one (this unit's reading).</p>
+<p><strong>What the vendors' documentation says.</strong> This unit opened none. Saying what a real vendor's documentation makes the system of record for each fact would map that vendor's product line, which the course does not do (brief, Vendors). The case register's fictional vendors stand in: Varnby Software (fictional) sells warehouse and transport as modules of its ERP and says "No integration to build"; Halvern Systems (fictional) sells order, warehouse and transport systems and says "One vendor for execution"; Kestrow (fictional) sells one warehouse system and says "Live in weeks" (case register). Each line is evidence of what a vendor claims. To read a real vendor's own placement, open its integration or data-model documentation and fill deliverable C's template from it, dated and graded vendor-reported.</p>
+<p><strong>Where they disagree, line by line.</strong> Five facts are claimed by two systems in the sources or the filed units:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Claimed by</th>
+<th>Source</th>
+<th>This course's placement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stock available to sell</td>
+<td>Order system (enterprise inventory) and warehouse system (stock locator)</td>
+<td>Gartner DOM [analyst]; Gartner WMS [analyst]; SCE6 W9</td>
+<td>Warehouse system owns stock at a location; the order system owns the sellable figure it computes from those records (course's)</td>
+</tr>
+<tr>
+<td>Dock appointment</td>
+<td>Warehouse capability list W2 and transport list T7</td>
+<td>Bartholdi and Hackman, basic feature, as SCE6 §6 reads it [practice]; Gartner 2022 WMS, "dock scheduling" (SCE6) [analyst]; Gartner 2026 TMS, common feature (SCE8) [analyst]</td>
+<td>W2 holds appointments at the operation's own doors; T7 holds the request for one at another party's dock (course's; flag F98)</td>
+</tr>
+<tr>
+<td>Parcel label and manifest</td>
+<td>W22 and T8</td>
+<td>B&amp;H high-end and advanced features (SCE6 §6) [practice]; Gartner 2026 TMS, common (SCE8) [analyst]</td>
+<td>W22 holds the label and manifest printed at the pack station; T8 holds the choice of parcel carrier and service (course's; flag F98)</td>
+</tr>
+<tr>
+<td>Carrier payment</td>
+<td>Transport system and ERP</td>
+<td>Gartner's TMS glossary, "manage freight bills and payments" (SCE8 §1) [analyst]; SCE1's working placement in the ERP</td>
+<td>The transport system owns the approved charge; the ERP owns the payment (course's, a working placement)</td>
+</tr>
+<tr>
+<td>Returns</td>
+<td>Order system (authorisation) and warehouse system (receipt and grade)</td>
+<td>Halvern Order lists Returns (register); B&amp;H high-end "Returns" (SCE6 W14) [practice]</td>
+<td>Order system owns the authorisation; the warehouse system owns receipt, grade and stock; which system triggers the refund is open (section 5) (course's)</td>
+</tr>
+</tbody>
+</table></div>
+<p>The rule behind the course's placements, which no source opened states: the system that records the physical event owns the fact of the event; the system that decides from it owns the decision. Where a source places a capability in two lists, each list keeps the half that matches that rule, and the other cross-refers (notes, F98). The rule is this course's, offered as a working rule; it decides nothing about how any real product is built.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.143"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="35" data-rings="1"><circle class="ct-spot" cx="200" cy="88" r="8"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="102" data-rings="4"><path style="--d:1;--o:609px 88px" d="M360 48l-40 1-32 4-80 17-56 7-16 3-7 8 23 7 24 5 15 4 18 8 23 14 16 7 32 7 32 2 32 0 24-1 82-13 22-2 152-7 104 2 120-5 40 2 72 6 48 0 24-3 24-6 39-19 23-8 13-8 3-8-9-8-5-2-16-4-24-3-48-1-88 8-40 1-24-2-64-15-48-5-32 0-80 2-72-3-48 0-112 7-64 1"/><circle class="ct-spot" cx="360" cy="96" r="11"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="70" data-rings="3"><circle class="ct-spot" cx="520" cy="80" r="10"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="123" data-rings="5"><path style="--d:.64;--o:643px 87px" d="M448 55l-104 5-32 3-24 4-23 5-26 8-16 8 6 8 20 16 15 8 24 6 32 4 24 0 24-1 64-10 32-3 160-7 104 2 96-6 48-1 32 1 64 7 32 0 24-3 16-4 16-9 22-8 11-8-7-8-10-3-16-3-24-1-40 3-96 12-16 0-24-5-40-14-19-5-21-4-32-2-88 2-72-3-40-1-40 2-56 5"/><path style="--d:.43;--o:529px 86px" d="M520 56l-96 9-88 5-24 3-16 4-8 3-6 8-1 8-5 8 8 8 4 1 16 5 16 2 40 0 72-10 32-2 80-2 88-4 64 2 32 0 64-8 27-8-4-8-13-8-20-8-30-5-32-2-64 1-80-4-56 2"/><path style="--d:.15;--o:522px 86px" d="M504 64l-80 11-72 3-16 2-8 2-13 6-1 8-3 8 9 4 16 2 32 0 56-8 24-2 96 0 96-4 48 2 24-1 24-3 25-6 9-8-7-8-3-1-24-6-16-2-56 1-96-5-32 2-32 3"/><path d="M504 71l-35 9 7 8 28 4 24 1 32 0 64-4 72 0 15-1 16-8-7-5-8-3-56-2-72-4-40 0-40 5"/><circle class="ct-spot" cx="680" cy="80" r="12"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="20" data-rings="0"><circle class="ct-spot" cx="840" cy="96" r="7"/></g><g class="ct-rise ct-t6" data-label="¶6" data-words="77" data-rings="3"><path d="M976 80l-27 8 9 8 18 3 16 1 16-1 13-3 19-8 2-8-10-2-16-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-5" data-step="5"><span>Previous · 6 of 15</span><b>6. The data every system shares</b></a><a class="snext" href="#read-sce10-7" data-step="7"><span>Next · 8 of 15</span><b>8. One order in three systems: Corvane (fictional)</b></a></nav></section><section class="sec" data-step="7"><h2 id="read-sce10-7" class="band"><span class="bn" aria-hidden="true">08</span><span class="bh"><span class="bt">8. One order in three systems: Corvane (fictional)</span></span></h2>
+<p>SCE9's deliverable A followed a Corvane web order shipped from a store. Here the centre fills it, so the join of section 1 applies. Assumed for this worked example, and listed in the notes: a two-item web order to a home address, both items held by the centre; one item is short at the pick face; the parcel carrier collects at the centre, booked in its own portal (case register: carriers are booked in each carrier's portal). The status words are this unit's working terms; no source opened gives standard status names for any of the three systems.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Moment</th>
+<th>Order system</th>
+<th>Warehouse system</th>
+<th>Carrier portal</th>
+<th>What Jonas sees if the customer calls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Order accepted, centre chosen (SCE9 rows 1 to 4)</td>
+<td>Sourced to centre</td>
+<td>Nothing yet</td>
+<td>Nothing</td>
+<td>Order placed</td>
+</tr>
+<tr>
+<td>2 Released (SCE3 C row 1)</td>
+<td>Released</td>
+<td>Released, two lines</td>
+<td>Nothing</td>
+<td>Being prepared</td>
+</tr>
+<tr>
+<td>3 Short pick (SCE3 C row 2)</td>
+<td>Released, two lines</td>
+<td>One line picked, one short</td>
+<td>Nothing</td>
+<td>Being prepared; the order system does not yet know</td>
+</tr>
+<tr>
+<td>4 Packed, label printed (SCE3 C rows 5, 6)</td>
+<td>Released (or partly shipped, if the short was passed back)</td>
+<td>Packed, one unit</td>
+<td>Label created</td>
+<td>Two answers: the portal says a label exists, the order system says nothing has shipped</td>
+</tr>
+<tr>
+<td>5 Collected (SCE3 C row 8; SCE7 step 6)</td>
+<td>Shipped, if the warehouse's ship confirmation arrived</td>
+<td>Shipped</td>
+<td>Collected</td>
+<td>Shipped, but for which item</td>
+</tr>
+<tr>
+<td>6 In transit (SCE7 step 7)</td>
+<td>Shipped</td>
+<td>Closed</td>
+<td>In transit</td>
+<td>Only the portal knows where it is</td>
+</tr>
+<tr>
+<td>7 Delivered (SCE7 step 8)</td>
+<td>Shipped, or delivered if events flow back</td>
+<td>Closed</td>
+<td>Delivered</td>
+<td>One item delivered; the second item's fate depends on what the order system did at moment 3</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="viz viz-matrix viz-fit"><p class="viz-title">One Corvane web order, three systems (fictional)</p><div class="viz-scroll" style="--stickn:98px;--stick:98px" data-altn=""><svg viewBox="0 0 424 264" width="424" height="264" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One Corvane web order, three systems (fictional)"><text class="viz-colhead" x="144.5" y="15.6" text-anchor="middle">Order system</text><text class="viz-colhead" x="250.5" y="15.6" text-anchor="middle">Warehouse system</text><text class="viz-colhead" x="363.0" y="15.6" text-anchor="middle">Carrier portal</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">1 Sourced</text><g data-box=""><rect class="viz-band viz-t3" x="100.0" y="34.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="51.8" text-anchor="middle">sourced</text></g><g data-box=""><rect class="viz-track" x="193.0" y="34.0" width="115.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="312.0" y="34.0" width="102.0" height="28.0"/></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">2 Released</text><g data-box=""><rect class="viz-band viz-t3" x="100.0" y="66.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="83.8" text-anchor="middle">released</text></g><g data-box=""><rect class="viz-band viz-t3" x="193.0" y="66.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="83.8" text-anchor="middle">released</text></g><g data-box=""><rect class="viz-track" x="312.0" y="66.0" width="102.0" height="28.0"/></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">3 Short pick</text><g data-box=""><rect class="viz-band viz-t5" x="100.0" y="98.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="115.8" text-anchor="middle">released</text></g><g data-box=""><rect class="viz-band viz-t5" x="193.0" y="98.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="115.8" text-anchor="middle">one short</text></g><g data-box=""><rect class="viz-track" x="312.0" y="98.0" width="102.0" height="28.0"/></g><text class="viz-label" x="8.0" y="148.3" text-anchor="start">4 Packed</text><g data-box=""><rect class="viz-band viz-t5" x="100.0" y="130.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="147.8" text-anchor="middle">released</text></g><g data-box=""><rect class="viz-band viz-t5" x="193.0" y="130.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="147.8" text-anchor="middle">packed</text></g><g data-box=""><rect class="viz-band viz-t5" x="312.0" y="130.0" width="102.0" height="28.0"/><text class="viz-mark" x="363.0" y="147.8" text-anchor="middle">label</text></g><text class="viz-label" x="8.0" y="180.3" text-anchor="start">5 Collected</text><g data-box=""><rect class="viz-band viz-t2" x="100.0" y="162.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="179.8" text-anchor="middle">shipped?</text></g><g data-box=""><rect class="viz-band viz-t2" x="193.0" y="162.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="179.8" text-anchor="middle">shipped</text></g><g data-box=""><rect class="viz-band viz-t2" x="312.0" y="162.0" width="102.0" height="28.0"/><text class="viz-mark" x="363.0" y="179.8" text-anchor="middle">collected</text></g><text class="viz-label" x="8.0" y="212.3" text-anchor="start">6 In transit</text><g data-box=""><rect class="viz-band viz-t2" x="100.0" y="194.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="211.8" text-anchor="middle">shipped</text></g><g data-box=""><rect class="viz-band viz-t2" x="193.0" y="194.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="211.8" text-anchor="middle">closed</text></g><g data-box=""><rect class="viz-band viz-t2" x="312.0" y="194.0" width="102.0" height="28.0"/><text class="viz-mark" x="363.0" y="211.8" text-anchor="middle">in transit</text></g><text class="viz-label" x="8.0" y="244.3" text-anchor="start">7 Delivered</text><g data-box=""><rect class="viz-band viz-t2" x="100.0" y="226.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="243.8" text-anchor="middle">delivered?</text></g><g data-box=""><rect class="viz-band viz-t2" x="193.0" y="226.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="243.8" text-anchor="middle">closed</text></g><g data-box=""><rect class="viz-band viz-t2" x="312.0" y="226.0" width="102.0" height="28.0"/><text class="viz-mark" x="363.0" y="243.8" text-anchor="middle">delivered</text></g></svg><svg class="viz-altn" viewBox="0 0 424 264" width="424" height="264" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="One Corvane web order, three systems (fictional)"><text class="viz-colhead" x="144.5" y="15.6" text-anchor="middle">Order system</text><text class="viz-colhead" x="250.5" y="15.6" text-anchor="middle">Warehouse system</text><text class="viz-colhead" x="363.0" y="15.6" text-anchor="middle">Carrier portal</text><text class="viz-label" x="8.0" y="52.3" text-anchor="start">1 Sourced</text><g data-box=""><rect class="viz-band viz-t3" x="100.0" y="34.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="51.8" text-anchor="middle">sourced</text></g><g data-box=""><rect class="viz-track" x="193.0" y="34.0" width="115.0" height="28.0"/></g><g data-box=""><rect class="viz-track" x="312.0" y="34.0" width="102.0" height="28.0"/></g><text class="viz-label" x="8.0" y="84.3" text-anchor="start">2 Released</text><g data-box=""><rect class="viz-band viz-t3" x="100.0" y="66.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="83.8" text-anchor="middle">released</text></g><g data-box=""><rect class="viz-band viz-t3" x="193.0" y="66.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="83.8" text-anchor="middle">released</text></g><g data-box=""><rect class="viz-track" x="312.0" y="66.0" width="102.0" height="28.0"/></g><text class="viz-label" x="8.0" y="116.3" text-anchor="start">3 Short pick</text><g data-box=""><rect class="viz-band viz-t5" x="100.0" y="98.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="115.8" text-anchor="middle">released</text></g><g data-box=""><rect class="viz-band viz-t5" x="193.0" y="98.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="115.8" text-anchor="middle">one short</text></g><g data-box=""><rect class="viz-track" x="312.0" y="98.0" width="102.0" height="28.0"/></g><text class="viz-label" x="8.0" y="148.3" text-anchor="start">4 Packed</text><g data-box=""><rect class="viz-band viz-t5" x="100.0" y="130.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="147.8" text-anchor="middle">released</text></g><g data-box=""><rect class="viz-band viz-t5" x="193.0" y="130.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="147.8" text-anchor="middle">packed</text></g><g data-box=""><rect class="viz-band viz-t5" x="312.0" y="130.0" width="102.0" height="28.0"/><text class="viz-mark" x="363.0" y="147.8" text-anchor="middle">label</text></g><text class="viz-label" x="8.0" y="180.3" text-anchor="start">5 Collected</text><g data-box=""><rect class="viz-band viz-t2" x="100.0" y="162.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="179.8" text-anchor="middle">shipped?</text></g><g data-box=""><rect class="viz-band viz-t2" x="193.0" y="162.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="179.8" text-anchor="middle">shipped</text></g><g data-box=""><rect class="viz-band viz-t2" x="312.0" y="162.0" width="102.0" height="28.0"/><text class="viz-mark" x="363.0" y="179.8" text-anchor="middle">collected</text></g><text class="viz-label" x="8.0" y="212.3" text-anchor="start">6 In transit</text><g data-box=""><rect class="viz-band viz-t2" x="100.0" y="194.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="211.8" text-anchor="middle">shipped</text></g><g data-box=""><rect class="viz-band viz-t2" x="193.0" y="194.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="211.8" text-anchor="middle">closed</text></g><g data-box=""><rect class="viz-band viz-t2" x="312.0" y="194.0" width="102.0" height="28.0"/><text class="viz-mark" x="363.0" y="211.8" text-anchor="middle">in transit</text></g><text class="viz-label" x="8.0" y="244.3" text-anchor="start">7 Delivered</text><g data-box=""><rect class="viz-band viz-t2" x="100.0" y="226.0" width="89.0" height="28.0"/><text class="viz-mark" x="144.5" y="243.8" text-anchor="middle">delivered?</text></g><g data-box=""><rect class="viz-band viz-t2" x="193.0" y="226.0" width="115.0" height="28.0"/><text class="viz-mark" x="250.5" y="243.8" text-anchor="middle">closed</text></g><g data-box=""><rect class="viz-band viz-t2" x="312.0" y="226.0" width="102.0" height="28.0"/><text class="viz-mark" x="363.0" y="243.8" text-anchor="middle">delivered</text></g></svg><div class="viz-stickn" aria-hidden="true"><svg viewBox="0 0 98 264" width="98" height="264" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="98" height="258"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">1 Sourced</text><text class="viz-label" x="8.0" y="84.3" text-anchor="start">2 Released</text><text class="viz-label" x="8.0" y="116.3" text-anchor="start">3 Short pick</text><text class="viz-label" x="8.0" y="148.3" text-anchor="start">4 Packed</text><text class="viz-label" x="8.0" y="180.3" text-anchor="start">5 Collected</text><text class="viz-label" x="8.0" y="212.3" text-anchor="start">6 In transit</text><text class="viz-label" x="8.0" y="244.3" text-anchor="start">7 Delivered</text></svg></div><div class="viz-stick" aria-hidden="true"><svg viewBox="0 0 98 264" width="98" height="264" xmlns="http://www.w3.org/2000/svg"><rect class="viz-lblbg" x="0" y="0" width="98" height="258"/><text class="viz-label" x="8.0" y="52.3" text-anchor="start">1 Sourced</text><text class="viz-label" x="8.0" y="84.3" text-anchor="start">2 Released</text><text class="viz-label" x="8.0" y="116.3" text-anchor="start">3 Short pick</text><text class="viz-label" x="8.0" y="148.3" text-anchor="start">4 Packed</text><text class="viz-label" x="8.0" y="180.3" text-anchor="start">5 Collected</text><text class="viz-label" x="8.0" y="212.3" text-anchor="start">6 In transit</text><text class="viz-label" x="8.0" y="244.3" text-anchor="start">7 Delivered</text></svg></div></div><svg class="viz-key" viewBox="0 0 328 116" width="328" height="116" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="key"><g transform="translate(0,-262.0)"><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="270.0" width="67.4" height="24"/><text class="viz-mark" x="41.7" y="285.8" text-anchor="middle">shipped?</text></g><text class="viz-attr" x="83.4" y="279.0" text-anchor="start">only if the warehouse&#x27;s ship confirmation</text><text class="viz-attr" x="83.4" y="293.0" text-anchor="start">reached the order system</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="306.0" width="80.3" height="24"/><text class="viz-mark" x="48.1" y="321.8" text-anchor="middle">delivered?</text></g><text class="viz-attr" x="96.3" y="315.0" text-anchor="start">only if the carrier&#x27;s events reached the</text><text class="viz-attr" x="96.3" y="329.0" text-anchor="start">order system; otherwise still shipped</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="342.0" width="73.8" height="24"/><text class="viz-mark" x="44.9" y="357.8" text-anchor="middle">one short</text></g><text class="viz-attr" x="89.8" y="351.0" text-anchor="start">known to the warehouse system before</text><text class="viz-attr" x="89.8" y="365.0" text-anchor="start">any other system</text></g></svg><svg class="viz-keyn" viewBox="0 0 222 228" width="222" height="228" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="key"><g transform="translate(0,-262.0)"><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="270.0" width="67.4" height="24"/><text class="viz-mark" x="41.7" y="285.8" text-anchor="middle">shipped?</text></g><text class="viz-attr" x="83.4" y="279.0" text-anchor="start">only if the</text><text class="viz-attr" x="83.4" y="293.0" text-anchor="start">warehouse&#x27;s ship</text><text class="viz-attr" x="83.4" y="307.0" text-anchor="start">confirmation</text><text class="viz-attr" x="83.4" y="321.0" text-anchor="start">reached the order</text><text class="viz-attr" x="83.4" y="335.0" text-anchor="start">system</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="348.0" width="80.3" height="24"/><text class="viz-mark" x="48.1" y="363.8" text-anchor="middle">delivered?</text></g><text class="viz-attr" x="96.3" y="357.0" text-anchor="start">only if the carrier&#x27;s</text><text class="viz-attr" x="96.3" y="371.0" text-anchor="start">events reached</text><text class="viz-attr" x="96.3" y="385.0" text-anchor="start">the order system;</text><text class="viz-attr" x="96.3" y="399.0" text-anchor="start">otherwise still</text><text class="viz-attr" x="96.3" y="413.0" text-anchor="start">shipped</text><g data-box=""><rect class="viz-band viz-t4" x="8.0" y="426.0" width="73.8" height="24"/><text class="viz-mark" x="44.9" y="441.8" text-anchor="middle">one short</text></g><text class="viz-attr" x="89.8" y="435.0" text-anchor="start">known to the</text><text class="viz-attr" x="89.8" y="449.0" text-anchor="start">warehouse system</text><text class="viz-attr" x="89.8" y="463.0" text-anchor="start">before any other</text><text class="viz-attr" x="89.8" y="477.0" text-anchor="start">system</text></g></svg><figcaption>The statuses of section 8 of this unit for one Corvane web order filled by the centre, at seven moments. Case register (Corvane, fictional) and this unit's assumptions; moments joined to SCE3 deliverable C and SCE7 section 6; status words are this unit's working terms, not a source's.</figcaption></figure>
+<p>What the table shows, as this unit's reading: from moment 3 to moment 7 the three systems never agree, and each is right about its own event. The short line is known only to the warehouse system until a message carries it to the order system, which must then re-source it, cancel it or tell the customer. SCE4 §9 traced the same chain from the inventory side.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.5"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="98" data-rings="5" style="--o:360px 88px"><path style="--d:1;--o:561px 91px" d="M216 48l-72 6-32 4-26 6-20 8-4 8 9 8 26 8 31 6 89 10 119 19 48 4 40 3 40 0 72-4 48-7 29-7 27-8 16-2 24 2 48 14 48 8 64 3 64-1 48-6 40-9 24-11 10-6 5-8-5-8-2-1-18-7-22-5-56-7-88-8-48-1-48 0-112 6-24 1-32-3-88-12-72-5-96-2-104 4"/><path style="--d:.75" d="M272 56l-40 2-40 4-24 4-27 6-11 8 8 8 38 10 96 12 80 12 64 4 48 0 48-5 24-4 16-5 11-8 1-8-7-8-15-8-20-8-42-9-40-5-56-3-56-1z"/><path style="--d:.5" d="M280 64l-40 3-36 5-21 8 5 8 33 8 67 8 56 9 32 3 32 2 56-3 25-3 15-5 8-3 4-8-9-8-19-10-18-6-30-5-32-3-40-2z"/><path style="--d:.25" d="M280 72l-24 3-21 5 0 8 41 8 68 10 40 3 40 0 35-5 14-8-8-8-15-8-37-8-61-3z"/><path d="M312 80l-8 1-12 7 49 8 19 2 24 1 33-3 0-8-22-8-35-2z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="67" data-rings="3" style="--o:840px 96px"><path style="--d:.5" d="M744 72l-24 3-26 5-6 8 20 8 30 8 22 11 16 4 24 3 24 2 32 1 32-2 26-3 34-8 17-8 7-8-8-8-12-3-24-5-32-4-80-6-40 0z"/><path d="M760 86l-8 2 12 8 36 13 24 3 32 1 24-2 29-7 10-8-17-8-62-6-48-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-6" data-step="6"><span>Previous · 7 of 15</span><b>7. Which system holds the truth, and where the sources disagree</b></a><a class="snext" href="#read-sce10-8" data-step="8"><span>Next · 9 of 15</span><b>9. How integration is done, at the level a product person needs</b></a></nav></section><section class="sec" data-step="8"><h2 id="read-sce10-8" class="band"><span class="bn" aria-hidden="true">09</span><span class="bh"><span class="bt">9. How integration is done, at the level a product person needs</span></span></h2>
+<p><strong>Four styles.</strong> The <em>Enterprise Integration Patterns</em> site, in a page by Bobby Woolf, names four integration styles: <strong>file transfer</strong> (each application produces files of shared data for others to consume), <strong>shared database</strong> (the applications store the data they share in a common database), <strong>remote procedure invocation</strong> (each application exposes procedures that others invoke remotely; an API, application programming interface, is this course's gloss for such a procedure) and <strong>messaging</strong> (applications connect to a common messaging system and exchange messages) (<a target="_blank" rel="noopener" href="https://www.enterpriseintegrationpatterns.com/IntegrationStylesIntro.html">Hohpe &amp; Woolf, <em>Enterprise Integration Patterns</em>, Addison-Wesley, 2003, ch. 2, "Integration Styles", introduction by Woolf, read at the authors' site</a>) [practice]. The authors write that each style has its advantages and disadvantages, and that they believe messaging is often the best style (same page) [practice]. The style decides how fast a fact crosses: a nightly file carries yesterday's stock (this unit's inference).</p>
+<p><strong>The business message standards.</strong> Two families carry the messages named in this course. X12 describes itself as an ANSI-accredited, consensus-based, non-profit organisation, chartered by ANSI for more than 40 years, with more than 320 transaction standards, and says that millions of entities around the world support X12 transactions (<a target="_blank" rel="noopener" href="https://x12.org/about/about-x12">X12, "About X12"</a>) [practice: a standards body's statement about itself, with no count behind "millions"]. UN/EDIFACT is, in GS1's description, a set of internationally agreed standards, directories and guidelines for electronic exchange of structured data, approved and published by UN/CEFACT (EANCOM Part I, §5) [independent]. Which regions use which family was not found on either body's page; X12 claims use around the world and UN/EDIFACT is published as an international standard. The course's earlier note, "regional use not sourced" (SCE7 §7), stands (flag F79). The messages at this unit's seams:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Seam</th>
+<th>X12</th>
+<th>UN/EDIFACT or EANCOM</th>
+<th>GS1 key carried</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Order to warehouse</td>
+<td>940 Warehouse Shipping Order</td>
+<td>not opened here</td>
+<td>GTIN, GLN</td>
+</tr>
+<tr>
+<td>Warehouse to transport and receiver</td>
+<td>856 Ship Notice/Manifest; 945 Warehouse Shipping Advice</td>
+<td>Despatch advice, as GS1's label guideline names it; its EANCOM message not opened here</td>
+<td>SSCC, GSIN</td>
+</tr>
+<tr>
+<td>Transport tender and answer</td>
+<td>204, 990 (SCE7, SCE8)</td>
+<td>not opened here</td>
+<td>GSIN, GINC</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>214 (SCE8)</td>
+<td>IFTSTA</td>
+<td>SSCC, GINC</td>
+</tr>
+<tr>
+<td>Freight bill</td>
+<td>210 (SCE8)</td>
+<td>not opened here</td>
+<td>GINC</td>
+</tr>
+</tbody>
+</table></div>
+<p>The key-to-message column is this unit's reading of GS1's reference card against the messages' scope; no source opened maps them one to one.</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.857"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="144" data-rings="5"><path style="--d:.95;--o:461px 91px" d="M144 39l-24 4-24 6-18 7-8 8-1 8 20 32 15 9 32 10 40 6 40 4 48 2 64 0 208-3 152 7 40 0 40-2 48-5 21-4 11-4 11-4 5-4 4-4 4-8 8-9 8-4 10-3-2-3-8-2-56 0-40-4-45-7-59-12-64-7-64-1-96 3-32-1-40-3-96-13-48-3-56 0-48 4"/><path style="--d:.75;--o:428px 92px" d="M208 48l-32 2-33 6-20 8-6 8 2 8 10 16 8 8 15 6 16 5 48 6 48 3 56 1 232-1 104 5 48 0 48-4 32-5 19-8 4-8-11-8-20-5-96-21-40-5-64-3-112 3-48 0-24-2-64-10-32-3-48-3-40 1"/><path style="--d:.5;--o:424px 92px" d="M240 56l-40 3-29 5-16 8-1 8 9 16 12 8 25 6 32 4 40 3 56 1 232-1 80 4 32 0 33-1 31-5 13-3 9-8-12-8-31-8-51-11-40-6-48-1-112 3-56-1-32-3-72-10-32-3-32 0"/><path style="--d:.25;--o:413px 91px" d="M200 70l-5 2-9 8 9 16 21 8 48 5 88 3 216 0 80 2 40-2 24-8-9-8-63-15-32-4-40 0-104 2-48-1-48-2-64-9-40-3-32 1-32 5"/><path d="M232 78l-7 2 0 8 7 8 24 4 43 4 325 2 29-2 3-8-31-8-33-3-112 2-56-1-64-4-80-9-24 1-24 4"/><circle class="ct-spot" cx="280" cy="88" r="12"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="140" data-rings="5"><circle class="ct-spot" cx="600" cy="96" r="12"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="23" data-rings="0"><circle class="ct-spot" cx="920" cy="80" r="7"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-7" data-step="7"><span>Previous · 8 of 15</span><b>8. One order in three systems: Corvane (fictional)</b></a><a class="snext" href="#read-sce10-9" data-step="9"><span>Next · 10 of 15</span><b>10. The yard and the dock: a seam of its own</b></a></nav></section><section class="sec" data-step="9"><h2 id="read-sce10-9" class="band"><span class="bn" aria-hidden="true">10</span><span class="bh"><span class="bt">10. The yard and the dock: a seam of its own</span></span></h2>
+<p>The dock is where the warehouse's last step and the carrier's pickup happen at once (SCE7 §9). It is also where three systems can each hold a calendar. Gartner's market page for yard management describes a yard management system (YMS) as one that "supports the efficient flow of work, equipment and materials", through the planning, direction, monitoring and control of activities such as scheduling, moving, parking, inspecting and reassigning trucks, trailers and containers (<a target="_blank" rel="noopener" href="https://external.pi.gpi.aws.gartner.com/reviews/market/yard-management">Gartner Peer Insights, Yard Management, undated</a>) [analyst]; the page carries this description in an unattributed "What is Yard Management?" section. Bartholdi and Hackman describe the YMS as software a WMS may talk to (p. 33) [practice].</p>
+<p><strong>The physical event.</strong> A truck arrives at the gate, waits in the yard, is called to a door, is loaded or unloaded and leaves. SCE7 §9 gives the US regulator's figures for drivers waiting at docks.</p>
+<p><strong>Who holds the truth.</strong> The appointment can be held in the warehouse system (W2), a yard system or the transport system (T7) (SCE7 §9; SCE8 deliverable C, row 7). By section 7's rule, the door and the time slot at the operation's own dock belong to whichever system records the truck's arrival and the door's use; at Halvern (fictional) that would be the warehouse line, whose Yard module is in the register; that Yard holds the appointment (W2) is this unit's placement, as SCE6 deliverable B, row 2, left it open.</p>
+<p><strong>People and measure.</strong> The warehouse's dock team and the transport planner (working); SCE7 §11's dwell time and detention measure the wait.</p>
+<p><strong>How it fails.</strong> A carrier booked for a time the dock cannot serve, because the transport planner's calendar and the warehouse's door plan are separate (this unit's inference); a truck that waits and a detention charge that reaches the freight bill without the warehouse knowing why (SCE7 §6, step 10).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.214"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="111" data-rings="5" style="--o:216px 88px"><path style="--d:.94;--o:428px 85px" d="M160 39l-32 7-20 10-9 8-11 16-25 16-8 8-2 8 3 4 4 4 12 6 24 7 40 5 40 0 48-3 64-8 104-9 96-11 24 1 48 11 32 6 40 2 32-1 24-4 16-3 16-6 24-11 16-5 64-14 9-3-40-8-41-6-64-17-24-4-32-3-56-2-56 2-40 4-64 12-32 2-24-2-64-15-40-6-48-2-24 1-24 3"/><path style="--d:.62;--o:394px 86px" d="M208 48l-40 3-24 7-12 6-8 8-4 8-24 16-6 8 6 9 8 4 16 5 32 4 32 1 32-2 88-11 80-7 22-3 36-8 14-5 16-1 24 1 24 3 9 2 31 10 24 5 24 3 32 0 24-3 24-6 16-9 6-8-1-8-7-8-14-8-30-8-34-4-48-1-48 2-40 7-56 16-56 3-24-2-48-17-32-8-32-3-32-1"/><path style="--d:.5" d="M168 62l-8 3-12 7-5 8-22 16-1 8 14 8 10 2 16 3 24 1 40-2 84-12 28-8-9-8-12-8-17-8-18-7-16-4-24-3-24-1-24 1z"/><path style="--d:.25" d="M176 71l-8 5-22 20 6 8 16 4 16 1 24 0 40-4 38-9 6-8-9-8-11-5-16-5-16-3-32-1-16 1z"/><path d="M192 80l-9 8-3 8 12 3 24 0 23-3 18-8-13-8-12-3-24-1z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="36" data-rings="1"><circle class="ct-spot" cx="408" cy="96" r="8"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="91" data-rings="4" style="--o:600px 80px"><path style="--d:.33" d="M528 64l-22 8 4 8 34 9 24 8 16 4 24 3 32-1 16-3 10-4 7-8-1-8-5-8-11-5-16-4-24-3-32-1-32 2z"/><path d="M560 71l-3 1-3 8 30 10 16 3 16 0 16-3 5-2 1-8-10-8-12-2-32-1z"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="21" data-rings="1"><circle class="ct-spot" cx="792" cy="80" r="7"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="50" data-rings="2" style="--o:984px 96px"><path style="--d:1" d="M976 71l-41 9-57 8-6 5-1 3 5 8 12 6 16 5 16 3 32 2 32 1 24-1 24-3 16-5 13-8 15-16-1-8-17-8-18-3-32-2z"/><path d="M968 87l-36 9 8 8 36 4 24-1 14-3 12-8 2-8-12-4-16-2-16 1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-8" data-step="8"><span>Previous · 9 of 15</span><b>9. How integration is done, at the level a product person needs</b></a><a class="snext" href="#read-sce10-10" data-step="10"><span>Next · 11 of 15</span><b>11. What people do around a broken seam</b></a></nav></section><section class="sec" data-step="10"><h2 id="read-sce10-10" class="band"><span class="bn" aria-hidden="true">11</span><span class="bh"><span class="bt">11. What people do around a broken seam</span></span></h2>
+<p>One study opened describes workarounds in a retail setting. Van de Weerd, Vollers, Beerepoot and Fantinato observed and interviewed 12 team managers in four stores of one Dutch supermarket chain from March to June 2018, analysed its prescribed processes, and validated the 29 workarounds they found with a survey of 292 team managers across the Netherlands (<a target="_blank" rel="noopener" href="https://aisel.aisnet.org/ecis2019_rp/183">van de Weerd et al., ECIS 2019</a>; full text read at <a target="_blank" rel="noopener" href="https://dspace.library.uu.nl/bitstream/handle/1874/384797/ECIS2018_Workarounds_in_Retail_V2.pdf?sequence=1">Utrecht University's repository</a>) [independent]. Among them: "Using a shadow administration for restocking planning" (159 survey respondents confirmed it), using another app to find the product number needed to order in the order app (236), "Still using the previous, outdated platform" (247), and "Needing private email to access the cargo tracker" (6) (p. 5–6) [independent]. The study covers stores and their team managers, not warehouses or transport; applying it to Corvane's centre or to a food distributor's dispatch desk is this unit's inference.</p>
+<p>Alter's theory of workarounds treats them as a process with its own causes, and the abstract says the theory can help explain compliance and non-compliance with mandates and inform systems analysis and design (<a target="_blank" rel="noopener" href="https://aisel.aisnet.org/cais/vol34/iss1/55/">Alter, 2014, <em>Communications of the AIS</em> 34, art. 55, abstract</a>) [independent, abstract only].</p>
+<p>The workarounds this course's case shows are register facts: Ostrel Foods (fictional; a food distributor with its own 40 vehicles) agrees substitutions by phone and does not record them, and runs paper delivery notes on some routes (case register). Re-keying carrier labels from portals at Corvane is SCE3's reading of the register. That spreadsheets and phone calls fill every broken seam in warehouses and transport is common in the industry; no independent source on logistics operations was found (claim C14 is SCE13's).</p>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.571"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="152" data-rings="5" style="--o:280px 88px"><path style="--d:.78;--o:352px 90px" d="M96 55l-34 9-12 8 0 8 10 8 4 2 17 6 23 6 65 10 63 13 56 8 48 1 40-2 40-5 56-12 16-2 72 5 40-2 24-4 32-7 19-9-6-8-13-5-24-5-24-3-24-1-24 2-28 4-20 7-8-1-31-14-27-8-30-6-40-4-144-5-48 0-48 1-40 5"/><path style="--d:.75" d="M136 63l-16 4-13 5-5 8 8 8 24 8 10 2 64 11 40 9 40 4 24 1 32-1 24-2 24-4 14-4 19-8 10-8 3-8-5-8-17-8-24-5-32-4-152-5-40 1z"/><path style="--d:.5" d="M160 71l-5 1-13 8 7 8 26 8 81 15 32 4 40 0 24-3 16-3 16-5 8-4 6-4 4-8-7-8-11-4-16-4-32-4-120-3-32 2z"/><path style="--d:.25" d="M216 72l-16 3-18 5 3 8 32 8 55 10 32 2 37-4 21-8 6-8-9-8-31-5-72-4z"/><path d="M240 80l-8 4-4 4 37 8 15 2 16 0 20-2 12-8-16-6-12-2-36-1z"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="48" data-rings="1"><circle class="ct-spot" cx="600" cy="96" r="8"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="82" data-rings="2" style="--o:920px 80px"><path style="--d:1" d="M832 55l-16 3-18 6-10 8-2 8 7 8 15 7 16 4 24 4 56 2 80-2 40-3 28-4 12-4 9-4 1-8-17-8-17-4-128-15-40-1z"/><path d="M880 64l-16 2-20 6-4 8 10 8 22 5 32 2 72-3 29-4 8-8-27-8-74-8z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-9" data-step="9"><span>Previous · 10 of 15</span><b>10. The yard and the dock: a seam of its own</b></a><a class="snext" href="#read-sce10-11" data-step="11"><span>Next · 12 of 15</span><b>12. One vendor or specialists: common claim C9</b></a></nav></section><section class="sec" data-step="11"><h2 id="read-sce10-11" class="band"><span class="bn" aria-hidden="true">12</span><span class="bh"><span class="bt">12. One vendor or specialists: common claim C9</span></span></h2>
+<p>The claim as it circulates: "One platform from one vendor lowers total cost" (C9, seed bibliography). Corvane is deciding whether to replace its warehouse system and whether to buy order and transport systems from the same vendor (case register). <strong>Best of breed</strong> is buying each function from the vendor whose package fits it best and joining the packages (glossary). Each side's argument, attributed to the kind of party that makes it:</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Who makes it</th>
+<th>Source and grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A single vendor gives a simpler model of IT infrastructure that promises synergies</td>
+<td>The authors, stating the case for single-vendor ERP</td>
+<td>Light, Holland, Kelly &amp; Willis, ECIS 2000, Discussion and Conclusion [practice: the authors' own statement]</td>
+</tr>
+<tr>
+<td>Upgrades keep the customer on current technology with less reliance on its own IT staff</td>
+<td>Single-vendor ERP vendors ("vendors of ERP software state", as the authors report it)</td>
+<td>Same paper [practice: the authors' report of vendors' claims]</td>
+</tr>
+<tr>
+<td>Components from several vendors fit each function better, change less at once and spread the risk of one vendor leaving the market</td>
+<td>Advocates of best of breed, as the authors summarise them</td>
+<td>Same paper [practice]</td>
+</tr>
+<tr>
+<td>Best of breed's main difficulties are "the complexity of implementation" and "the likely costs of future ownership", including keeping the links between packages</td>
+<td>The authors</td>
+<td>Same paper [practice]</td>
+</tr>
+<tr>
+<td>Warehouse system vendors are already connected to financial systems; enterprise systems have the advantage where they grow out of manufacturing</td>
+<td>Textbook authors</td>
+<td>Bartholdi &amp; Hackman §4.5 [practice]</td>
+</tr>
+<tr>
+<td>(A definition, not an argument) A supply chain management suite is "a portfolio of (pre)packaged applications" spanning several process clusters, logistics and fulfilment among them</td>
+<td>Analyst, defining the market</td>
+<td><a target="_blank" rel="noopener" href="https://external.pi.gpi.aws.gartner.com/reviews/market/supply-chain-management-suites">Gartner Peer Insights, Supply Chain Management Suites market page, undated</a> [analyst]</td>
+</tr>
+<tr>
+<td>"One vendor for execution"; "No integration to build"; "Live in weeks"</td>
+<td>Fictional vendors: a suite, an ERP vendor, a specialist</td>
+<td>Case register (Halvern, Varnby, Kestrow; fictional); evidence of nothing about real vendors</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>What the evidence shows.</strong> The one study found that compares the two strategies is a single case: the operations division of a record company with about 10,000 stock-keeping units and sites in about eighty countries, studied through interviews with two project staff over two years and its plans and accounts. It built a best-of-breed system from several vendors' packages, under a rule agreed with senior managers that package software would be used wherever possible and would meet at least 80% of the desired functionality, and the authors report an 80%-plus fit for each element of the system's framework; the project had taken about 36 months when the paper was written, which the authors judge comparable to a similarly sized single-vendor ERP implementation; they conclude "no one strategy is the 'best' for all contexts" (Light, Holland, Kelly &amp; Willis, <a target="_blank" rel="noopener" href="https://aisel.aisnet.org/ecis2000/180">ECIS 2000</a>; full text read at <a target="_blank" rel="noopener" href="https://salford-repository.worktribe.com/OutputFile/1499857">Salford's repository</a>) [independent: one case, two interviewees]. The authors' journal version reports the same comparison of implementation complexity, functionality, process alignment and maintenance (<a target="_blank" rel="noopener" href="https://doi.org/10.1108/14637150110392683">Light, Holland &amp; Willis, 2001, <em>Business Process Management Journal</em> 7(3), 216–224, abstract</a>) [independent, abstract only]. Both concern ERP against best of breed in general, not order, warehouse and transport systems; applying them to execution software is this unit's inference. Gartner's 2026 Supply Chain Management Suites evaluation refused the fetch, so nothing from it is stated.</p>
+<p><strong>C9's verdict.</strong> No independent source found that measures the total cost of buying order, warehouse and transport systems from one vendor against buying each from a specialist. SCE16 prices it.</p>
+<p><strong>What a customer gains and gives up</strong>, as this unit's reading of the arguments above and of sections 2 to 10:</p>
+<ul>
+<li><strong>Gains with one vendor.</strong> Fewer seams built by the customer: the vendor owns the messages of sections 2 to 4 inside its line, and one support contract covers them. A suite can still leave seams to the ERP (section 5) and to carriers (section 9): Halvern's "One vendor for execution" names its own three lines, not the ERP (SCE6 deliverable B, row 28) or the carriers (SCE8 deliverable C, row 18).</li>
+<li><strong>Gives up with one vendor.</strong> The choice of the best fit for each function, and the vendor's own speed on each line; the upgrade timetable is the vendor's (the concern of some managers in the authors' study that they "may be left waiting for the next upgrade" from their ERP vendor, Light et al.) [practice].</li>
+<li><strong>Gains with specialists.</strong> Fit per function and the risk spread across vendors (Light et al.) [practice].</li>
+<li><strong>Gives up with specialists.</strong> The seams become the customer's: each message, each shared master record and each status mapping of section 8 is built, tested and kept by the customer or its implementer (Light et al.'s costs of future ownership) [practice].</li>
+</ul>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.929"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="71" data-rings="1"><circle class="ct-spot" cx="240" cy="88" r="8"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="226" data-rings="5" style="--o:480px 96px"><path style="--d:.92;--o:470px 94px" d="M360 48l-32 4-65 12-79 10-24 4-8 2-16 8-2 8 15 8 75 15 48 14 32 7 32 3 64 3 64 0 80-5 80-10 48-8 39-11 33-18 14-6 6-8-12-5-16-4-69-7-75-13-56-6-48-3-48 0-40 2-40 4"/><path style="--d:.68;--o:459px 95px" d="M408 56l-40 4-40 6-75 14-30 8 8 8 41 8 32 16 24 7 32 4 48 3 56 0 56-3 56-6 48-8 32-8 14-5 13-8 6-8-16-8-49-8-48-9-32-5-72-4-64 2"/><path style="--d:.5" d="M424 64l-32 2-32 5-36 9-8 8 10 8 4 8 8 8 14 5 16 4 32 3 40 2 40-1 40-3 40-4 35-6 29-8 12-8-4-8-8-2-20-6-60-11-56-5z"/><path style="--d:.25" d="M432 72l-32 3-26 5-5 8 3 8-1 8 17 8 12 2 48 4 32-1 32-2 32-4 35-7 13-8-11-8-30-8-23-4-48-5z"/><path d="M416 87l-2 1 7 16 27 3 32 0 38-3 25-8-16-8-23-4-24-3-24-1-16 1-16 3z"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="30" data-rings="0"><circle class="ct-spot" cx="720" cy="80" r="6"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="22" data-rings="0"><circle class="ct-spot" cx="960" cy="80" r="6"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-10" data-step="10"><span>Previous · 11 of 15</span><b>11. What people do around a broken seam</b></a><a class="snext" href="#read-sce10-12" data-step="12"><span>Next · 13 of 15</span><b>On a site visit</b></a></nav></section><section class="sec" data-step="12"><h2 id="read-sce10-12" class="band"><span class="bn" aria-hidden="true">13</span><span class="bh"><span class="bt">On a site visit</span></span></h2>
+<p>Ask to watch one order cross every seam, and ask at each:</p>
+<ul>
+<li>At release: what happens on the warehouse screen when a web order is cancelled after release? Who sees it first? (Section 2.)</li>
+<li>At a short pick: how long until the order system knows, and who decides between re-sourcing, cancelling and telling the customer? (Section 8.)</li>
+<li>At the pack station: is the carrier label printed from the warehouse system or keyed from a portal? Does its tracking number reach the order system? (Section 3.)</li>
+<li>At the dock: which calendar does the gatehouse use, and does the transport planner see it? (Section 10.)</li>
+<li>At the customer desk: where does the agent read status, the order system or the carrier's page? (Section 4.)</li>
+<li>In finance: which document starts the customer invoice, and which the carrier payment? (Section 5.)</li>
+<li>Everywhere: which spreadsheet, paper list or phone call does this step depend on? Write it down; the retail study found its workarounds by interviews and observation (section 11).</li>
+</ul>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.286"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="12" data-rings="5" style="--o:600px 88px"><path style="--d:1" d="M472 56l-80 3-56 6-31 7-9 4-8 4-1 8 11 8 6 2 19 6 29 6 56 8 56 6 40 3 64 3 48 0 64-3 40-4 56-8 80-14 18-5 22-8 11-8-2-8-15-8-10-3-40-7-48-4-88-1-144 6z"/><path style="--d:.75" d="M480 64l-48 2-44 6-26 8-3 8 13 8 44 10 64 8 64 5 48 1 40-1 40-2 32-4 48-7 52-10 24-8 9-8-7-8-22-6-24-4-40-3-64-1-104 4z"/><path style="--d:.5" d="M464 72l-44 8-7 8 16 8 35 7 24 3 48 5 40 2 64-2 66-7 44-8 18-5 9-3 6-8-15-8-8-1-32-4-32-2-40 0-72 3-72 1z"/><path style="--d:.25" d="M624 72l-96 3-32 2-20 3-11 8 20 8 63 8 52 2 42-2 56-8 22-6 8-2 3-8-19-5-25-3z"/><path d="M600 80l-48 2-26 6 37 8 37 1 30-1 40-8-6-4-8-4-24-1z"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-11" data-step="11"><span>Previous · 12 of 15</span><b>12. One vendor or specialists: common claim C9</b></a><a class="snext" href="#read-sce10-13" data-step="13"><span>Next · 14 of 15</span><b>Self-check</b></a></nav></section><section class="sec" data-step="13"><h2 id="read-sce10-13" class="band"><span class="bn" aria-hidden="true">14</span><span class="bh"><span class="bt">Self-check</span></span></h2>
+<ol>
+<li><strong>What is a seam, and where do SCE9's order steps join the warehouse's and the shipment's?</strong> A point where one system hands a fact to another and stops being the place that changes it. SCE9's rows 5 to 8 are SCE3 deliverable C's rows 1 to 8 for an order the centre fills, and rows 8 to 10 are SCE7 §6's steps 6 to 8 (section 1).</li>
+<li><strong>Which X12 messages carry an order to a warehouse and the confirmation back?</strong> The 940 Warehouse Shipping Order, which tells a warehouse to make, confirm, change or cancel a shipment; the 945 Warehouse Shipping Advice, which tells the depositor the shipment was made and reconciles ordered with shipped quantities (sections 2, 3).</li>
+<li><strong>What ties a physical pallet to the electronic notice about it?</strong> The SSCC: the one mandatory element on GS1's logistic label, listed per unit in the despatch advice, so that a scan can be matched to the message (section 3).</li>
+<li><strong>Is IFTSTA a UN/EDIFACT message?</strong> Yes: UN/CEFACT's D.01A documentation lists it as a United Nations Standard Message from the transport sub-group, and GS1's EANCOM is a subset of UN/EDIFACT (section 4).</li>
+<li><strong>Why can the order system and the warehouse system both claim stock?</strong> Gartner's DOM definition gives the order system enterprise inventory for available-to-promise; its WMS definition gives the warehouse system storage and counting. The course places stock at a location in the warehouse system and the sellable figure in the order system (sections 2, 7).</li>
+<li><strong>During a short pick, which system knows first, and what does the customer see?</strong> The warehouse system. Until a message reaches the order system, it still shows the order released, and the carrier's portal can show a label for one unit while the order system shows nothing shipped (section 8).</li>
+<li><strong>Is it established that one vendor for order, warehouse and transport lowers total cost?</strong> No independent source found. The one comparative case found concerns ERP against best of breed, is a single company with two interviewees, found implementation time comparable, and concludes that no strategy is best for all contexts (section 12).</li>
+</ol>
+<nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-12" data-step="12"><span>Previous · 13 of 15</span><b>On a site visit</b></a><a class="snext" href="#read-sce10-14" data-step="14"><span>Next · 15 of 15</span><b>Deliverable</b></a></nav></section><section class="sec" data-step="14"><h2 id="read-sce10-14" class="band"><span class="bn" aria-hidden="true">15</span><span class="bh"><span class="bt">Deliverable</span></span></h2>
+<p>Four parts: A, Corvane's system-of-record table; B, the handoff failure catalogue across the three case operations; C, both templates; D, glossary lines. Cells cite this unit's sections in brackets, an earlier unit's section, "register" for a case fact, or "working" for a working description that rests on no source. A failure listed is one to look for; it is no claim that the operation has it unless it says "known trouble".</p>
+<h3>A. System-of-record table: Corvane (fictional)</h3>
+<p>Corvane (fictional): 60 stores in four European countries and one website; one distribution centre; an ERP, a warehouse system about twelve years old on its own servers, an order system for the website, carriers booked through each carrier's own portal, no transport system; deciding whether to replace the warehouse system and whether to buy order and transport systems from the same vendor (case register). The table gives today's owner; the last column says what the decision would move.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Fact</th>
+<th>Owner (system of record)</th>
+<th>Who else holds a copy</th>
+<th>What breaks when they differ</th>
+<th>If one vendor's suite is bought</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Item: number, description, GTIN</td>
+<td>ERP (working; SCE1)</td>
+<td>Order system, warehouse system, carrier portals</td>
+<td>A web item the centre cannot find by number; a box whose GTIN the warehouse does not know (6)</td>
+<td>Unchanged: the ERP stays outside an execution suite (SCE6 B, row 28)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Item pack, dimensions, unit of measure</td>
+<td>ERP (working)</td>
+<td>Warehouse system; carrier portals (parcel size)</td>
+<td>Wrong carton at packing; 12 read as 12 cases; parcel charges the shipper did not expect (6)</td>
+<td>Unchanged; the suite takes a copy</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Store and customer addresses</td>
+<td>ERP for stores; order system for web customers (working)</td>
+<td>Warehouse system (labels), carrier portals</td>
+<td>Parcel or store delivery to an old address (6)</td>
+<td>Order line owns web addresses; ERP still owns stores</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Carrier and service</td>
+<td>Each carrier's portal; the ERP holds carriers as suppliers (working; register)</td>
+<td>Warehouse system (labels)</td>
+<td>Label for a service the carrier does not run (6)</td>
+<td>Moves to the transport line (T8 holds the choice; F98)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Web order, its lines and promise date</td>
+<td>Order system (Gartner DOM [analyst]; register)</td>
+<td>Warehouse system (released lines), ERP (sales record, working)</td>
+<td>Changed or cancelled order still picked (2; SCE9 §8)</td>
+<td>Unchanged in owner; the seam becomes the vendor's</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Stock sellable on the web</td>
+<td>Order system, computed (7; course's)</td>
+<td>Warehouse system's records it is computed from</td>
+<td>Promised from stock the centre cannot find (register: known trouble)</td>
+<td>Unchanged in owner; one vendor's copy may refresh sooner (working)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Stock by location in the centre</td>
+<td>Warehouse system (Gartner WMS [analyst]; B&amp;H ch. 4 [practice])</td>
+<td>Order system (as a total), ERP (valuation, working)</td>
+<td>Phantom stock (SCE4 §4); a total that matches while locations do not</td>
+<td>Unchanged in owner</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Store stock</td>
+<td>Not in the register (how store stock reaches the order system is open; SCE9 A, row 2)</td>
+<td>Order system</td>
+<td>Order sourced to a store whose shelf is empty (SCE9 §6)</td>
+<td>Open (notes)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Release, allocation, short pick</td>
+<td>Warehouse system (SCE3 §2)</td>
+<td>Order system (status)</td>
+<td>Order shows lines that will not ship (8)</td>
+<td>Unchanged in owner</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Shipment record: units, SSCC, departure</td>
+<td>Warehouse system (B&amp;H §4.1 [practice]; GS1 [independent])</td>
+<td>ERP (invoice trigger), carrier portal (label)</td>
+<td>Invoice for goods that did not ship; label and record differ (3, 5)</td>
+<td>Unchanged; the transport line takes a copy</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Carrier label and tracking number</td>
+<td>Each carrier's portal, re-keyed (register; SCE3 C, row 6)</td>
+<td>Warehouse system (if keyed), order system (if passed)</td>
+<td>Tracking number missing from the customer's message (4)</td>
+<td>Printed at the pack station from the warehouse line (W22; F98)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Dock appointment at the centre</td>
+<td>Warehouse system, or none (SCE7 A, row 5)</td>
+<td>Carrier's booking</td>
+<td>Truck waits; detention reaches the freight bill unexplained (10)</td>
+<td>Warehouse line, Yard module (W2; this unit's placement: the register lists Yard, SCE6 B row 2 left W2 open; notes 10)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Status in transit and proof of delivery</td>
+<td>Each carrier's portal (register)</td>
+<td>Order system, if events flow (working)</td>
+<td>Customer told nothing; Jonas reads the portal (4)</td>
+<td>Transport line (Tracking; register) owns events; the order line shows them</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Customer payment and invoice record</td>
+<td>ERP (SCE1 working placement)</td>
+<td>Order system (payment reference, working)</td>
+<td>Refund or invoice on the wrong amount (5)</td>
+<td>Unchanged</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Carrier invoice, approved charge, payment</td>
+<td>ERP (SCE7 A, rows 9 to 11, working)</td>
+<td>Carrier portals</td>
+<td>Unexpected charges paid unchecked (SCE7 A, row 10)</td>
+<td>Approved charge in the transport line (Freight Audit); payment in the ERP (7; working; revises SCE7 §5's placement of Freight Audit at steps 10 and 11 and SCE8 deliverable C, row 14; notes)</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Return authorisation and refund trigger</td>
+<td>Order system for the authorisation (SCE9 §9); the refund trigger is not in the register</td>
+<td>Warehouse system (receipt, grade), ERP (refund)</td>
+<td>Return received and not refunded, or refunded and not received (SCE9 A, rows 11, 12)</td>
+<td>Order line Returns module authorises; which line grades is open (SCE6 B, row 14)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Carrier booking: the tender and the carrier's answer</td>
+<td>Each carrier's portal (register; SCE7 A, rows 3, 4); no analyst definition names tendering (SCE1 §3; flags F64, F89)</td>
+<td>Warehouse system (pickup time, if keyed)</td>
+<td>Booked for a time the centre's dock cannot serve (10)</td>
+<td>Transport line (Rating and Tendering; register)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Below the table: seventeen facts; four rest on sourced placements (5, 7, 9, 10) and twelve on working placements or the register (1 to 4, 6, 11 to 17); row 8, and the refund trigger and the grading of returns in row 16, are open. The decision moves five owners (4, 11, 12, 13, 17) and one approved charge (15); it leaves the ERP's facts (1, 2, 14) where they are.</p>
+<h3>B. Handoff failure catalogue: Corvane, Ostrel Foods and Tandric Logistics (fictional)</h3>
+<p>Ostrel Foods (fictional): a food distributor with one three-zone warehouse, its own 40 vehicles, an ERP with a warehouse module, a routing tool and paper delivery notes on some routes; known trouble: substitutions agreed by phone and not recorded, drivers returning with refused goods (case register). Tandric Logistics (fictional): one multi-client warehouse, a freight desk with no trucks, a shared warehouse system, a transport system and a client portal; known trouble: invoices disputed because activity was not recorded (case register).</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Handoff</th>
+<th>Operation</th>
+<th>Failure</th>
+<th>Who sees it first</th>
+<th>Who can fix it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Order to warehouse</td>
+<td>Corvane</td>
+<td>Web order promised from stock the centre cannot find (register: known trouble)</td>
+<td>Mina, at the empty location (register; SCE5)</td>
+<td>Carla corrects the record; Oskar sets the buffer (register, SCE4, SCE9)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Order to warehouse</td>
+<td>Corvane</td>
+<td>Cancellation reaches the order system, not the released work (2; SCE9 §8)</td>
+<td>A packer on Tobias's shift, if anyone (reading of register; working)</td>
+<td>Whoever owns the interface; Ravi, IT director (register)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Warehouse back to order</td>
+<td>Corvane</td>
+<td>Short pick not passed back; order shows lines that will not ship (8)</td>
+<td>Lena's exception queue, if it shows; otherwise the customer (register, SCE9)</td>
+<td>Lena re-sources or cancels (register, SCE9)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Warehouse to transport</td>
+<td>Corvane</td>
+<td>Label re-keyed from a portal differs from the shipment record (3; SCE3 C, row 6)</td>
+<td>The carrier, at a failed scan (working)</td>
+<td>Tobias's shift; a carrier connection removes it (SCE6 §5)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Transport to customer</td>
+<td>Corvane</td>
+<td>Status only in each carrier's portal (4; register)</td>
+<td>Jonas, when the customer calls (register)</td>
+<td>Not in the register; the decision would move it (A, row 13)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Order to warehouse</td>
+<td>Ostrel</td>
+<td>Substitution agreed by phone, not on the order (register: known trouble)</td>
+<td>Ilse's picker or the driver at the door (register; SCE5)</td>
+<td>Nuno records it; Aart decides the process (register)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Routing tool to warehouse module</td>
+<td>Ostrel</td>
+<td>Route changed after picking began, cages staged for the old route (register, SCE5: Sofia sometimes changes routes after picking has begun)</td>
+<td>Ilse, at staging (reading of SCE5's register rows; notes 7)</td>
+<td>Sofia re-plans (register, SCE5); Ilse moves cages (reading; notes 7)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Transport back to ERP</td>
+<td>Ostrel</td>
+<td>Refused goods return with the driver, recorded on a paper note only (register: known trouble; paper notes)</td>
+<td>Nuno, from the driver's call (register, SCE8)</td>
+<td>Not in the register who books the return into stock and credits the customer</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Warehouse back to ERP</td>
+<td>Ostrel</td>
+<td>Short-dated stock found too late, after the order was promised (register: known trouble)</td>
+<td>Ilse's picker (reading of register; working)</td>
+<td>Bram and Ilse at replenishment; rotation rules (SCE4 §2)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Client order to warehouse</td>
+<td>Tandric</td>
+<td>A client's order arrives in a form the shared warehouse system does not take, and is keyed by hand (working; 2, X12 940)</td>
+<td>Luis, at onboarding, or the warehouse team (register)</td>
+<td>Luis configures the client; Dario administers (register)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Warehouse back to client billing</td>
+<td>Tandric</td>
+<td>Activity done and not recorded, so the client invoice is disputed (register: known trouble)</td>
+<td>Olu, from the client's query (register)</td>
+<td>Anke's site records it; Karin settles the dispute (working: the register has her sign client contracts)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Warehouse to transport</td>
+<td>Tandric</td>
+<td>Load not ready when the carrier arrives; detention on the bill (10; SCE7 B, rows 5, 6)</td>
+<td>The carrier's driver; Priya, on the invoice (register)</td>
+<td>Anke's dock plan; Priya passes the charge on or not (register, SCE7 B, row 10)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Transport back to finance</td>
+<td>Tandric</td>
+<td>Proof of delivery not returned, so the client cannot be billed (SCE7 B, row 8)</td>
+<td>Olu or Priya (working; notes 9)</td>
+<td>The carrier; Priya chases it (working; notes 9)</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Transport to client</td>
+<td>Tandric</td>
+<td>Client asks about a load before Tandric knows (SCE7 B, row 7)</td>
+<td>Olu (register)</td>
+<td>The carriers' status feed; Dario for the portal (register)</td>
+</tr>
+</tbody>
+</table></div>
+<p>Below the table: fourteen failures; five rest on register known trouble (1, 6, 8, 9, 11) and nine on this unit's or an earlier unit's reading. DD-SCE2 extends the catalogue with peak and exceptions.</p>
+<h3>C. Templates</h3>
+<p><strong>C1. System-of-record table.</strong> One row per fact; fill it for a real operation from its own system documentation and interviews, dated.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Fact</th>
+<th>Owner (system of record)</th>
+<th>Who else holds a copy</th>
+<th>What breaks when they differ</th>
+<th>If the decision under study is made</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The fact, as narrow as one field or record (an item's unit of measure, a shipment's departure time)</td>
+<td>The one system whose copy wins; its basis: a source with its grade, the operation's own documentation (dated), or "working"</td>
+<td>Every other system holding it, and how its copy arrives (file, message, call, re-keyed)</td>
+<td>What a person sees go wrong, where and when, and the section or source that says so</td>
+<td>The owner after the purchase or change, or "unchanged"</td>
+</tr>
+</tbody>
+</table></div>
+<p>Start with the five shared kinds (items, locations, customers, carriers, units of measure), then each seam's facts (sections 2 to 5). Below the table, count the facts with a sourced owner, a working owner and none, and list the open ones.</p>
+<p><strong>C2. Handoff failure catalogue.</strong> One row per failure; fill it from a site visit (On a site visit) and the operation's incident or exception records.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Handoff</th>
+<th>Operation</th>
+<th>Failure</th>
+<th>Who sees it first</th>
+<th>Who can fix it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>From system, to system, and the step (SCE9, SCE3, SCE7 numbering)</td>
+<td>The operation</td>
+<td>What goes wrong, in the operation's words; "known trouble" only if the operation says so</td>
+<td>The role (and name, if given) who first notices, and how: a screen, a scan, a phone call</td>
+<td>The role who can correct this case, and the role who can stop it recurring</td>
+</tr>
+</tbody>
+</table></div>
+<p>Below the table, count the failures the operation reports and those you inferred, and mark the ones a purchase under study would remove.</p>
+<h3>D. Glossary lines</h3>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Working definition</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Seam</td>
+<td>A point where one system hands a fact to another and stops being the place that changes it</td>
+<td>Course term (this unit)</td>
+</tr>
+<tr>
+<td>Handoff</td>
+<td>The message, file or call that carries a fact across a seam</td>
+<td>Course term (this unit)</td>
+</tr>
+<tr>
+<td>Enterprise resource planning (ERP)</td>
+<td>The company's financial and master-data system; no broadly agreed definition in the research</td>
+<td>Working definition; Klaus, Rosemann &amp; Gable 2000, abstract [independent]</td>
+</tr>
+<tr>
+<td>Depositor</td>
+<td>The owner of goods held in a warehouse, who tells the warehouse to ship</td>
+<td>X12 940 [independent]; definition is the course's</td>
+</tr>
+<tr>
+<td>Warehouse Shipping Order (X12 940)</td>
+<td>The message telling a warehouse to make, confirm, change or cancel a shipment</td>
+<td>X12 [independent]</td>
+</tr>
+<tr>
+<td>Warehouse Shipping Advice (X12 945)</td>
+<td>The warehouse's message that a shipment was made, reconciling ordered with shipped quantities</td>
+<td>X12 [independent]</td>
+</tr>
+<tr>
+<td>Ship Notice/Manifest (X12 856)</td>
+<td>The message describing a shipment's contents and configuration</td>
+<td>X12 [independent]</td>
+</tr>
+<tr>
+<td>Despatch advice; advance ship notice (ASN)</td>
+<td>The message listing each logistic unit's SSCC and contents</td>
+<td>GS1 Logistic Label Guideline [independent]</td>
+</tr>
+<tr>
+<td>UN/EDIFACT</td>
+<td>The UN's standards, directories and guidelines for electronic data interchange, published by UN/CEFACT</td>
+<td>GS1 EANCOM Part I [independent]</td>
+</tr>
+<tr>
+<td>EANCOM</td>
+<td>GS1's subset of UN/EDIFACT, based on directory D.01B</td>
+<td>GS1 EANCOM Part I [independent]</td>
+</tr>
+<tr>
+<td>IFTSTA</td>
+<td>UN/EDIFACT's international multimodal status report message</td>
+<td>UN/CEFACT D.01A [independent]</td>
+</tr>
+<tr>
+<td>GTIN</td>
+<td>GS1's key for products at any packaging level</td>
+<td>GS1 reference card [independent]</td>
+</tr>
+<tr>
+<td>GLN</td>
+<td>GS1's key for physical locations such as ship-from and ship-to</td>
+<td>GS1 reference card [independent]</td>
+</tr>
+<tr>
+<td>GSIN</td>
+<td>GS1's key for a shipment of logistic units delivered together, assigned by the seller and shipper</td>
+<td>GS1 reference card; GSIN page [independent]</td>
+</tr>
+<tr>
+<td>GINC</td>
+<td>GS1's key for a consignment of logistic units, possibly of different shipments</td>
+<td>GS1 reference card [independent]</td>
+</tr>
+<tr>
+<td>GDSN</td>
+<td>GS1's network for keeping trading partners' product data the same</td>
+<td>GS1, How GDSN works [practice]</td>
+</tr>
+<tr>
+<td>Unit of measure code</td>
+<td>A code from UN/CEFACT Recommendation No. 20's single list</td>
+<td>UN/CEFACT [independent]</td>
+</tr>
+<tr>
+<td>Integration style</td>
+<td>File transfer, shared database, remote procedure invocation or messaging</td>
+<td>Woolf, Enterprise Integration Patterns [practice]</td>
+</tr>
+<tr>
+<td>Application programming interface (API)</td>
+<td>A procedure one system exposes for others to call over a network</td>
+<td>Course gloss of remote procedure invocation (section 9)</td>
+</tr>
+<tr>
+<td>Yard management system (YMS)</td>
+<td>Software for scheduling, moving, parking and inspecting trucks, trailers and containers in the yard</td>
+<td>Gartner Peer Insights yard page [analyst]; B&amp;H ch. 4 [practice]</td>
+</tr>
+<tr>
+<td>Workaround</td>
+<td>A way of getting the work done outside the prescribed process or system</td>
+<td>Course gloss; Alter 2014, abstract [independent]; van de Weerd et al. 2019 [independent]</td>
+</tr>
+<tr>
+<td>Best of breed</td>
+<td>Buying each function from the vendor whose package fits it best, and joining them</td>
+<td>Light et al. 2000, 2001 [practice]</td>
+</tr>
+<tr>
+<td>Supply chain management suite</td>
+<td>A portfolio of packaged applications spanning several supply chain process clusters</td>
+<td>Gartner Peer Insights [analyst]</td>
+</tr>
+</tbody>
+</table></div>
+<div class="topo topo-patch topo-sep" aria-hidden="true" style="--ph:0.643"><svg class="topo-l topo-ridge" data-layout="ridge" viewBox="0 0 1200 170" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" focusable="false"><g class="ct-rise ct-t6" data-label="¶1" data-words="71" data-rings="4"><circle class="ct-spot" cx="176" cy="88" r="10"/></g><g class="ct-rise ct-t6" data-label="¶2" data-words="78" data-rings="5"><path style="--d:.74;--o:356px 89px" d="M360 47l-40 6-56 2-136 14-18 3-14 6-3 2-3 8 7 8 7 3 17 5 39 7 48 12 56 7 40 0 24-3 40-8 80 1 32-3 48-8 64-1 20-4 22-8-7-8-27-7-20-9-36-20-24-7-16-1-16 0-48 6-48-5-32 2"/><path style="--d:.09;--o:242px 91px" d="M232 80l-40 2-28 6 15 8 28 8 41 6 32 1 24-3 13-4 10-16-2-8-29-4-32 0-32 4"/><path d="M248 88l-19 8 19 7 16 1 16 0 8-2 8-3 3-3 1-8-12-4-8 0-16 0z"/></g><g class="ct-rise ct-t6" data-label="¶3" data-words="71" data-rings="4"><path style="--d:.29;--o:352px 85px" d="M368 63l-32 6-64 0-88 6-39 5-11 8 14 8 20 4 24 7 32 6 32 4 24 0 24-1 18-4 22-10 8-2 8-1 64 8 40-2 32-5 53-12 0-8-10-8-11-6-16-5-8-1-16 0-16 4-16 9-16 3-16-2-24-10-16-2-16 1"/><circle class="ct-spot" cx="384" cy="80" r="10"/></g><g class="ct-rise ct-t6" data-label="¶4" data-words="80" data-rings="5"><path style="--d:.75;--o:566px 86px" d="M336 39l-72 6-84 11-68 6-32 7-6 3-11 8-2 8 5 8 22 10 16 4 48 8 56 14 64 8 40 0 72-10 64 0 32-4 48-8 64-1 72-13 8 0 24 2 16-1 16-4 16-6 8-2 24 3 48 13 32 2 32-2 48-9 32-1 32 4 16 0 16-3 32-12-3-8-21-4-32 0-40 1-48-4-40 3-16-4-8-8-14-8-18-4-16 0-16 2-16 5-32 14-8 2-48-2-56 3-25-4-16-8-31-19-24-8-16-3-32-1-48 4-56-3-24 2-24 3"/><path style="--d:.51;--o:359px 85px" d="M360 56l-32 5-64 2-72 5-48 5-16 3-10 4-6 8 9 8 39 8 40 11 40 6 40 3 32-2 48-12 16 0 48 3 24 0 32-3 48-9 56-4 3-1 1-8-12-6-32-19-24-9-16-2-24 1-12 3-20 7-8 2-40-10-16-1-24 2"/><path d="M480 72l-16 7-16 4-24 0-14-3-18-6-8-1-8 1-19 6 12 8 29 8 26 3 24 0 31-3 36-8 12-8-11-8-12-3-16 0-8 3"/><circle class="ct-spot" cx="496" cy="80" r="11"/></g><g class="ct-rise ct-t6" data-label="¶5" data-words="34" data-rings="2"><circle class="ct-spot" cx="600" cy="96" r="8"/></g><g class="ct-rise ct-t6" data-label="¶6" data-words="21" data-rings="1"><circle class="ct-spot" cx="704" cy="88" r="7"/></g><g class="ct-rise ct-t6" data-label="¶7" data-words="41" data-rings="2"><path d="M816 64l-16 2-16 6-6 8 6 4 7 4 33 9 24 1 20-2 0-8-12-4-24-17-8-3z"/></g><g class="ct-rise ct-t6" data-label="¶8" data-words="25" data-rings="1"><circle class="ct-spot" cx="920" cy="88" r="7"/></g><g class="ct-rise ct-t6" data-label="¶9" data-words="23" data-rings="1"><circle class="ct-spot" cx="1024" cy="88" r="7"/></g></svg></div><nav class="secnav" aria-label="Sections"><a class="sprev" href="#read-sce10-13" data-step="13"><span>Previous · 14 of 15</span><b>Self-check</b></a><a class="snext send" href="#read-sce10-sources" data-acc><span>End of the unit</span><b>Sources and how it was made</b></a></nav></section></div>
+  <div class="process"><details class="acc src" id="read-sce10-sources"><summary><span class="at" id="read-sce10-15">Sources</span><span class="an">27</span></summary><div class="accb">
+<ul>
+<li>Alter, S. (2014). Theory of Workarounds. <em>Communications of the Association for Information Systems</em> 34, article 55. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.17705/<wbr>1CAIS<wbr>.03455 (abstract read at https://<wbr>aisel<wbr>.aisnet<wbr>.org/<wbr>cais/<wbr>vol34/<wbr>iss1/<wbr>55/<wbr>)</li>
+<li>Bartholdi, J. J., III &amp; Hackman, S. T. <em>Warehouse &amp; Distribution Science</em>, release 0.98, 2017, ch. 4, pp. 33–36. https://<wbr>www2<wbr>.isye<wbr>.gatech<wbr>.edu/<wbr>~jjb/<wbr>wh/<wbr>book/<wbr>editions/<wbr>wh-sci-0<wbr>.98<wbr>.pdf</li>
+<li>European Parliament and Council. Directive 2011/7/EU of 16 February 2011 on combating late payment in commercial transactions (recast), Article 3, as adopted (legislation.gov.uk copy). https://<wbr>www<wbr>.legislation<wbr>.gov<wbr>.uk/<wbr>eudr/<wbr>2011/<wbr>7/<wbr>article/<wbr>3/<wbr>adopted</li>
+<li>European Commission. Proposal for a Regulation on combating late payment in commercial transactions, COM(2023) 533, procedure 2023/0323/COD, EUR-Lex procedure page (read 28 Nov 2026). https://<wbr>eur-lex<wbr>.europa<wbr>.eu/<wbr>procedure/<wbr>EN/<wbr>2023_323</li>
+<li>European Commission. 2027 Commission work programme, adopted 4 November 2026 (Annex III, pending proposals to be withdrawn, not opened). https://<wbr>commission<wbr>.europa<wbr>.eu/<wbr>strategy-and-policy/<wbr>strategy-documents/<wbr>commission-work-programme/<wbr>commission-work-programme-2027_en</li>
+<li>Gartner Peer Insights. Distributed Order Management (DOM) Systems Reviews and Ratings, market definition and features, features updated July 2025, read 28 Nov 2026. https://<wbr>external<wbr>.pi<wbr>.gpi<wbr>.aws<wbr>.gartner<wbr>.com/<wbr>reviews/<wbr>market/<wbr>distributed-order-management-systems</li>
+<li>Gartner Peer Insights. Warehouse Management Systems, market definition, features updated May 2026, read 28 Nov 2026. https://<wbr>external<wbr>.pi<wbr>.gpi<wbr>.aws<wbr>.gartner<wbr>.com/<wbr>reviews/<wbr>market/<wbr>warehouse-management-systems</li>
+<li>Gartner Peer Insights. Supply Chain Management Suites, market definition, undated, read 28 Nov 2026. https://<wbr>external<wbr>.pi<wbr>.gpi<wbr>.aws<wbr>.gartner<wbr>.com/<wbr>reviews/<wbr>market/<wbr>supply-chain-management-suites</li>
+<li>Gartner Peer Insights. Yard Management Reviews and Ratings, undated, read 28 Nov 2026. https://<wbr>external<wbr>.pi<wbr>.gpi<wbr>.aws<wbr>.gartner<wbr>.com/<wbr>reviews/<wbr>market/<wbr>yard-management</li>
+<li>GS1. EANCOM 2002, Part I, section 5, "United Nation's Directories for Electronic Data Interchange for Administration, Commerce and Transport". https://<wbr>gs1<wbr>.org/<wbr>sites/<wbr>gs1/<wbr>files/<wbr>docs/<wbr>eancom/<wbr>ean02s3/<wbr>part1/<wbr>part1_05<wbr>.htm</li>
+<li>GS1. GS1 Identification Keys at Your Finger Tips (reference card), undated. https://<wbr>www<wbr>.gs1<wbr>.org/<wbr>sites/<wbr>default/<wbr>files/<wbr>docs/<wbr>idkeys/<wbr>gs1_id_keys_reference_card<wbr>.pdf<wbr>.pdf</li>
+<li>GS1. GS1 Logistic Label Guideline, release 1.3, July 2019. https://<wbr>gs1<wbr>.org/<wbr>standards/<wbr>gs1-logistic-label-guideline</li>
+<li>GS1. GS1's GDSN Keeps Trading Partners' Product Data in Sync, undated. https://<wbr>www<wbr>.gs1<wbr>.org/<wbr>how-gdsn-works</li>
+<li>GS1. Global Shipment Identification Number (GSIN), undated. https://<wbr>www<wbr>.gs1<wbr>.org/<wbr>gsin</li>
+<li>Hohpe, G. &amp; Woolf, B. (2003). <em>Enterprise Integration Patterns</em>. Addison-Wesley, ch. 2, "Integration Styles"; introduction by Woolf read at https://<wbr>www<wbr>.enterpriseintegrationpatterns<wbr>.com/<wbr>IntegrationStylesIntro<wbr>.html</li>
+<li>Ishfaq, R., Defee, C. C., Gibson, B. J. &amp; Raja, U. (2016). Realignment of the physical distribution process in omni-channel fulfillment. <em>International Journal of Physical Distribution &amp; Logistics Management</em> 46(6/7), 543–561. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1108/<wbr>IJPDLM-02-2015-0032 (abstract read)</li>
+<li>Klaus, H., Rosemann, M. &amp; Gable, G. G. (2000). What is ERP? <em>Information Systems Frontiers</em> 2(2), 141–162. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1023/<wbr>A:1026543906354 (abstract read at https://<wbr>ideas<wbr>.repec<wbr>.org/<wbr>a/<wbr>spr/<wbr>infosf/<wbr>v2y2000i2d10<wbr>.1023_a1026543906354<wbr>.html)</li>
+<li>Light, B., Holland, C. P., Kelly, S. &amp; Willis, K. (2000). Best of Breed IT Strategy: An Alternative to Enterprise Resource Planning Systems. <em>ECIS 2000 Proceedings</em>, 180. https://<wbr>aisel<wbr>.aisnet<wbr>.org/<wbr>ecis2000/<wbr>180 (full text read at https://<wbr>salford-repository<wbr>.worktribe<wbr>.com/<wbr>OutputFile/<wbr>1499857)</li>
+<li>Light, B., Holland, C. &amp; Willis, K. (2001). ERP and best of breed: a comparative analysis. <em>Business Process Management Journal</em> 7(3), 216–224. https://<wbr>doi<wbr>.org/<wbr>10<wbr>.1108/<wbr>14637150110392683 (abstract read at https://<wbr>salford-repository<wbr>.worktribe<wbr>.com/<wbr>output/<wbr>1448144/<wbr>erp-and-best-of-breed-a-comparative-analysis)</li>
+<li>United Nations. Protocol to the Convention on the Contract for the International Carriage of Goods by Road (CMR), Geneva, 5 July 1978. <em>United Nations Treaty Series</em> vol. 1208, No. 19487. https://<wbr>treaties<wbr>.un<wbr>.org/<wbr>doc/<wbr>Publication/<wbr>UNTS/<wbr>Volume%201208/<wbr>volume-1208-I-19487-English<wbr>.pdf</li>
+<li>UN/CEFACT. Recommendation No. 20: Codes for Units of Measure Used in International Trade, TRADE/CEFACT/2001/20, 15 January 2001. https://<wbr>digitallibrary<wbr>.un<wbr>.org/<wbr>record/<wbr>431844/<wbr>files/<wbr>%5BE_ECE_%5DTRADE_CEFACT_2001_20-EN<wbr>.pdf</li>
+<li>UN/CEFACT. UN/EDIFACT Standard Directory D.01A and related documentation, TRADE/CEFACT/2001/33, 14 February 2001. https://<wbr>digitallibrary<wbr>.un<wbr>.org/<wbr>record/<wbr>433163/<wbr>files/<wbr>%5EE_ECE_%5ETRADE_CEFACT_2001_33-EN<wbr>.pdf</li>
+<li>van de Weerd, I., Vollers, P., Beerepoot, I. &amp; Fantinato, M. (2019). Workarounds in Retail Work Systems: Prevent, Redesign, Adopt or Ignore? <em>Proceedings of the 27th European Conference on Information Systems (ECIS)</em>, Stockholm &amp; Uppsala. https://<wbr>aisel<wbr>.aisnet<wbr>.org/<wbr>ecis2019_rp/<wbr>183 (full text read at https://<wbr>dspace<wbr>.library<wbr>.uu<wbr>.nl/<wbr>bitstream/<wbr>handle/<wbr>1874/<wbr>384797/<wbr>ECIS2018_Workarounds_in_Retail_V2<wbr>.pdf?sequence=1)</li>
+<li>X12. 856 Ship Notice/Manifest. https://<wbr>x12<wbr>.org/<wbr>node/<wbr>4398</li>
+<li>X12. 940 Warehouse Shipping Order. https://<wbr>x12<wbr>.org/<wbr>node/<wbr>4444</li>
+<li>X12. 945 Warehouse Shipping Advice. https://<wbr>x12<wbr>.org/<wbr>node/<wbr>4447</li>
+<li>X12. About X12. https://<wbr>x12<wbr>.org/<wbr>about/<wbr>about-x12</li>
+</ul>
+</div></details><details class="acc note" id="read-sce10-note"><summary><span class="at">The writer's opening note</span></summary><div class="accb"><p>SCE3, SCE7 and SCE9 each followed one system's part of an order. This unit follows the joins. Grades follow SCE1's key (section 10 there): every claim that carries a number, a mechanism or a recommendation ends with [independent], [analyst], [vendor-reported] or [practice]; the text of a standard, treaty or regulation is graded independent for what it says. Lines marked as this unit's inference or reading, or as working descriptions, carry no grade. Every reference was opened on 28 November 2026 unless a line says otherwise; the source log gives what was read at each.</p>
+<p>A <strong>seam</strong> (course term) is a point where one system hands a fact to another and stops being the place that changes it. A <strong>handoff</strong> is the message, file or call that carries the fact across. Each section below takes one seam as the operations pattern asks: the physical event, the people, what the software does, how it commonly fails and the measure, where a source or the case gives one.</p>
+</div></details><details class="acc made" id="read-sce10-made"><summary><span class="at">How this unit was made</span><span class="an">4 parts</span></summary><div class="accb"><h3>Provenance</h3><p>The handoffs between the order, warehouse and transport systems and the ERP, one by one: order to warehouse at release, warehouse to transport at ship confirmation and loading, transport to the customer as status, and each back to finance; the data all of them share (items, locations, customers, carriers, units of measure) and GS1's keys for them; which system holds the truth for which fact, as the textbook, the analyst definitions and the case register's fictional vendors put it, and where they disagree (stock, the dock appointment, parcel labels, carrier payment, returns); one Corvane (fictional) web order seen in three systems with three statuses; integration styles and the X12 and UN/EDIFACT messages at each seam; the yard and the dock; what users do around a broken seam, as far as one retail study goes; and common claim C9, one vendor against specialists, each side attributed to the kind of party that makes it. Deliverable: Corvane's system-of-record table, a handoff failure catalogue across the three case operations, both templates, glossary lines; two figures (the swimlanes of section 1, the matrix of section 8). How it was made: written 28 Nov 2026 by Opus 5.5 with live search (the build order lists SCE10 search off); fresh check by a fresh Opus 5.5 agent (fix: 1 error, 5 should-fix, 18 minor), 21 of 22 findings applied, the one held superseded by an extra fix, plus 6 extra fixes; quality review by a fresh Opus 5.5 agent (fix: 0 error, 8 should-fix, 14 minor), 17 applied and 5 handled outside the unit text. Known gaps: not opened: Gartner's TMS market page, its ERP glossary entry and its 2026 Magic Quadrant for Supply Chain Management Suites (each refused or failed), GS1's GINC page (refused), the TMS chapter of Novack, Gibson and Suzuki (10th ed., 2024; contents page only), and Annex III of the Commission's 2027 work programme; not re-opened here: Bartholdi and Hackman §4.3 and Gartner's 2022 WMS and 2026 TMS reports (section 7 takes them as SCE6 and SCE8 read them) and the UN/EDIFACT D.01B directory. Read in abstract only: Klaus, Rosemann and Gable (2000, at IDEAS), Light, Holland and Willis (2001, at the Salford repository's record), Ishfaq et al. (2016) and Alter (2014); Light et al. (2000) and van de Weerd et al. (2019) were read in repository copies. C9 was tested on one ERP case study (Light et al. 2000); no independent source on total cost by sourcing strategy for execution software was found, and SCE16 prices it. No real vendor's documentation was read: the brief's item on the vendors' own documentation is answered with the fictional vendors and a template, and put to the owner. Status names in section 8 are working terms; the one workaround study is set in supermarket stores. Length: the body through the Self-check is about 6,300 words, above the brief's 2,000–6,000 (F17); the deliverable adds about 2,600.</p><h3 id="read-sce10-16">Unsure list</h3>
+<h1>Unsure: SCE10</h1>
+<ol>
+<li>Klaus, Rosemann and Gable (2000): the abstract was read at IDEAS/RePEc, a bibliographic index, because the DOI address was refused; its wording was not checked at Springer (section 5, glossary, notes contradiction 4).</li>
+<li>Light, Holland, Kelly and Willis (2000): the full text was read at the University of Salford's repository, whose version is not stated, and the AIS eLibrary record spells the fourth author "Willis"; the quotations ("no one strategy is the 'best' for all contexts", "the complexity of implementation", "the likely costs of future ownership", "may be left waiting for the next upgrade") come from the fetch tool's extraction of that copy (section 12).</li>
+<li>Light, Holland and Willis (2001): the journal abstract was read at the Salford repository's record, not at Emerald (section 12).</li>
+<li>Van de Weerd et al. (2019): the survey counts per workaround (159, 236, 247, 6) and pages 5–6 are from the fetch tool's reading of the Utrecht repository copy, whose file name says ECIS2018 while the paper and the AIS record say ECIS 2019 (section 11).</li>
+<li>Gartner's yard management description is from an unattributed "What is Yard Management?" section of the Peer Insights page, truncated in the fetch; graded analyst because it sits on Gartner's page (section 10, glossary).</li>
+<li>Directive 2011/7/EU was read in legislation.gov.uk's copy of the text as adopted; no act amending Article 3 was found by search on 28 November 2026, and EUR-Lex lists the 2023 proposal to replace the directive (procedure 2023/0323/COD) as ongoing; no consolidated EU text was opened (section 5).</li>
+<li>The UN/CEFACT D.01A documentation lists IFTSTA as a UNSM; the fetch tool reported the table's line breaks split the entry, and the D.01B directory that EANCOM uses was not itself opened (section 4).</li>
+<li>GS1's reference card is undated and gives no allocating party; the GSIN's "seller and shipper" comes from GS1's GSIN page, which has no headline or date (section 6).</li>
+<li>Section 7's dock and parcel rows cite Bartholdi and Hackman's §4.3 menu and Gartner's 2022 WMS and 2026 TMS reports as SCE6 §6 and SCE8 §7 read them; this unit did not re-open §4.3 or either Gartner report, and Gartner's TMS page failed here.</li>
+<li>Section 9's table pairing GS1 keys with messages is this unit's reading; no source opened maps keys to X12 or UN/EDIFACT messages.</li>
+</ol>
+<p>Object: none</p>
+<h3>Fresh check</h3><p>Fresh check 2026-11-28 (claude-opus-5-5): fix · 1 error, 5 should-fix, 18 minor; all applied; report <code>audits/supply-chain-execution/fresh-check-SCE10.md</code>
+Quality review 2026-11-28 (claude-opus-5-5): fix · 0 error, 8 should-fix, 14 minor; all applied; report <code>audits/supply-chain-execution/quality-review-SCE10-2026-11-28.md</code></p><h3>The brief</h3><div class="pbox"><pre>Aim: name each handoff between the systems, the fact that crosses it and what breaks
+Takes: SCE2 to SCE9.
+Gives: the system-of-record table SCE15 and SCE18 argue from; the handoff failures DD-SCE2 extends.
+
+Unit SCE10, The seams. Cover: the handoffs one by one (order to warehouse at release and allocation; warehouse to transport at ship confirmation and loading; transport to the customer as status; each of them back to the ERP and to finance); the data all of them share (items, locations, customers, carriers, units of measure) and what goes wrong when it differs between systems; which system holds the truth for which fact, as the textbooks and the vendors&#x27; own documentation describe it, and where they disagree; the same order seen in three systems with three statuses, worked on the case; how integration is done at the level a product person needs (messages, files, interfaces, the standards for identifying goods and shipments, from the standards body&#x27;s own pages); the yard and the dock as a seam of their own; what users do to work around a broken seam (spreadsheets, phone calls, re-keying), only as far as a source supports it, otherwise labelled as the unit&#x27;s inference; what a customer gains and gives up by buying order, warehouse and transport systems from one vendor against buying each from a specialist, with each side&#x27;s argument attributed to who makes it and graded. Deliverable: a system-of-record table (fact, owner, who else holds a copy, what breaks when they differ), built for Corvane; a handoff failure catalogue (handoff, failure, who sees it first, who can fix it), built across the three case operations; then the templates.</pre><div class="pbar"><button class="copy" type="button">Copy brief</button></div></div></div></details></div>
+  <div class="pager"></div>

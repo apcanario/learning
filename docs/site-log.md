@@ -14,145 +14,144 @@ Rules for an entry (`docs/method.md` §8):
 
 | # | Code | Area | What it is |
 |---|---|---|---|
-| 1 | SCE10 | Supply Chain | Write SCE10, The seams, for Supply Chain Execution for Product Teams. |
-| 2 | SCE11 | Supply Chain | Write SCE11, The buying committee, for Supply Chain Execution for Product Teams. |
-| 3 | SCE12 | Supply Chain | Write SCE12, The sale, for Supply Chain Execution for Product Teams. |
-| 4 | SCE13 | Supply Chain | Write SCE13, Users by role, for Supply Chain Execution for Product Teams. |
-| 5 | SCE14 | Supply Chain | Write SCE14, Implementers and administrators, for Supply Chain Execution for Product Teams. |
-| 6 | SCE15 | Supply Chain | Write SCE15, Demo versus shift, for Supply Chain Execution for Product Teams. |
-| 7 | SCE16 | Supply Chain | Write SCE16, Money, for Supply Chain Execution for Product Teams. |
-| 8 | SCE17 | Supply Chain | Write SCE17, Reading the field, for Supply Chain Execution for Product Teams. |
-| 9 | SCE18 | Supply Chain | Write SCE18, Capstone: one strategy memo, for Supply Chain Execution for Product Teams. |
-| 10 | DD-SCE1 | Supply Chain | Write DD-SCE1, Deep dive: the logistics provider's business, for Supply Chain Execution for Product Teams. |
-| 11 | DD-SCE2 | Supply Chain | Write DD-SCE2, Deep dive: peak and exceptions, for Supply Chain Execution for Product Teams. |
-| 12 | SCP1 | Supply Chain | Write SCP1, The planning map, the words and the evidence, for Supply Chain Planning for Product Teams. |
-| 13 | SCP2 | Supply Chain | Write SCP2, Demand and its data, for Supply Chain Planning for Product Teams. |
-| 14 | SCP3 | Supply Chain | Write SCP3, Forecasting methods, for Supply Chain Planning for Product Teams. |
-| 15 | SCP4 | Supply Chain | Write SCP4, Forecast error and what it is used for, for Supply Chain Planning for Product Teams. |
-| 16 | SCP5 | Supply Chain | Write SCP5, Judgment, overrides and the demand planner, for Supply Chain Planning for Product Teams. |
-| 17 | SCP6 | Supply Chain | Write SCP6, Why inventory exists and how much, for Supply Chain Planning for Product Teams. |
-| 18 | SCP7 | Supply Chain | Write SCP7, Replenishment, for Supply Chain Planning for Product Teams. |
-| 19 | SCP8 | Supply Chain | Write SCP8, The network: stock in more than one place, for Supply Chain Planning for Product Teams. |
-| 20 | SCP9 | Supply Chain | Write SCP9, Supply planning for makers, for Supply Chain Planning for Product Teams. |
-| 21 | SCP10 | Supply Chain | Write SCP10, Retail and distribution planning, for Supply Chain Planning for Product Teams. |
-| 22 | SCP11 | Supply Chain | Write SCP11, Sales and operations planning, for Supply Chain Planning for Product Teams. |
-| 23 | SCP12 | Supply Chain | Write SCP12, Where the plan meets execution, for Supply Chain Planning for Product Teams. |
-| 24 | SCP13 | Supply Chain | Write SCP13, The planning system as a product, for Supply Chain Planning for Product Teams. |
-| 25 | SCP14 | Supply Chain | Write SCP14, Planners as users, for Supply Chain Planning for Product Teams. |
-| 26 | SCP15 | Supply Chain | Write SCP15, Buying planning software: what differs, for Supply Chain Planning for Product Teams. |
-| 27 | SCP16 | Supply Chain | Write SCP16, Capstone: one planning product memo, for Supply Chain Planning for Product Teams. |
-| 28 | DD-SCP1 | Supply Chain | Write DD-SCP1, Deep dive: planning as companies have published it, for Supply Chain Planning for Product Teams. |
-| 29 | DD-SCP2 | Supply Chain | Write DD-SCP2, Deep dive: the hard numbers, for Supply Chain Planning for Product Teams. |
-| 30 | AIE1 | Supply Chain | Write AIE1, What counts as AI here, for AI in Supply Chain Execution. |
-| 31 | AIE2 | Supply Chain | Write AIE2, Optimisation and rules: the AI that was already there, for AI in Supply Chain Execution. |
-| 32 | AIE3 | Supply Chain | Write AIE3, Prediction: what machine learning adds, for AI in Supply Chain Execution. |
-| 33 | AIE4 | Supply Chain | Write AIE4, Generative models and agents, for AI in Supply Chain Execution. |
-| 34 | AIE5 | Supply Chain | Write AIE5, The field evidence, read in full, for AI in Supply Chain Execution. |
-| 35 | AIE6 | Supply Chain | Write AIE6, In the warehouse, for AI in Supply Chain Execution. |
-| 36 | AIE7 | Supply Chain | Write AIE7, In transport, for AI in Supply Chain Execution. |
-| 37 | AIE8 | Supply Chain | Write AIE8, In order management, for AI in Supply Chain Execution. |
-| 38 | AIE9 | Supply Chain | Write AIE9, The person in the loop, for AI in Supply Chain Execution. |
-| 39 | AIE10 | Supply Chain | Write AIE10, Risk, rules and accountability, for AI in Supply Chain Execution. |
-| 40 | AIE11 | Supply Chain | Write AIE11, Reading an AI claim, for AI in Supply Chain Execution. |
-| 41 | AIE12 | Supply Chain | Write AIE12, Money and the pilot, for AI in Supply Chain Execution. |
-| 42 | AIE13 | Supply Chain | Write AIE13, Capstone: one feature, argued, for AI in Supply Chain Execution. |
-| 43 | DD-AIE1 | Supply Chain | Write DD-AIE1, Deep dive: algorithmic management on the floor, for AI in Supply Chain Execution. |
-| 44 | AC1 | Sports | Write AC1, The job, the map and the evidence, for Managing an Athlete's Career. |
-| 45 | AC2 | Sports | Write AC2, Three hats: coach, sponsor, representative, for Managing an Athlete's Career. |
-| 46 | AC3 | Sports | Write AC3, The rules that bind what an athlete may sell, for Managing an Athlete's Career. |
-| 47 | AC4 | Sports | Write AC4, The minor first, for Managing an Athlete's Career. |
-| 48 | AC5 | Sports | Write AC5, Funding and the season's money, for Managing an Athlete's Career. |
-| 49 | AC6 | Sports | Write AC6, What the athlete has to sell, for Managing an Athlete's Career. |
-| 50 | AC7 | Sports | Write AC7, Building marketability without building a persona, for Managing an Athlete's Career. |
-| 51 | AC8 | Sports | Write AC8, What a sponsor buys, for Managing an Athlete's Career. |
-| 52 | AC9 | Sports | Write AC9, Being the sponsor: a small brand's athlete programme, for Managing an Athlete's Career. |
-| 53 | AC10 | Sports | Write AC10, Finding other sponsors for the athlete, for Managing an Athlete's Career. |
-| 54 | AC11 | Sports | Write AC11, Closing and keeping a sponsor, for Managing an Athlete's Career. |
-| 55 | AC12 | Sports | Write AC12, Contracts and image rights as questions, for Managing an Athlete's Career. |
-| 56 | AC13 | Sports | Write AC13, Agents: the profession, the handover, and where your help stops, for Managing an Athlete's Career. |
-| 57 | AC14 | Sports | Write AC14, The career alongside and after sport, for Managing an Athlete's Career. |
-| 58 | AC15 | Sports | Write AC15, Capstone: the one-year career plan, for Managing an Athlete's Career. |
-| 59 | DD-AC2 | Sports | Write DD-AC2, Deep dive: hard numbers, what the money is, for Managing an Athlete's Career. |
-| 60 | DD-AC1 | Sports | Write DD-AC1, Deep dive: comparables, documented careers below the agency level, for Managing an Athlete's Career. |
-| 61 | DD-AC3 | Sports | Write DD-AC3, Deep dive: Portugal, end to end, for Managing an Athlete's Career. |
-| 62 | EG1 | Mythology | Write EG1, How we know anything: the sources and the evidence key, for Egyptian history and mythology. |
-| 63 | EG2 | Mythology | Write EG2, The land: river, flood, desert and neighbours, for Egyptian history and mythology. |
-| 64 | EG3 | Mythology | Write EG3, The timeline spine and how the dates are made, for Egyptian history and mythology. |
-| 65 | EG4 | Mythology | Write EG4, Predynastic Egypt, for Egyptian history and mythology. |
-| 66 | EG5 | Mythology | Write EG5, Unification and Narmer, for Egyptian history and mythology. |
-| 67 | EG6 | Mythology | Write EG6, The first two dynasties, for Egyptian history and mythology. |
-| 68 | EG7 | Mythology | Write EG7, Kingship: the idea that held three thousand years, for Egyptian history and mythology. |
-| 69 | EG8 | Mythology | Write EG8, Djoser and the Third Dynasty, for Egyptian history and mythology. |
-| 70 | EG9 | Mythology | Write EG9, The Fourth Dynasty: Sneferu to Menkaure, for Egyptian history and mythology. |
-| 71 | EG10 | Mythology | Write EG10, The Fifth and Sixth Dynasties, for Egyptian history and mythology. |
-| 72 | EG11 | Mythology | Write EG11, How the Old Kingdom worked, for Egyptian history and mythology. |
-| 73 | EG12 | Mythology | Write EG12, The end of the Old Kingdom and the First Intermediate Period, for Egyptian history and mythology. |
-| 74 | EG13 | Mythology | Write EG13, Reunification and the Twelfth Dynasty, for Egyptian history and mythology. |
-| 75 | EG14 | Mythology | Write EG14, The Middle Kingdom state: forts, towns and foreigners, for Egyptian history and mythology. |
-| 76 | EG15 | Mythology | Write EG15, The classical literature, for Egyptian history and mythology. |
-| 77 | EG16 | Mythology | Write EG16, The Second Intermediate Period, for Egyptian history and mythology. |
-| 78 | EG17 | Mythology | Write EG17, Ahmose and the making of the New Kingdom, for Egyptian history and mythology. |
-| 79 | EG18 | Mythology | Write EG18, Hatshepsut, for Egyptian history and mythology. |
-| 80 | EG19 | Mythology | Write EG19, Thutmose III and the empire, for Egyptian history and mythology. |
-| 81 | EG20 | Mythology | Write EG20, Amenhotep III: Egypt at its height, for Egyptian history and mythology. |
-| 82 | EG21 | Mythology | Write EG21, Akhenaten to Horemheb: the core account, for Egyptian history and mythology. |
-| 83 | EG22 | Mythology | Write EG22, Seti I and Ramesses II, for Egyptian history and mythology. |
-| 84 | EG23 | Mythology | Write EG23, Merneptah, the Libyans and the Exodus question, for Egyptian history and mythology. |
-| 85 | EG24 | Mythology | Write EG24, Ramesses III and the Sea Peoples, for Egyptian history and mythology. |
-| 86 | EG25 | Mythology | Write EG25, Deir el-Medina, for Egyptian history and mythology. |
-| 87 | EG26 | Mythology | Write EG26, The end of the New Kingdom, for Egyptian history and mythology. |
-| 88 | EG27 | Mythology | Write EG27, The Third Intermediate Period, for Egyptian history and mythology. |
-| 89 | EG28 | Mythology | Write EG28, Kush and the Twenty-fifth Dynasty, for Egyptian history and mythology. |
-| 90 | EG29 | Mythology | Write EG29, The Saite renaissance, for Egyptian history and mythology. |
-| 91 | EG30 | Mythology | Write EG30, Persian Egypt and the last native kings, for Egyptian history and mythology. |
-| 92 | EG31 | Mythology | Write EG31, Herodotus in Egypt: Book 2 as a source, for Egyptian history and mythology. |
-| 93 | EG32 | Mythology | Write EG32, The Ptolemies from the Egyptian side, for Egyptian history and mythology. |
-| 94 | EG33 | Mythology | Write EG33, Two cultures in one country, for Egyptian history and mythology. |
-| 95 | EG34 | Mythology | Write EG34, Cleopatra VII and the Roman conquest, for Egyptian history and mythology. |
-| 96 | EG35 | Mythology | Write EG35, Roman Egypt and the end of the old religion, for Egyptian history and mythology. |
-| 97 | EG36 | Mythology | Write EG36, What Egyptian religion was, for Egyptian history and mythology. |
-| 98 | EG37 | Mythology | Write EG37, The cosmogonies, for Egyptian history and mythology. |
-| 99 | EG38 | Mythology | Write EG38, The gods: a field guide, for Egyptian history and mythology. |
-| 100 | EG39 | Mythology | Write EG39, Osiris, Isis, Seth and Horus, for Egyptian history and mythology. |
-| 101 | EG40 | Mythology | Write EG40, The sun's journey and the myths of Re, for Egyptian history and mythology. |
-| 102 | EG41 | Mythology | Write EG41, Ma'at, for Egyptian history and mythology. |
-| 103 | EG42 | Mythology | Write EG42, The person and the dead, for Egyptian history and mythology. |
-| 104 | EG43 | Mythology | Write EG43, Mummification, for Egyptian history and mythology. |
-| 105 | EG44 | Mythology | Write EG44, The afterlife: judgement and the Field of Reeds, for Egyptian history and mythology. |
-| 106 | EG45 | Mythology | Write EG45, Tombs, for Egyptian history and mythology. |
-| 107 | EG46 | Mythology | Write EG46, Tutankhamun's tomb, for Egyptian history and mythology. |
-| 108 | EG47 | Mythology | Write EG47, The temple: the house of the god, for Egyptian history and mythology. |
-| 109 | EG48 | Mythology | Write EG48, Priests and the god's estate, for Egyptian history and mythology. |
-| 110 | EG49 | Mythology | Write EG49, Personal religion and magic, for Egyptian history and mythology. |
-| 111 | EG50 | Mythology | Write EG50, Family, women, law and work, for Egyptian history and mythology. |
-| 112 | EG51 | Mythology | Write EG51, Grain, beer and the economy, for Egyptian history and mythology. |
-| 113 | EG52 | Mythology | Write EG52, Number, sky and body: Egyptian knowledge, for Egyptian history and mythology. |
-| 114 | EG53 | Mythology | Write EG53, The scripts and the decipherment, for Egyptian history and mythology. |
-| 115 | EG54 | Mythology | Write EG54, Reading a cartouche, for Egyptian history and mythology. |
-| 116 | EG55 | Mythology | Write EG55, Reading Egyptian art, a site and a museum, for Egyptian history and mythology. |
-| 117 | EG56 | Mythology | Write EG56, Reception: how Egypt reached you, for Egyptian history and mythology. |
-| 118 | EG57 | Mythology | Write EG57, Capstone: the whole thing in one sitting, for Egyptian history and mythology. |
-| 119 | DD-EG1 | Mythology | Write DD-EG1, From mastaba to true pyramid, for Egyptian history and mythology. |
-| 120 | DD-EG2 | Mythology | Write DD-EG2, Quarry, river and harbour, for Egyptian history and mythology. |
-| 121 | DD-EG3 | Mythology | Write DD-EG3, Raising the stone: ramps and their rivals, for Egyptian history and mythology. |
-| 122 | DD-EG4 | Mythology | Write DD-EG4, Who built them: the workers' town, for Egyptian history and mythology. |
-| 123 | DD-EG5 | Mythology | Write DD-EG5, Inside the Great Pyramid, for Egyptian history and mythology. |
-| 124 | DD-EG6 | Mythology | Write DD-EG6, The complex and its meaning, for Egyptian history and mythology. |
-| 125 | DD-EG7 | Mythology | Write DD-EG7, After Giza, and what is still unknown, for Egyptian history and mythology. |
-| 126 | DD-EG8 | Mythology | Write DD-EG8, Before the break: Amenhotep III and the sun, for Egyptian history and mythology. |
-| 127 | DD-EG9 | Mythology | Write DD-EG9, The revolution year by year, for Egyptian history and mythology. |
-| 128 | DD-EG10 | Mythology | Write DD-EG10, The theology of the Aten, for Egyptian history and mythology. |
-| 129 | DD-EG11 | Mythology | Write DD-EG11, Akhetaten: the city, for Egyptian history and mythology. |
-| 130 | DD-EG12 | Mythology | Write DD-EG12, The Amarna letters, for Egyptian history and mythology. |
-| 131 | DD-EG13 | Mythology | Write DD-EG13, Art, Nefertiti and the succession puzzle, for Egyptian history and mythology. |
-| 132 | DD-EG14 | Mythology | Write DD-EG14, Aftermath and afterlives, for Egyptian history and mythology. |
-| 133 | DD-EG15 | Mythology | Write DD-EG15, The Pyramid Texts, for Egyptian history and mythology. |
-| 134 | DD-EG16 | Mythology | Write DD-EG16, The Coffin Texts, for Egyptian history and mythology. |
-| 135 | DD-EG17 | Mythology | Write DD-EG17, The Book of the Dead: how it was made, for Egyptian history and mythology. |
-| 136 | DD-EG18 | Mythology | Write DD-EG18, The Book of the Dead: reading it, for Egyptian history and mythology. |
-| 137 | DD-EG19 | Mythology | Write DD-EG19, The books of the netherworld, for Egyptian history and mythology. |
-| 138 | DD-EG20 | Mythology | Write DD-EG20, The last afterlife texts, for Egyptian history and mythology. |
-| 139 | DD-EG21 | Mythology | Write DD-EG21, What the Egyptians expected of death: the synthesis, for Egyptian history and mythology. |
+| 1 | SCE11 | Supply Chain | Write SCE11, The buying committee, for Supply Chain Execution for Product Teams. |
+| 2 | SCE12 | Supply Chain | Write SCE12, The sale, for Supply Chain Execution for Product Teams. |
+| 3 | SCE13 | Supply Chain | Write SCE13, Users by role, for Supply Chain Execution for Product Teams. |
+| 4 | SCE14 | Supply Chain | Write SCE14, Implementers and administrators, for Supply Chain Execution for Product Teams. |
+| 5 | SCE15 | Supply Chain | Write SCE15, Demo versus shift, for Supply Chain Execution for Product Teams. |
+| 6 | SCE16 | Supply Chain | Write SCE16, Money, for Supply Chain Execution for Product Teams. |
+| 7 | SCE17 | Supply Chain | Write SCE17, Reading the field, for Supply Chain Execution for Product Teams. |
+| 8 | SCE18 | Supply Chain | Write SCE18, Capstone: one strategy memo, for Supply Chain Execution for Product Teams. |
+| 9 | DD-SCE1 | Supply Chain | Write DD-SCE1, Deep dive: the logistics provider's business, for Supply Chain Execution for Product Teams. |
+| 10 | DD-SCE2 | Supply Chain | Write DD-SCE2, Deep dive: peak and exceptions, for Supply Chain Execution for Product Teams. |
+| 11 | SCP1 | Supply Chain | Write SCP1, The planning map, the words and the evidence, for Supply Chain Planning for Product Teams. |
+| 12 | SCP2 | Supply Chain | Write SCP2, Demand and its data, for Supply Chain Planning for Product Teams. |
+| 13 | SCP3 | Supply Chain | Write SCP3, Forecasting methods, for Supply Chain Planning for Product Teams. |
+| 14 | SCP4 | Supply Chain | Write SCP4, Forecast error and what it is used for, for Supply Chain Planning for Product Teams. |
+| 15 | SCP5 | Supply Chain | Write SCP5, Judgment, overrides and the demand planner, for Supply Chain Planning for Product Teams. |
+| 16 | SCP6 | Supply Chain | Write SCP6, Why inventory exists and how much, for Supply Chain Planning for Product Teams. |
+| 17 | SCP7 | Supply Chain | Write SCP7, Replenishment, for Supply Chain Planning for Product Teams. |
+| 18 | SCP8 | Supply Chain | Write SCP8, The network: stock in more than one place, for Supply Chain Planning for Product Teams. |
+| 19 | SCP9 | Supply Chain | Write SCP9, Supply planning for makers, for Supply Chain Planning for Product Teams. |
+| 20 | SCP10 | Supply Chain | Write SCP10, Retail and distribution planning, for Supply Chain Planning for Product Teams. |
+| 21 | SCP11 | Supply Chain | Write SCP11, Sales and operations planning, for Supply Chain Planning for Product Teams. |
+| 22 | SCP12 | Supply Chain | Write SCP12, Where the plan meets execution, for Supply Chain Planning for Product Teams. |
+| 23 | SCP13 | Supply Chain | Write SCP13, The planning system as a product, for Supply Chain Planning for Product Teams. |
+| 24 | SCP14 | Supply Chain | Write SCP14, Planners as users, for Supply Chain Planning for Product Teams. |
+| 25 | SCP15 | Supply Chain | Write SCP15, Buying planning software: what differs, for Supply Chain Planning for Product Teams. |
+| 26 | SCP16 | Supply Chain | Write SCP16, Capstone: one planning product memo, for Supply Chain Planning for Product Teams. |
+| 27 | DD-SCP1 | Supply Chain | Write DD-SCP1, Deep dive: planning as companies have published it, for Supply Chain Planning for Product Teams. |
+| 28 | DD-SCP2 | Supply Chain | Write DD-SCP2, Deep dive: the hard numbers, for Supply Chain Planning for Product Teams. |
+| 29 | AIE1 | Supply Chain | Write AIE1, What counts as AI here, for AI in Supply Chain Execution. |
+| 30 | AIE2 | Supply Chain | Write AIE2, Optimisation and rules: the AI that was already there, for AI in Supply Chain Execution. |
+| 31 | AIE3 | Supply Chain | Write AIE3, Prediction: what machine learning adds, for AI in Supply Chain Execution. |
+| 32 | AIE4 | Supply Chain | Write AIE4, Generative models and agents, for AI in Supply Chain Execution. |
+| 33 | AIE5 | Supply Chain | Write AIE5, The field evidence, read in full, for AI in Supply Chain Execution. |
+| 34 | AIE6 | Supply Chain | Write AIE6, In the warehouse, for AI in Supply Chain Execution. |
+| 35 | AIE7 | Supply Chain | Write AIE7, In transport, for AI in Supply Chain Execution. |
+| 36 | AIE8 | Supply Chain | Write AIE8, In order management, for AI in Supply Chain Execution. |
+| 37 | AIE9 | Supply Chain | Write AIE9, The person in the loop, for AI in Supply Chain Execution. |
+| 38 | AIE10 | Supply Chain | Write AIE10, Risk, rules and accountability, for AI in Supply Chain Execution. |
+| 39 | AIE11 | Supply Chain | Write AIE11, Reading an AI claim, for AI in Supply Chain Execution. |
+| 40 | AIE12 | Supply Chain | Write AIE12, Money and the pilot, for AI in Supply Chain Execution. |
+| 41 | AIE13 | Supply Chain | Write AIE13, Capstone: one feature, argued, for AI in Supply Chain Execution. |
+| 42 | DD-AIE1 | Supply Chain | Write DD-AIE1, Deep dive: algorithmic management on the floor, for AI in Supply Chain Execution. |
+| 43 | AC1 | Sports | Write AC1, The job, the map and the evidence, for Managing an Athlete's Career. |
+| 44 | AC2 | Sports | Write AC2, Three hats: coach, sponsor, representative, for Managing an Athlete's Career. |
+| 45 | AC3 | Sports | Write AC3, The rules that bind what an athlete may sell, for Managing an Athlete's Career. |
+| 46 | AC4 | Sports | Write AC4, The minor first, for Managing an Athlete's Career. |
+| 47 | AC5 | Sports | Write AC5, Funding and the season's money, for Managing an Athlete's Career. |
+| 48 | AC6 | Sports | Write AC6, What the athlete has to sell, for Managing an Athlete's Career. |
+| 49 | AC7 | Sports | Write AC7, Building marketability without building a persona, for Managing an Athlete's Career. |
+| 50 | AC8 | Sports | Write AC8, What a sponsor buys, for Managing an Athlete's Career. |
+| 51 | AC9 | Sports | Write AC9, Being the sponsor: a small brand's athlete programme, for Managing an Athlete's Career. |
+| 52 | AC10 | Sports | Write AC10, Finding other sponsors for the athlete, for Managing an Athlete's Career. |
+| 53 | AC11 | Sports | Write AC11, Closing and keeping a sponsor, for Managing an Athlete's Career. |
+| 54 | AC12 | Sports | Write AC12, Contracts and image rights as questions, for Managing an Athlete's Career. |
+| 55 | AC13 | Sports | Write AC13, Agents: the profession, the handover, and where your help stops, for Managing an Athlete's Career. |
+| 56 | AC14 | Sports | Write AC14, The career alongside and after sport, for Managing an Athlete's Career. |
+| 57 | AC15 | Sports | Write AC15, Capstone: the one-year career plan, for Managing an Athlete's Career. |
+| 58 | DD-AC2 | Sports | Write DD-AC2, Deep dive: hard numbers, what the money is, for Managing an Athlete's Career. |
+| 59 | DD-AC1 | Sports | Write DD-AC1, Deep dive: comparables, documented careers below the agency level, for Managing an Athlete's Career. |
+| 60 | DD-AC3 | Sports | Write DD-AC3, Deep dive: Portugal, end to end, for Managing an Athlete's Career. |
+| 61 | EG1 | Mythology | Write EG1, How we know anything: the sources and the evidence key, for Egyptian history and mythology. |
+| 62 | EG2 | Mythology | Write EG2, The land: river, flood, desert and neighbours, for Egyptian history and mythology. |
+| 63 | EG3 | Mythology | Write EG3, The timeline spine and how the dates are made, for Egyptian history and mythology. |
+| 64 | EG4 | Mythology | Write EG4, Predynastic Egypt, for Egyptian history and mythology. |
+| 65 | EG5 | Mythology | Write EG5, Unification and Narmer, for Egyptian history and mythology. |
+| 66 | EG6 | Mythology | Write EG6, The first two dynasties, for Egyptian history and mythology. |
+| 67 | EG7 | Mythology | Write EG7, Kingship: the idea that held three thousand years, for Egyptian history and mythology. |
+| 68 | EG8 | Mythology | Write EG8, Djoser and the Third Dynasty, for Egyptian history and mythology. |
+| 69 | EG9 | Mythology | Write EG9, The Fourth Dynasty: Sneferu to Menkaure, for Egyptian history and mythology. |
+| 70 | EG10 | Mythology | Write EG10, The Fifth and Sixth Dynasties, for Egyptian history and mythology. |
+| 71 | EG11 | Mythology | Write EG11, How the Old Kingdom worked, for Egyptian history and mythology. |
+| 72 | EG12 | Mythology | Write EG12, The end of the Old Kingdom and the First Intermediate Period, for Egyptian history and mythology. |
+| 73 | EG13 | Mythology | Write EG13, Reunification and the Twelfth Dynasty, for Egyptian history and mythology. |
+| 74 | EG14 | Mythology | Write EG14, The Middle Kingdom state: forts, towns and foreigners, for Egyptian history and mythology. |
+| 75 | EG15 | Mythology | Write EG15, The classical literature, for Egyptian history and mythology. |
+| 76 | EG16 | Mythology | Write EG16, The Second Intermediate Period, for Egyptian history and mythology. |
+| 77 | EG17 | Mythology | Write EG17, Ahmose and the making of the New Kingdom, for Egyptian history and mythology. |
+| 78 | EG18 | Mythology | Write EG18, Hatshepsut, for Egyptian history and mythology. |
+| 79 | EG19 | Mythology | Write EG19, Thutmose III and the empire, for Egyptian history and mythology. |
+| 80 | EG20 | Mythology | Write EG20, Amenhotep III: Egypt at its height, for Egyptian history and mythology. |
+| 81 | EG21 | Mythology | Write EG21, Akhenaten to Horemheb: the core account, for Egyptian history and mythology. |
+| 82 | EG22 | Mythology | Write EG22, Seti I and Ramesses II, for Egyptian history and mythology. |
+| 83 | EG23 | Mythology | Write EG23, Merneptah, the Libyans and the Exodus question, for Egyptian history and mythology. |
+| 84 | EG24 | Mythology | Write EG24, Ramesses III and the Sea Peoples, for Egyptian history and mythology. |
+| 85 | EG25 | Mythology | Write EG25, Deir el-Medina, for Egyptian history and mythology. |
+| 86 | EG26 | Mythology | Write EG26, The end of the New Kingdom, for Egyptian history and mythology. |
+| 87 | EG27 | Mythology | Write EG27, The Third Intermediate Period, for Egyptian history and mythology. |
+| 88 | EG28 | Mythology | Write EG28, Kush and the Twenty-fifth Dynasty, for Egyptian history and mythology. |
+| 89 | EG29 | Mythology | Write EG29, The Saite renaissance, for Egyptian history and mythology. |
+| 90 | EG30 | Mythology | Write EG30, Persian Egypt and the last native kings, for Egyptian history and mythology. |
+| 91 | EG31 | Mythology | Write EG31, Herodotus in Egypt: Book 2 as a source, for Egyptian history and mythology. |
+| 92 | EG32 | Mythology | Write EG32, The Ptolemies from the Egyptian side, for Egyptian history and mythology. |
+| 93 | EG33 | Mythology | Write EG33, Two cultures in one country, for Egyptian history and mythology. |
+| 94 | EG34 | Mythology | Write EG34, Cleopatra VII and the Roman conquest, for Egyptian history and mythology. |
+| 95 | EG35 | Mythology | Write EG35, Roman Egypt and the end of the old religion, for Egyptian history and mythology. |
+| 96 | EG36 | Mythology | Write EG36, What Egyptian religion was, for Egyptian history and mythology. |
+| 97 | EG37 | Mythology | Write EG37, The cosmogonies, for Egyptian history and mythology. |
+| 98 | EG38 | Mythology | Write EG38, The gods: a field guide, for Egyptian history and mythology. |
+| 99 | EG39 | Mythology | Write EG39, Osiris, Isis, Seth and Horus, for Egyptian history and mythology. |
+| 100 | EG40 | Mythology | Write EG40, The sun's journey and the myths of Re, for Egyptian history and mythology. |
+| 101 | EG41 | Mythology | Write EG41, Ma'at, for Egyptian history and mythology. |
+| 102 | EG42 | Mythology | Write EG42, The person and the dead, for Egyptian history and mythology. |
+| 103 | EG43 | Mythology | Write EG43, Mummification, for Egyptian history and mythology. |
+| 104 | EG44 | Mythology | Write EG44, The afterlife: judgement and the Field of Reeds, for Egyptian history and mythology. |
+| 105 | EG45 | Mythology | Write EG45, Tombs, for Egyptian history and mythology. |
+| 106 | EG46 | Mythology | Write EG46, Tutankhamun's tomb, for Egyptian history and mythology. |
+| 107 | EG47 | Mythology | Write EG47, The temple: the house of the god, for Egyptian history and mythology. |
+| 108 | EG48 | Mythology | Write EG48, Priests and the god's estate, for Egyptian history and mythology. |
+| 109 | EG49 | Mythology | Write EG49, Personal religion and magic, for Egyptian history and mythology. |
+| 110 | EG50 | Mythology | Write EG50, Family, women, law and work, for Egyptian history and mythology. |
+| 111 | EG51 | Mythology | Write EG51, Grain, beer and the economy, for Egyptian history and mythology. |
+| 112 | EG52 | Mythology | Write EG52, Number, sky and body: Egyptian knowledge, for Egyptian history and mythology. |
+| 113 | EG53 | Mythology | Write EG53, The scripts and the decipherment, for Egyptian history and mythology. |
+| 114 | EG54 | Mythology | Write EG54, Reading a cartouche, for Egyptian history and mythology. |
+| 115 | EG55 | Mythology | Write EG55, Reading Egyptian art, a site and a museum, for Egyptian history and mythology. |
+| 116 | EG56 | Mythology | Write EG56, Reception: how Egypt reached you, for Egyptian history and mythology. |
+| 117 | EG57 | Mythology | Write EG57, Capstone: the whole thing in one sitting, for Egyptian history and mythology. |
+| 118 | DD-EG1 | Mythology | Write DD-EG1, From mastaba to true pyramid, for Egyptian history and mythology. |
+| 119 | DD-EG2 | Mythology | Write DD-EG2, Quarry, river and harbour, for Egyptian history and mythology. |
+| 120 | DD-EG3 | Mythology | Write DD-EG3, Raising the stone: ramps and their rivals, for Egyptian history and mythology. |
+| 121 | DD-EG4 | Mythology | Write DD-EG4, Who built them: the workers' town, for Egyptian history and mythology. |
+| 122 | DD-EG5 | Mythology | Write DD-EG5, Inside the Great Pyramid, for Egyptian history and mythology. |
+| 123 | DD-EG6 | Mythology | Write DD-EG6, The complex and its meaning, for Egyptian history and mythology. |
+| 124 | DD-EG7 | Mythology | Write DD-EG7, After Giza, and what is still unknown, for Egyptian history and mythology. |
+| 125 | DD-EG8 | Mythology | Write DD-EG8, Before the break: Amenhotep III and the sun, for Egyptian history and mythology. |
+| 126 | DD-EG9 | Mythology | Write DD-EG9, The revolution year by year, for Egyptian history and mythology. |
+| 127 | DD-EG10 | Mythology | Write DD-EG10, The theology of the Aten, for Egyptian history and mythology. |
+| 128 | DD-EG11 | Mythology | Write DD-EG11, Akhetaten: the city, for Egyptian history and mythology. |
+| 129 | DD-EG12 | Mythology | Write DD-EG12, The Amarna letters, for Egyptian history and mythology. |
+| 130 | DD-EG13 | Mythology | Write DD-EG13, Art, Nefertiti and the succession puzzle, for Egyptian history and mythology. |
+| 131 | DD-EG14 | Mythology | Write DD-EG14, Aftermath and afterlives, for Egyptian history and mythology. |
+| 132 | DD-EG15 | Mythology | Write DD-EG15, The Pyramid Texts, for Egyptian history and mythology. |
+| 133 | DD-EG16 | Mythology | Write DD-EG16, The Coffin Texts, for Egyptian history and mythology. |
+| 134 | DD-EG17 | Mythology | Write DD-EG17, The Book of the Dead: how it was made, for Egyptian history and mythology. |
+| 135 | DD-EG18 | Mythology | Write DD-EG18, The Book of the Dead: reading it, for Egyptian history and mythology. |
+| 136 | DD-EG19 | Mythology | Write DD-EG19, The books of the netherworld, for Egyptian history and mythology. |
+| 137 | DD-EG20 | Mythology | Write DD-EG20, The last afterlife texts, for Egyptian history and mythology. |
+| 138 | DD-EG21 | Mythology | Write DD-EG21, What the Egyptians expected of death: the synthesis, for Egyptian history and mythology. |
 
 ## Done
 
@@ -174,6 +173,7 @@ Rules for an entry (`docs/method.md` §8):
 | 2026-11-25 | SCE7 | Supply Chain | SCE7, Transportation in practice, written: who moves freight and how they are paid, one road shipment followed from plan to payment with the documents of each region, how truckload capacity is bought and why carriers refuse loads, what a transport system holds, and a shipment lifecycle map built for two fictional operations. |
 | 2026-11-27 | SCE8 | Supply Chain | SCE8, The transport system as a product, written (search on): what an analyst evaluation asks of a transport system and who it counts as a customer, the neighbouring markets for visibility, freight bill checking and payment, and vehicle routing, the transport roles, what differs between a shipper and a logistics provider, how carriers are connected, the 16 vendors in Gartner's 2026 evaluation given whole, and common claim C11 on end-to-end visibility set against evidence, with five role cards, a shipper-versus-provider table, a capability map of 24 transport lines, templates and glossary lines. |
 | 2026-11-27 | SCE9 | Supply Chain | SCE9, Order management, written (search on): where orders come from, how availability and the promise are made and go wrong, how a location is chosen, backorders, shipping from a store, changes, returns, the roles, the analyst definition and dated vendor list for distributed order management, and Halvern's order line placed on the lifecycle. |
+| 2026-11-28 | SCE10 | Supply Chain | SCE10, The seams, written: the handoffs between the order, warehouse and transport systems and finance, one by one, with what crosses each, which system owns each fact, how each fails, and the argument over buying all of them from one vendor; with a system-of-record table and a handoff failure catalogue. |
 | 2026-11-19 | S-SCE0 | Supply Chain | Supply Chain Execution for Product Teams, a new course, added: 20 units to write; four more courses listed as coming soon in the Supply Chain track. |
 | 2026-11-19 | S-SPORTS | Sports | The Coaching area is renamed Sports, and lists two courses to come: Running a Squad, and Managing an Athlete's Career. |
 | 2026-11-19 | DD-SP2 | Sports | DD-SP2, Deep dive: weight, body and who decides, written; SP3, SP6 and DD-SP1 were also corrected. |
