@@ -92,7 +92,7 @@ The functions of SCE2 to SCE5, restated as a list a buyer would recognise. Each 
 | ID | Operation step (unit) | Capability | Named as a capability by |
 |---|---|---|---|
 | W1 | Inbound: order and notice (SCE2 §3.1) | Take expected receipts from the ERP and advance notices from suppliers | B&H §4.1 [practice]; GS1 §9.3.7 [independent] |
-| W2 | Inbound: appointment and dock (SCE2 §3.2) | Appointment scheduling and dock doors | B&H basic [practice]; Gartner 2022, "dock scheduling" [analyst] |
+| W2 | Inbound: appointment and dock (SCE2 §3.2) | Appointment scheduling and dock doors at the operation's own docks (SCE8 T7 holds the request for an appointment at another party's dock; SCE10 §7) | B&H basic [practice]; Gartner 2022, "dock scheduling" [analyst] |
 | W3 | Inbound: yard (SCE2 §3.2) | Yard management | B&H high-end [practice]; Gartner glossary [analyst] |
 | W4 | Inbound: check and count (SCE2 §3.4) | Receiving: check, count and record receipt | B&H basic, §4.1 [practice]; Gartner glossary [analyst] |
 | W5 | Inbound: quality hold (SCE2 §3.5; SCE4 §3) | Quality hold and release | B&H basic, "Quality assurance" [practice] |
@@ -112,7 +112,7 @@ The functions of SCE2 to SCE5, restated as a list a buyer would recognise. Each 
 | W19 | Outbound: pick and sort (SCE3 §§3.3, 3.6; SCE5 §3) | Pick and put to light | B&H high-end [practice] |
 | W20 | Outbound and inbound: travel (SCE2 §3.8; SCE3 §4) | Task interleaving | B&H high-end [practice]; Gartner glossary [analyst] |
 | W21 | Outbound: sort, check, pack (SCE3 §§5–6) | Packing and consolidation, with checks | B&H basic [practice]; Gartner glossary, "packing" [analyst] |
-| W22 | Outbound: ship (SCE3 §§6–7) | Shipping: register shipment out, carrier labels, carton and trailer manifests, parcel | B&H basic, "Shipping"; high-end, manifesting; advanced, "Parcel shipping" [practice]; Gartner glossary [analyst] |
+| W22 | Outbound: ship (SCE3 §§6–7) | Shipping: register shipment out, carrier labels, carton and trailer manifests, parcel labels and manifests printed at the pack station (SCE8 T8 holds parcel carrier and service selection; SCE10 §7) | B&H basic, "Shipping"; high-end, manifesting; advanced, "Parcel shipping" [practice]; Gartner glossary [analyst] |
 | W23 | Outbound: value-added work | Value-added services (kitting, light manufacturing) | B&H high-end [practice]; Gartner 2022 [analyst] |
 | W24 | The floor: labour (SCE5 §4) | Labour management: standards and tracking | B&H high-end [practice]; Gartner glossary [analyst] |
 | W25 | The floor: machines (SCE5 §§6–7) | Interfaces to automation (WCS, WES, equipment) | Gartner glossary [analyst]; Gartner 2022 [analyst] |
@@ -303,7 +303,7 @@ Vendor: Halvern Systems (fictional). Line: Halvern Warehouse (core system) with 
 | # | Operation step | Capability | Module that claims it | Source and date | Grade | Gap or question |
 |---|---|---|---|---|---|---|
 | 1 | Inbound: order and notice (SCE2 §3.1) | W1 Expected receipts and advance notices | Halvern Warehouse (core), assumed | Case register, 24 Nov 2026 | case | Which ERP messages it takes is not in the register (W28) |
-| 2 | Inbound: appointment and dock (SCE2 §3.2) | W2 Appointment scheduling and dock doors | No claim in the register | Case register, 24 Nov 2026 | case | In Yard or in the core? |
+| 2 | Inbound: appointment and dock (SCE2 §3.2) | W2 Appointment scheduling and dock doors | No claim in the register | Case register, 24 Nov 2026 | case | In Yard or in the core? Answered by SCE10 §7 and deliverable A, row 12 (Yard; placement). |
 | 3 | Inbound: yard (SCE2 §3.2) | W3 Yard management | Yard | Case register, 24 Nov 2026 | case | none |
 | 4 | Inbound: check and count (SCE2 §3.4) | W4 Receiving | Halvern Warehouse (core), assumed | Case register, 24 Nov 2026 | case | none beyond the assumption |
 | 5 | Inbound: quality hold (SCE2 §3.5) | W5 Quality hold and release | No claim in the register | Case register, 24 Nov 2026 | case | Needs statuses (W10) |
@@ -315,7 +315,7 @@ Vendor: Halvern Systems (fictional). Line: Halvern Warehouse (core system) with 
 | 11 | Storage: replenishment (SCE2 §6) | W11 Replenishment of forward locations | No claim in the register | Case register, 24 Nov 2026 | case | none |
 | 12 | Control: counting (SCE4 §5) | W12 Cycle counting and adjustments | Halvern Warehouse (core), assumed | Case register, 24 Nov 2026 | case | Who may approve an adjustment is a configuration question (SCE4 §5) |
 | 13 | Control: slotting (SCE4 §6) | W13 Slotting | Slotting | Case register, 24 Nov 2026 | case | A re-slot moves records too (SCE4 §6) |
-| 14 | Control: returns (SCE4 §7) | W14 Receive and grade returns | No claim in the warehouse line; Halvern Order lists Returns | Case register, 24 Nov 2026 | case | Which line grades and puts away returned goods? (SCE10) |
+| 14 | Control: returns (SCE4 §7) | W14 Receive and grade returns | No claim in the warehouse line; Halvern Order lists Returns | Case register, 24 Nov 2026 | case | Which line grades and puts away returned goods? (SCE10 §7 places receipt and grade in the warehouse system, as the course's placement; Halvern's line for it and which system triggers the refund stay open, SCE10 deliverable A, row 16) |
 | 15 | Control: traceability (SCE4 §8) | W15 Lot traceability | No claim in the register | Case register, 24 Nov 2026 | case | Needs lots on every move (W10) |
 | 16 | Outbound: release (SCE3 §2) | W16 Order allocation and release | No claim in the register | Case register, 24 Nov 2026 | case | Core, or the WES layer (SCE5 §7)? |
 | 17 | Outbound: pick (SCE3 §3) | W17 Directed picking on a handheld | Halvern Warehouse (core), assumed | Case register, 24 Nov 2026 | case | none beyond the assumption |
@@ -323,7 +323,7 @@ Vendor: Halvern Systems (fictional). Line: Halvern Warehouse (core system) with 
 | 19 | Outbound: pick and sort (SCE3 §§3.3, 3.6; SCE5 §3) | W19 Pick and put to light | No claim in the register | Case register, 24 Nov 2026 | case | In Automation Connect? |
 | 20 | Outbound and inbound: travel (SCE2 §3.8; SCE3 §4) | W20 Task interleaving | No claim in the register | Case register, 24 Nov 2026 | case | none |
 | 21 | Outbound: sort, check, pack (SCE3 §§5–6) | W21 Packing and consolidation, with checks | Halvern Warehouse (core), assumed | Case register, 24 Nov 2026 | case | none beyond the assumption |
-| 22 | Outbound: ship (SCE3 §§6–7) | W22 Shipping, carrier labels, manifests, parcel | Shipment record: Halvern Warehouse (core), assumed; labels and manifests: no claim | Case register, 24 Nov 2026 | case | Warehouse or Halvern Transport? (SCE10) |
+| 22 | Outbound: ship (SCE3 §§6–7) | W22 Shipping, carrier labels, manifests, parcel | Shipment record: Halvern Warehouse (core), assumed; labels and manifests: no claim | Case register, 24 Nov 2026 | case | Warehouse or Halvern Transport? Answered by SCE10 §7 and deliverable A, row 11. |
 | 23 | Outbound: value-added work | W23 Value-added services | No claim in the register | Case register, 24 Nov 2026 | case | none |
 | 24 | The floor: labour (SCE5 §4) | W24 Labour management | Labour | Case register, 24 Nov 2026 | case | Standards set how (SCE5 §4)? |
 | 25 | The floor: machines (SCE5 §§6–7) | W25 Interfaces to automation | Automation Connect | Case register, 24 Nov 2026 | case | Which layer owns release and task assignment (SCE5 §7)? |
@@ -332,7 +332,7 @@ Vendor: Halvern Systems (fictional). Line: Halvern Warehouse (core system) with 
 | 28 | Across the site: integration (section 5) | W28 EDI and interfaces to the ERP and carriers | No claim in the register | Case register, 24 Nov 2026 | case | Halvern's "One vendor for execution" covers its own three lines; the ERP is outside them |
 | 29 | Across the site: change (section 4) | W29 Configurability | No claim in the register | Case register, 24 Nov 2026 | case | What is configured and what customised under cloud subscription (sections 3, 4) |
 
-Below the table: six lines claimed by a named module (3, 13, 18, 24, 25, 26); eight placed in the core by assumption (1, 4, 8, 9, 12, 17, 21, part of 22); fifteen with no claim in the register. The open question for SCE10 is which of Halvern's three lines holds returns (row 14) and carrier labels (row 22).
+Below the table: six lines claimed by a named module (3, 13, 18, 24, 25, 26); eight placed in the core by assumption (1, 4, 8, 9, 12, 17, 21, part of 22); fifteen with no claim in the register. The open question for SCE10 is which of Halvern's three lines holds returns (row 14) and carrier labels (row 22); SCE10 §7 and its deliverable A, rows 11 and 16, answer row 22 and leave row 14's line and the refund trigger open.
 
 ### C. Template: the capability map
 
